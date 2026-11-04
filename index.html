@@ -205,16 +205,9 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
   a.mod,a.mod *{transition-duration:.01s!important}
 }
 
-
-/* ---------- плавный переход между страницами: затемняющая завеса, сама страница не трогается ---------- */
-.veil{position:fixed;inset:0;z-index:200;background:#07080c;opacity:0;pointer-events:none;animation:veilout .5s ease-out both}
-@keyframes veilout{from{opacity:1}to{opacity:0}}
-html.leaving .veil{opacity:1!important;animation:none;transition:opacity .34s ease;pointer-events:auto}
-@media (prefers-reduced-motion:reduce){.veil{animation:none}html.leaving .veil{transition:none}}
 </style>
 </head>
 <body>
-<div class="veil" aria-hidden="true"></div>
 <div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grid"></div><div class="vig"></div>
 <main class="page">
@@ -235,7 +228,7 @@ html.leaving .veil{opacity:1!important;animation:none;transition:opacity .34s ea
       </label>
       <button class="snd" id="snd" type="button" aria-pressed="true" aria-label="Звук"><svg class="on" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8v4h3l4 3.4V4.6L6 8z"/><path d="M13 7.2a4 4 0 010 5.6M15.4 5a7.2 7.2 0 010 10"/></svg><svg class="off" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8v4h3l4 3.4V4.6L6 8z"/><path d="M13.5 8l4 4M17.5 8l-4 4"/></svg><span id="sndT">Звук · вкл</span></button>
       <a class="dl" href="https://drive.google.com/drive/folders/1aXZfU5qQ3I2QXvGDXHQK2iBuPsm9MoVy?usp=drive_link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать сборку</a>
-      <div class="dlnote"><b>Как установить</b><div class="st"><i>1</i><em>→</em><span>Перенести скачанные файлы в папку игры.</span></div><div class="st"><i>2</i><em>→</em><span>Прочитать руководство по настройке.</span></div><div class="st"><i>3</i><em>→</em><span>Приступить к прохождению.</span></div><a class="gd" href="guide.html" data-go>Руководство по настройке</a></div>
+      <div class="dlnote"><b>Как установить</b><div class="st"><i>1</i><em>→</em><span>Перенести скачанные файлы в папку игры.</span></div><div class="st"><i>2</i><em>→</em><span>Прочитать руководство по настройке.</span></div><div class="st"><i>3</i><em>→</em><span>Приступить к прохождению.</span></div><a class="gd" href="guide.html">Руководство по настройке</a></div>
     </div>
   </header>
   <section class="board" id="board" aria-label="Список модов по категориям"></section>
@@ -980,19 +973,6 @@ function posBubble(){
   bubble.el.style.transform='translate3d('+x+'px,'+y+'px,0)';
 }
 addEventListener('resize',function(){refreshPlats();if(nk&&!nk.gone&&!nk.drag&&nk.mode==='phys'){var B=bounds();nk.x=clamp(nk.x,2,Math.max(2,B.maxX));nk.y=clamp(nk.y,2,Math.max(2,B.floor));paint()}});
-})();
-</script>
-<script>
-(function(){
-  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
-  document.addEventListener('click',function(e){
-    var a=e.target.closest&&e.target.closest('a[data-go]');
-    if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
-    e.preventDefault();var h=a.href;
-    document.documentElement.classList.add('leaving');
-    setTimeout(function(){location.href=h},rm?0:340);
-  });
-  addEventListener('pageshow',function(e){if(e.persisted)document.documentElement.classList.remove('leaving')});
 })();
 </script>
 </body>
