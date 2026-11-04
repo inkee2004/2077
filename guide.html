@@ -65,38 +65,47 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
 .ch h2 i{font-style:normal;color:var(--faint);white-space:pre}
 .ct{flex:none;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--dim);border:1px solid var(--line2);border-radius:999px;padding:.12rem .55rem}
 
-.back{grid-column:4;justify-self:end;display:flex;align-items:center;gap:.5rem;padding:.34rem .85rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);background:rgba(255,255,255,.03);border:1px solid var(--line2);border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .25s,border-color .25s;backdrop-filter:blur(.5rem);-webkit-backdrop-filter:blur(.5rem)}
-.back svg{width:.8rem;height:.8rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.back:hover,.back:focus-visible{color:#fff;border-color:var(--line);outline:none}
-.page{height:100vh;min-height:0}
-.gb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:minmax(0,1fr) auto;gap:.8rem;flex:1;min-height:0}
+.acts{grid-column:4;justify-self:end;display:flex;align-items:center;gap:.6rem}
+.snd,.back{display:flex;align-items:center;gap:.5rem;padding:.34rem .85rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);background:rgba(255,255,255,.03);border:1px solid var(--line2);border-radius:999px;text-decoration:none;white-space:nowrap;cursor:pointer;transition:color .25s,border-color .25s;backdrop-filter:blur(.5rem);-webkit-backdrop-filter:blur(.5rem)}
+.snd svg,.back svg{flex:none;width:.85rem;height:.85rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.snd .off{display:none}
+.snd[aria-pressed="false"] .on{display:none}
+.snd[aria-pressed="false"] .off{display:block}
+.snd[aria-pressed="false"]{opacity:.65}
+.snd:hover,.snd:focus-visible,.back:hover,.back:focus-visible{color:#fff;border-color:var(--line);outline:none}
+.tags.ghosted{visibility:hidden}
+/* высоты рамок — как у рядов в списке модов: 10/11 строк, 10 строк, 2 строки */
+.gb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:calc(20.4rem + 2px) calc(18.85rem + 2px) calc(6.45rem + 2px);gap:.8rem}
+.gb .card.g{grid-row:1 / span 2}
+.gb .card.nt{grid-column:1 / -1;grid-row:3}
 .card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.12s}.card:nth-child(3){animation-delay:.19s}.card:nth-child(4){animation-delay:.26s}
 .card{min-height:0}
-.card.wide{grid-column:1 / -1}
-.shot{position:relative;flex:1;min-height:6rem;margin:.1rem .1rem .6rem;padding:0;border:1px solid var(--line2);border-radius:.4rem;overflow:hidden;background:rgba(0,0,0,.35);cursor:zoom-in;display:block;outline:none;transition:border-color .3s ease,box-shadow .3s ease}
+.shot{position:relative;flex:none;aspect-ratio:16/9;margin:.1rem .1rem .6rem;padding:0;border:1px solid var(--line2);border-radius:.4rem;overflow:hidden;background:rgba(0,0,0,.35);cursor:zoom-in;display:block;outline:none;transition:border-color .3s ease,box-shadow .3s ease}
 .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .shot:hover,.shot:focus-visible{border-color:var(--line);box-shadow:0 0 1.6rem rgba(220,228,255,.08)}
 .shot:hover img{transform:scale(1.02)}
 .shot::after{content:"";position:absolute;right:.55rem;bottom:.55rem;width:1.5rem;height:1.5rem;border:1px solid var(--line);border-radius:50%;background:rgba(10,11,16,.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23d9dde6' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='8.5' cy='8.5' r='5'/%3E%3Cpath d='M12.3 12.3L17 17M8.5 6.3v4.4M6.3 8.5h4.4'/%3E%3C/svg%3E") center/62% no-repeat;opacity:.8;pointer-events:none}
 .shot.empty{cursor:default}
 .shot.empty img,.shot.empty::after{display:none}
-.shot .ph0{display:none;position:absolute;inset:0;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);background:repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 .6rem,transparent .6rem 1.2rem)}
-.shot .ph0 small{font-size:.58rem;letter-spacing:.06em;text-transform:none;color:var(--faint);opacity:.8}
+.shot .ph0{display:none;position:absolute;inset:0;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.shot .ph0 small{font-size:.58rem;letter-spacing:.06em;text-transform:none;opacity:.8}
 .shot.empty .ph0{display:flex}
-.desc{flex:0 0 14.6rem;padding:0 .7rem .25rem;display:flex;flex-direction:column;gap:.6rem;font-size:.78rem;line-height:1.5;color:var(--dim)}
-.kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}
-.kv>div{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.15rem;min-height:2.7rem;padding:.35rem .4rem;border:1px solid var(--line2);border-radius:.4rem;background:rgba(255,255,255,.028);text-align:center}
+.desc{flex:1;min-height:0;padding:0 .7rem .25rem;display:flex;flex-direction:column;gap:.5rem;font-size:.78rem;line-height:1.5;color:var(--dim)}
+.kv{flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}
+.kv>div{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.15rem;min-height:2.7rem;padding:.35rem .4rem;border:1px solid var(--line2);border-radius:.4rem;background:rgba(255,255,255,.028);text-align:center;transition:border-color .25s ease}
+.kv>div:hover{border-color:var(--line)}
 .kv small{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 .kv span{font-family:var(--mono);font-size:.7rem;letter-spacing:.02em;color:#eceef3;white-space:nowrap}
-.it{display:grid;grid-template-columns:7.2rem minmax(0,1fr);column-gap:.7rem;align-items:baseline}
-.it+.it{padding-top:.55rem;border-top:1px solid var(--line2)}
+.rows{flex:1;min-height:0;display:flex;flex-direction:column}
+.it{flex:1;display:grid;grid-template-columns:7.8rem minmax(0,1fr);column-gap:.7rem;align-items:center;border-top:1px solid var(--line2)}
+.it:first-child{border-top:0}
 .it b{font-family:var(--mono);font-weight:500;font-size:.68rem;letter-spacing:.03em;color:#c4c9d4}
 .it p{margin:0}
 .s{font-style:normal;font-weight:500;font-family:var(--mono)}
 .s.r{color:#ff9a9a;text-shadow:0 0 .7rem rgba(255,80,80,.38)}
 .s.y{color:#f3dc84;text-shadow:0 0 .7rem rgba(255,205,70,.34)}
 .s.g{color:#9ce8b3;text-shadow:0 0 .7rem rgba(80,225,140,.32)}
-.note{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:1.4rem;align-items:center;padding:.15rem .7rem .3rem;font-size:.78rem;line-height:1.5;color:var(--dim)}
+.note{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:1.4rem;align-items:center;height:3.1rem;padding:0 .7rem;font-size:.78rem;line-height:1.5;color:var(--dim)}
 .note p{margin:0}
 .lb{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;padding:2rem;background:rgba(5,6,9,.9);backdrop-filter:blur(.6rem);-webkit-backdrop-filter:blur(.6rem);opacity:0;pointer-events:none;transition:opacity .3s ease;cursor:zoom-out}
 .lb.on{opacity:1;pointer-events:auto}
@@ -106,20 +115,20 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
 .lb .cap b{color:#eceef3;font-weight:500}
 @media (max-width:1000px){
   html{font-size:15px}
-  .note{grid-template-columns:minmax(0,1fr)}
-  .desc{flex:none}
-  .it{grid-template-columns:minmax(0,1fr)}
-  .page{height:auto;padding:2.4rem 1rem 2rem;justify-content:flex-start}
+  .page{padding:2.4rem 1rem 2rem;justify-content:flex-start}
   .top{display:flex;flex-direction:column;height:auto;gap:1.2rem;align-items:stretch}
   .hd{align-self:center}
   h1{font-size:1.6rem;white-space:normal;text-align:center}
-  .back{align-self:center}
+  .tags{display:none}
+  .acts{align-self:center}
   .gb{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
-  .card.wide{grid-column:auto}
-  .shot{flex:none;aspect-ratio:16/9}
+  .gb .card.g,.gb .card.nt{grid-row:auto;grid-column:auto}
+  .desc{flex:none}.rows{flex:none}.it{grid-template-columns:minmax(0,1fr);padding:.5rem 0}
+  .note{grid-template-columns:minmax(0,1fr);height:auto;padding:.4rem .7rem .6rem}
 }
 @media (prefers-reduced-motion:reduce){.blob,.card{animation:none!important}}
 </style>
+<link rel="stylesheet" href="assets/nick.css">
 </head>
 <body>
 <div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
@@ -128,68 +137,91 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
   <header class="top">
     <div class="hd">
       <h1>Руководство по настройке</h1>
-      <div class="tags"><span class="tag">Скриншоты → 3</span><span class="tag">Моды → CET</span><span class="tag">V → 2.5</span></div>
+      <div class="tags ghosted" aria-hidden="true"><span class="tag">·</span></div>
     </div>
-    <a class="back" href="index.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H4M8.6 5.4L4 10l4.6 4.6"/></svg>Список модов</a>
+    <div class="acts">
+      <button class="snd" id="snd" type="button" aria-pressed="true" aria-label="Звук"><svg class="on" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8v4h3l4 3.4V4.6L6 8z"/><path d="M13 7.2a4 4 0 010 5.6M15.4 5a7.2 7.2 0 010 10"/></svg><svg class="off" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8v4h3l4 3.4V4.6L6 8z"/><path d="M13.5 8l4 4M17.5 8l-4 4"/></svg><span id="sndT">Звук · вкл</span></button>
+      <a class="back" id="back" href="index.html" data-nk="back"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H4M8.6 5.4L4 10l4.6 4.6"/></svg>Список модов</a>
+    </div>
   </header>
   <section class="gb" aria-label="Руководство по настройке">
-    <article class="card">
+    <article class="card g" data-nk="g0">
       <div class="ch"><h2>Основные меню CET<i> / / </i><em class="s r">Рекомендация</em></h2><span class="ct">01</span></div>
       <button class="shot" type="button" data-cap="Основные меню CET"><img src="img/1-cet.png" alt="Основные меню CET"><div class="ph0">Скриншот 01<small>img/1-cet.png</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Если пропал HUD</small><span>Hud Fixes</span></div><div><small>Погода и время</small><span>Weather Switcher</span></div><div><small>По желанию</small><span>Console</span></div></div>
-        <div class="it"><b>Hud Fixes</b><p>Нужен, если пропал интерфейс — это баг игры. Нажмите «Restore HUD now», и HUD вернётся.</p></div>
-        <div class="it"><b>Weather Switcher</b><p>Меняет погоду и время суток. Работает только в игре: загрузите сохранение или начните новую игру.</p></div>
-        <div class="it"><b>Остальные меню</b><p>Остальные вкладки можно скрыть, в прохождении они не пригодятся.</p></div>
+        <div class="rows">
+          <div class="it"><b>Hud Fixes</b><p>Нужен, если пропал интерфейс — это баг игры. Нажмите «Restore HUD now», и HUD вернётся.</p></div>
+          <div class="it"><b>Weather Switcher</b><p>Меняет погоду и время суток. Работает только в игре: загрузите сохранение или начните новую игру.</p></div>
+          <div class="it"><b>Остальные меню</b><p>Остальные вкладки можно скрыть — в прохождении они не пригодятся. Консоль по желанию.</p></div>
+        </div>
       </div>
     </article>
-    <article class="card">
+    <article class="card g" data-nk="g1">
       <div class="ch"><h2>Eye Adaptation<i> / / </i><em class="s y">Обязательно</em></h2><span class="ct">02</span></div>
       <button class="shot" type="button" data-cap="Eye Adaptation Complete Overhaul"><img src="img/2-eye-adaptation.png" alt="Настройки Eye Adaptation"><div class="ph0">Скриншот 02<small>img/2-eye-adaptation.png</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Автоэкспозиция</small><span>Kiroshi</span></div><div><small>Свечение</small><span>Оригинал</span></div><div><small>Смена погоды</small><span>Оригинал</span></div></div>
-        <div class="it"><b>Зачем это нужно</b><p>Автоэкспозиция Kiroshi исправляет резкие переходы яркости. Оригинальные свечение и погода не конфликтуют с остальными модами сборки.</p></div>
-        <div class="it"><b>Где найти</b><p>Mod Settings → Eye Adaptation Complete Overhaul.</p></div>
+        <div class="rows">
+          <div class="it"><b>Что менять</b><p>Автоэкспозиция → Kiroshi, свечение → Оригинал, смена погоды → Оригинал.</p></div>
+          <div class="it"><b>Зачем</b><p>Kiroshi исправляет резкие переходы яркости, а оригинальные свет и погода не конфликтуют с остальными модами.</p></div>
+          <div class="it"><b>Где найти</b><p>Mod Settings → Eye Adaptation Complete Overhaul.</p></div>
+        </div>
       </div>
     </article>
-    <article class="card">
+    <article class="card g" data-nk="g2">
       <div class="ch"><h2>Immersive Night City Fixes<i> / / </i><em class="s g">По желанию</em></h2><span class="ct">03</span></div>
       <button class="shot" type="button" data-cap="Immersive Night City Fixes"><img src="img/3-night-city-fixes.png" alt="Настройки Immersive Night City Fixes"><div class="ph0">Скриншот 03<small>img/3-night-city-fixes.png</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Floating Debris</small><span>Включено</span></div><div><small>Влияние</small><span>Только визуал</span></div><div><small>Статус</small><span>По желанию</span></div></div>
-        <div class="it"><b>Зачем это нужно</b><p>Параметр Disable Floating Debris убирает лишний мусор, летающий в воздухе. Нравится так — оставьте включённым, мешает — выключите.</p></div>
-        <div class="it"><b>Где найти</b><p>Mod Settings → Immersive Night City Fixes.</p></div>
+        <div class="rows">
+          <div class="it"><b>Что менять</b><p>Параметр Disable Floating Debris — по своему желанию.</p></div>
+          <div class="it"><b>Зачем</b><p>Убирает лишний мусор, летающий в воздухе. Нравится так — оставьте включённым, мешает — выключите.</p></div>
+          <div class="it"><b>Где найти</b><p>Mod Settings → Immersive Night City Fixes.</p></div>
+        </div>
       </div>
     </article>
-    <article class="card wide">
+    <article class="card nt" data-nk="g3">
       <div class="ch"><h2>Остальные настройки<i> / / </i><em class="s r">Не менять</em></h2><span class="ct">!</span></div>
       <div class="note">
-        <p>Остальные настройки модов менять не рекомендуется. Особенно у модов прорисовки: они отвечают за дальность видимости, и неверные значения могут сильно нагрузить систему.</p>
-        <div class="kv k3"><div><small>Прорисовка</small><span>Draw Distance ReImagined</span></div><div><small>Прорисовка</small><span>Improved Environment LODs</span></div><div><small>Прорисовка</small><span>Not So Good Draw Distance</span></div></div>
+        <p>Остальные настройки модов менять не рекомендуется. Особенно у модов прорисовки: неверные значения могут сильно нагрузить систему.</p>
+        <div class="kv"><div><small>Прорисовка</small><span>Draw Distance ReImagined</span></div><div><small>Прорисовка</small><span>Improved Environment LODs</span></div><div><small>Прорисовка</small><span>Not So Good Draw Distance</span></div></div>
       </div>
     </article>
   </section>
 </main>
 <div class="lb" id="lb" aria-hidden="true"><img id="lbi" alt=""><div class="cap" id="lbc"></div></div>
+<script src="assets/audio.js"></script>
 <script>
 (function(){
-  var shots=[].slice.call(document.querySelectorAll('.shot')),lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),lbc=document.getElementById('lbc'),cur=-1;
+  var shots=[].slice.call(document.querySelectorAll('.shot')),lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),lbc=document.getElementById('lbc'),cur=-1,opened=0;
   shots.forEach(function(s,i){
     var im=s.querySelector('img');
     function bad(){s.classList.add('empty')}
     im.addEventListener('error',bad);
     if(im.complete&&im.naturalWidth===0)bad();
+    s.addEventListener('mouseenter',function(){if(!s.classList.contains('empty'))playHoverImg()});
     s.addEventListener('click',function(){if(!s.classList.contains('empty'))open(i)});
   });
+  var back=document.getElementById('back');
+  back.addEventListener('click',function(e){
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
+    e.preventDefault();
+    try{sessionStorage.setItem('nk-arrive','1')}catch(x){}
+    var go=function(){location.href=back.href};
+    if(window.NICK)NICK.leave(go);else go();
+  });
+  var SAY=[['y|разглядываешь? ну-ну. я тоже иногда на себя смотрю.'],['s|ого, крупно! а теперь мои пиксели видно, бл{я}ть.'],['n|скрин как скрин. «Mod Settings» — не страшно.']];
   function open(i){
     cur=i;var s=shots[i];lbi.src=s.querySelector('img').src;
     lbc.innerHTML='<b>0'+(i+1)+'</b> · '+s.dataset.cap;
-    lb.classList.add('on');lb.setAttribute('aria-hidden','false');
+    lb.classList.add('on');lb.setAttribute('aria-hidden','false');playZoomIn();
+    opened++;if(window.NICK&&opened%3===1)setTimeout(function(){NICK.say(SAY[(opened/3|0)%SAY.length])},700);
   }
-  function close(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');cur=-1}
+  function close(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');cur=-1;playZoomOut()}
   function go(d){
     var n=cur,k=0;do{n=(n+d+shots.length)%shots.length;k++}while(shots[n].classList.contains('empty')&&k<shots.length);
-    if(!shots[n].classList.contains('empty'))open(n);
+    if(!shots[n].classList.contains('empty')){var s=shots[n];cur=n;lbi.src=s.querySelector('img').src;lbc.innerHTML='<b>0'+(n+1)+'</b> · '+s.dataset.cap}
   }
   lb.addEventListener('click',close);
   addEventListener('keydown',function(e){
@@ -198,5 +230,17 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
   });
 })();
 </script>
+<script>
+window.NICKCFG={sel:'.card,.snd,.back',
+ arrive:[['s|о, а я уже тут. «Руководство по настройке» — читай, не тупи.','y|и скриншоты разгляди, а то «Console» ему подавай.'],['h|я с тобой! «Eye Adaptation» настроим — глаза не сломаем.']],
+ quips:{
+  g0:['n|«Cyber Engine Tweaks» — окошки поверх меню. выглядят как мой рабочий стол.','s|«Hud Fixes»: интерфейс пропал — нажми кнопку, не плачь.','w|«Weather Switcher» в главном меню не работает. я проверял. дважды.','y|«Console» — для тех, кто любит чит-коды. я люблю.'],
+  g1:['n|«Kiroshi» — автоэкспозиция. в глазах не темнеет, а в голове всё равно пусто.','h|свечение — оригинал, погода — оригинал. я тоже оригинал. неряха-оригинал.','a|«Eye Adaptation» трогай аккуратно, сук{а}! глаза — не запасные.'],
+  g2:['n|«Disable Floating Debris» — мусор в воздухе убрать? а в моей комнате кто уберёт?','y|«Immersive Night City Fixes» чинит город. меня бы кто починил.','z|летающий мусор… я такой же. летаю, никому не нужен.'],
+  g3:['a|«Improved Environment LODs», «Not So Good Draw Distance» — не трогай, бл{я}ть! я предупреждал.','s|прорисовка — штука нежная. тронешь не туда — «ебан{у}ться» и 20 кадров.','w|«Draw Distance ReImagined» трогать нельзя. я вот трогал. и ничего хорошего.'],
+  back:['w|назад к списку? ну давай, я с тобой.','y|«Список модов» ждёт. и «Just Monika» на постере тоже.']
+ }};
+</script>
+<script src="assets/nick.js"></script>
 </body>
 </html>

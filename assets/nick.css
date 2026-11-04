@@ -1,0 +1,59 @@
+/* ---------- ник, портал, диалог ---------- */
+.nick{position:fixed;left:0;top:0;z-index:80;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;will-change:transform}
+.nick.drag{cursor:grabbing}
+.nick-in{position:relative;padding:.42rem .95rem;border:1px solid rgba(236,238,245,.6);border-radius:.4rem;background:rgba(14,15,21,.78);backdrop-filter:blur(.6rem);-webkit-backdrop-filter:blur(.6rem);color:#fff;font-family:var(--mono);font-size:.9rem;letter-spacing:.08em;white-space:nowrap;box-shadow:0 .5rem 1.4rem rgba(0,0,0,.45),0 0 1.2rem rgba(200,225,255,.12);text-shadow:-1px 0 rgba(143,233,255,.55),1px 0 rgba(255,143,214,.45)}
+.nick-in .nm0{display:block;transition:opacity .18s ease}
+.nick-in .face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .18s ease;white-space:nowrap;letter-spacing:0;font-size:1.05rem;pointer-events:none}
+.nick-in .face b{display:block;font-weight:400}
+.nick.talk .nm0{opacity:0}
+.nick.talk .face{opacity:1}
+.face.m-a b{animation:fsh .1s linear infinite}
+.face.m-s b{animation:fsh .07s linear infinite}
+.face.m-z b{animation:fbob 1.8s ease-in-out infinite}
+.face.m-d b{animation:fdz .9s linear infinite}
+.face.m-f b,.face.m-l b{animation:fbob .6s ease-in-out infinite}
+.face.gl b{animation:fgl .32s steps(1) 1!important}
+@keyframes fsh{0%{transform:translate(-1px,0)}50%{transform:translate(1px,-1px)}100%{transform:translate(-1px,1px)}}
+@keyframes fbob{50%{transform:translateY(-.12rem)}}
+@keyframes fdz{from{transform:rotate(-4deg)}50%{transform:rotate(4deg)}to{transform:rotate(-4deg)}}
+@keyframes fgl{0%{transform:translate(-3px,0) skewX(16deg);filter:hue-rotate(90deg)}25%{transform:translate(3px,1px) skewX(-14deg);opacity:.4}50%{transform:translate(-2px,-1px);filter:none}75%{transform:translate(2px,0) skewX(8deg);filter:hue-rotate(-60deg)}100%{transform:none}}
+.nick.struggle .nick-in{animation:strug .09s linear infinite;border-color:rgba(255,90,110,.8)}
+@keyframes strug{0%{transform:translate(-2px,1px) rotate(-3deg)}50%{transform:translate(2px,-1px) rotate(3deg)}100%{transform:translate(-1px,-1px) rotate(-2deg)}}
+.nick.perch .nick-in{animation:sway 2.4s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes sway{50%{transform:rotate(1.6deg)}}
+/* цифровые лапки */
+.legs{position:absolute;left:0;right:0;top:100%;height:0;opacity:0;transition:opacity .35s ease;pointer-events:none}
+.nick.legs-on .legs{opacity:1}
+.leg{position:absolute;top:-1px;width:1px;height:.95rem;background:#e6eaf2;box-shadow:0 0 4px rgba(143,233,255,.8);transform-origin:50% 0;transform:rotate(calc(var(--r)*1deg));animation:lg .5s ease-in-out infinite;animation-delay:var(--dl)}
+.leg i{position:absolute;left:0;top:100%;width:1px;height:1.05rem;background:#e6eaf2;box-shadow:0 0 4px rgba(255,143,214,.7);transform-origin:50% 0;transform:rotate(calc(var(--k)*1deg))}
+.nick.still .leg{animation-play-state:paused}
+@keyframes lg{0%,100%{transform:rotate(calc(var(--r)*1deg))}50%{transform:rotate(calc(var(--r)*.3deg)) translateY(-.2rem)}}
+/* цифровые крылья */
+.wing{position:absolute;top:-30%;width:3rem;height:1.9rem;opacity:0;transition:opacity .35s ease;pointer-events:none}
+.wing.l{right:100%;transform-origin:100% 70%;animation:wl .7s ease-in-out infinite alternate}
+.wing.r{left:100%;transform-origin:0 70%;animation:wr .7s ease-in-out infinite alternate}
+.wing svg{width:100%;height:100%;overflow:visible;fill:none;stroke:#dfe9ff;stroke-width:1;filter:drop-shadow(0 0 3px rgba(143,233,255,.85))}
+.wing.r svg{transform:scaleX(-1)}
+.nick.wings-on .wing{opacity:.95}
+@keyframes wl{from{transform:rotate(20deg)}to{transform:rotate(-24deg)}}
+@keyframes wr{from{transform:rotate(-20deg)}to{transform:rotate(24deg)}}
+/* портал: тихая дыра в коде страницы */
+.portal{position:fixed;z-index:75;width:6.4rem;height:6.4rem;margin:-3.2rem 0 0 -3.2rem;pointer-events:none;transform:scale(.1);opacity:0;transition:transform .6s cubic-bezier(.2,1,.3,1),opacity .45s ease;filter:drop-shadow(0 0 .9rem rgba(0,0,0,.95))}
+.portal.open{transform:scale(1);opacity:1}
+.portal.closing{transform:scale(.04);opacity:0;transition:transform .55s ease-in,opacity .55s ease-in}
+.portal .hole{position:absolute;inset:0;overflow:hidden;background:radial-gradient(circle,#000 0,#010102 62%,#07080c 100%);animation:holej 1.2s steps(1) infinite;box-shadow:inset 0 0 1.4rem #000}
+@keyframes holej{0%{clip-path:var(--h1)}34%{clip-path:var(--h2)}67%{clip-path:var(--h3)}}
+.portal .code{position:absolute;left:12%;right:12%;top:0;font-family:var(--mono);font-size:.46rem;line-height:1.4;color:rgba(190,200,215,.28);white-space:pre;animation:cscroll 3.2s linear infinite;-webkit-mask:radial-gradient(circle at 50% 50%,#000 20%,transparent 70%);mask:radial-gradient(circle at 50% 50%,#000 20%,transparent 70%)}
+@keyframes cscroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+.portal .fr{position:absolute;font-family:var(--mono);font-size:.55rem;color:rgba(200,208,222,.4);animation:frf 2.4s steps(2) infinite}
+@keyframes frf{0%,100%{opacity:.5}50%{opacity:.1}}
+.portal::before{content:"";position:absolute;inset:-4%;border-radius:50%;border:1px solid rgba(215,222,235,.28);animation:rg 5s linear infinite}
+.portal::after{content:"";position:absolute;inset:-12%;border-radius:50%;border:1px dashed rgba(215,222,235,.14);animation:rg 9s linear infinite reverse}
+@keyframes rg{to{transform:rotate(360deg)}}
+.bubble{position:fixed;left:0;top:0;z-index:85;pointer-events:none;width:20rem;border:1px solid rgba(236,238,245,.5);border-radius:.45rem;background:rgba(12,13,19,.86);backdrop-filter:blur(.8rem);-webkit-backdrop-filter:blur(.8rem);box-shadow:0 .8rem 2rem rgba(0,0,0,.5);opacity:0;transition:opacity .3s ease}
+.bubble.on{opacity:1}
+.bubble .bh{display:flex;align-items:center;gap:.28rem;padding:.3rem .55rem;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;color:var(--dim)}
+.bubble .bh i{width:.32rem;height:.32rem;border:1px solid var(--dim);display:inline-block}
+.bubble .bh span{margin-left:auto}
+.bubble .bt{padding:.6rem .7rem .7rem;min-height:4.1rem;font-family:var(--mono);font-size:.86rem;line-height:1.5;color:#e9ecf2;transition:opacity .2s ease}
+
