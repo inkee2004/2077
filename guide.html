@@ -116,7 +116,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
 .lb.on img{transform:none}
 .lb .cap{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;color:var(--dim);text-align:center}
 .lb .cap b{color:#eceef3;font-weight:500}
-@media (max-width:1439px){
+@media (max-width:1439px),(hover:none) and (pointer:coarse){
   html{font-size:clamp(13.5px,1.05vw,17px)}
   .page{padding:2.4rem 2rem}
   .gb{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
@@ -132,8 +132,8 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
   .note{height:auto;padding:.3rem .7rem .6rem}
 }
 @media (min-width:700px) and (max-width:999px) and (orientation:portrait){html{font-size:clamp(14px,1.8vw,21px)}}
-@media (max-width:1199px){.note{grid-template-columns:minmax(0,1fr);row-gap:.7rem}}
-@media (max-width:999px){
+@media (max-width:1199px),(hover:none) and (pointer:coarse){.note{grid-template-columns:minmax(0,1fr);row-gap:.7rem}}
+@media (max-width:999px),(hover:none) and (pointer:coarse){
   html{font-size:14px}
   .page{padding:2.4rem 1rem 2rem;justify-content:flex-start}
   .top{display:flex;flex-direction:column;height:auto;gap:1.2rem;align-items:stretch}
@@ -142,7 +142,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
   .tags{display:none}
   .acts{align-self:center}
 }
-@media (max-width:759px){
+@media (max-width:759px),(hover:none) and (pointer:coarse){
   html{font-size:15px}
   .card.g{display:flex}
   .card.g .shot{align-self:stretch;margin:.1rem .1rem .6rem}
@@ -161,6 +161,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
 }
 @media (max-height:520px) and (min-width:700px){.page{padding-top:1.4rem}}
 @media (prefers-reduced-motion:reduce){.blob,.card{animation:none!important}}
+@media (hover:none) and (pointer:coarse){html{font-size:clamp(15px,min(3.1vw,5vh),30px)}}
 </style>
 <link rel="stylesheet" href="assets/nick.css">
 </head>
@@ -181,7 +182,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
   <section class="gb" aria-label="Руководство по настройке">
     <article class="card g" data-nk="g0">
       <div class="ch"><h2>Основные меню CET<i> / / </i><em class="s r">Рекомендация</em></h2><span class="ct">01</span></div>
-      <button class="shot" type="button" data-cap="Основные меню CET"><img draggable="false" decoding="async" src="img/1-cet.webp" alt="Основные меню CET"><div class="ph0">Скриншот 01<small>img/1-cet.webp</small></div></button>
+      <button class="shot" type="button" data-cap="Основные меню CET"><img draggable="false" decoding="async" src="img/1-cet.png" alt="Основные меню CET"><div class="ph0">Скриншот 01<small>img/1-cet.png</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Если пропал HUD</small><span>Hud Fixes</span></div><div><small>Погода и время</small><span>Weather Switcher</span></div><div><small>По желанию</small><span>Console</span></div></div>
         <div class="rows">
@@ -193,7 +194,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
     </article>
     <article class="card g" data-nk="g1">
       <div class="ch"><h2>Eye Adaptation<i> / / </i><em class="s y">Обязательно</em></h2><span class="ct">02</span></div>
-      <button class="shot" type="button" data-cap="Eye Adaptation Complete Overhaul"><img draggable="false" loading="lazy" decoding="async" src="img/2-eye-adaptation.webp" alt="Настройки Eye Adaptation"><div class="ph0">Скриншот 02<small>img/2-eye-adaptation.webp</small></div></button>
+      <button class="shot" type="button" data-cap="Eye Adaptation Complete Overhaul"><img draggable="false" loading="lazy" decoding="async" src="img/2-eye-adaptation.png" alt="Настройки Eye Adaptation"><div class="ph0">Скриншот 02<small>img/2-eye-adaptation.png</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Автоэкспозиция</small><span>Kiroshi</span></div><div><small>Свечение</small><span>Оригинал</span></div><div><small>Смена погоды</small><span>Оригинал</span></div></div>
         <div class="rows">
@@ -205,7 +206,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
     </article>
     <article class="card g" data-nk="g2">
       <div class="ch"><h2>Immersive Night City Fixes<i> / / </i><em class="s g">По желанию</em></h2><span class="ct">03</span></div>
-      <button class="shot" type="button" data-cap="Immersive Night City Fixes"><img draggable="false" loading="lazy" decoding="async" src="img/3-night-city-fixes.webp" alt="Настройки Immersive Night City Fixes"><div class="ph0">Скриншот 03<small>img/3-night-city-fixes.webp</small></div></button>
+      <button class="shot" type="button" data-cap="Immersive Night City Fixes"><img draggable="false" loading="lazy" decoding="async" src="img/3-night-city-fixes.png" alt="Настройки Immersive Night City Fixes"><div class="ph0">Скриншот 03<small>img/3-night-city-fixes.png</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Floating Debris</small><span>Включено</span></div><div><small>Влияние</small><span>Только визуал</span></div><div><small>Статус</small><span>По желанию</span></div></div>
         <div class="rows">

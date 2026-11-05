@@ -139,7 +139,7 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 
 /* ---------- адаптив ---------- */
 /* ноутбуки и окна уже 1440px: два столбца, страница прокручивается, текст крупнее */
-@media (max-width:1439px){
+@media (max-width:1439px),(hover:none) and (pointer:coarse),(orientation:portrait) and (min-width:700px) and (hover:hover){
   html{font-size:clamp(13.5px,1.05vw,17px)}
   .board{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row dense}
   .card{grid-column:span 1!important}
@@ -149,23 +149,25 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
   .perf{grid-column:1 / -1;grid-row:2;position:relative;left:auto;right:auto;top:auto;transform:none;justify-self:center;width:min(100%,36rem)}
   .dlnote{width:22rem}
 }
-@media (max-width:1199px){.card:nth-child(2) .list{--r:17!important}}
-@media (max-width:1439px){.board{flex:1;align-content:stretch}}
+@media (max-width:1199px),(hover:none) and (pointer:coarse),(orientation:portrait) and (min-width:700px) and (hover:hover){.card:nth-child(2) .list{--r:17!important}}
+@media (max-width:1439px),(hover:none) and (pointer:coarse),(orientation:portrait) and (min-width:700px) and (hover:hover){.board{flex:1;align-content:stretch}}
 @media (min-width:700px) and (max-width:999px) and (orientation:portrait){html{font-size:clamp(14px,1.8vw,21px)}}
 /* планшеты и узкие окна: шапка в столбик */
-@media (max-width:999px){
+@media (max-width:999px),(hover:none) and (pointer:coarse),(orientation:portrait) and (min-width:700px) and (hover:hover){
   html{font-size:14px}
   .page{padding:2.4rem 1rem 2rem;justify-content:flex-start}
   .top{display:flex;flex-direction:column;height:auto;gap:1.2rem;align-items:stretch}
   .hd{align-self:center}
-  .mid{height:auto;flex-wrap:wrap;gap:.7rem;justify-content:center}
+  .mid{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:.7rem;justify-items:center}
+  .mid .search,.mid .dlnote{grid-column:1 / -1}
+  .snd{justify-self:end}.dl{justify-self:start}
   .snd,.dl{position:static}
   .dlnote{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:26rem;margin-bottom:.6rem}
   .perf{width:100%;max-width:26rem;align-self:center;margin-top:.2rem}
   h1{font-size:2rem}
 }
 /* телефоны: один столбец */
-@media (max-width:699px){
+@media (max-width:699px),(hover:none) and (pointer:coarse){
   html{font-size:15px}
   .board{grid-template-columns:minmax(0,1fr)}
   .card,.card:nth-child(2),.card:nth-child(4),.card:nth-child(7){grid-column:auto!important}
@@ -242,7 +244,7 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 .lb.on img{transform:none}
 html.mlock,html.mlock body{overflow:hidden!important}
 .dm{overflow:hidden}
-@media (max-width:1199px){
+@media (max-width:1199px),(hover:none) and (pointer:coarse){
   .dm{padding:0;align-items:stretch}
   .dm-box{width:100%;height:100vh;height:100dvh;border:0;border-radius:0;padding:0 .8rem 1rem;font-size:1.1em}
   .dm-box::before,.dm-box::after{display:none}
@@ -271,13 +273,16 @@ html.mlock,html.mlock body{overflow:hidden!important}
   .dm-kv small{font-size:.56rem;letter-spacing:.04em}.dm-kv b{font-size:.76rem}
   .dm-d{font-size:.8rem;line-height:1.4}.dm-b{font-size:.76rem}
 }
-@media (min-width:700px) and (max-width:1199px) and (orientation:landscape){
+@media (min-width:700px) and (max-width:1199px) and (hover:hover){
   .dm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
   .dm-card{display:flex;flex-direction:column}
   .dm-info{display:flex}
   .dm-ph{aspect-ratio:9/16;width:100%}
   .dm-info h3{white-space:normal}
+  .dm-kv{gap:.25rem}.dm-kv div{padding:.5rem .1rem}.dm-kv b{font-size:.68rem;letter-spacing:0;white-space:nowrap}.dm-kv small{font-size:.56rem}
 }
+@media (hover:none) and (pointer:coarse){html{font-size:clamp(15px,min(3.1vw,5vh),30px)}}
+@media (orientation:portrait) and (min-width:700px) and (hover:hover){html{font-size:max(9px,min(calc(100dvh / 128),calc(100vw / 46)))}}
 </style>
 <link rel="stylesheet" href="assets/nick.css">
 </head>
@@ -321,19 +326,19 @@ html.mlock,html.mlock body{overflow:hidden!important}
     <div class="dm-head"><h2 id="dmT">Скачать сборку<i> / / </i>Выберите вариант</h2><button class="dm-x" id="dmX" type="button" aria-label="Закрыть"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
     <div class="dm-grid">
     <article class="dm-card">
-      <button class="dm-ph" type="button" data-cap="Вариант 01 · HD текстуры + тату"><img draggable="false" decoding="async" data-src="img/v1-hd-tattoo.webp" alt="Пример внешности: HD текстуры + тату"></button>
+      <button class="dm-ph" type="button" data-cap="Вариант 01 · HD текстуры + тату"><img draggable="false" decoding="async" data-src="img/v1-hd-tattoo.png" alt="Пример внешности: HD текстуры + тату"></button>
       <div class="dm-info"><div class="dm-n">Вариант 01</div><h3>HD текстуры + тату</h3><p class="dm-d">Женская V с HD текстурами и несъёмными тату.</p><p class="dm-b"><span>Бонус для фоторежима</span>Набор поз для жен. V<i> / / </i>Набор выражений лица для жен. и муж. V</p>
         <div class="dm-kv"><div><small>HD</small><b>да</b></div><div><small>Тату</small><b>да</b></div><div><small>Позы</small><b>жен</b></div><div><small>Лица</small><b>жен / муж</b></div></div>
         <a class="dm-go" href="https://drive.google.com/drive/folders/1aXZfU5qQ3I2QXvGDXHQK2iBuPsm9MoVy?usp=drive_link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать</a></div>
     </article>
     <article class="dm-card">
-      <button class="dm-ph" type="button" data-cap="Вариант 02 · HD текстуры без тату"><img draggable="false" decoding="async" data-src="img/v2-hd.webp" alt="Пример внешности: HD текстуры без тату"></button>
+      <button class="dm-ph" type="button" data-cap="Вариант 02 · HD текстуры без тату"><img draggable="false" decoding="async" data-src="img/v2-hd.png" alt="Пример внешности: HD текстуры без тату"></button>
       <div class="dm-info"><div class="dm-n">Вариант 02</div><h3>HD текстуры без тату</h3><p class="dm-d">Женская V с HD текстурами, но без тату.</p><p class="dm-b"><span>Бонус для фоторежима</span>Набор поз для жен. V<i> / / </i>Набор выражений лица для жен. и муж. V</p>
         <div class="dm-kv"><div><small>HD</small><b>да</b></div><div><small>Тату</small><b class="no">нет</b></div><div><small>Позы</small><b>жен</b></div><div><small>Лица</small><b>жен / муж</b></div></div>
         <a class="dm-go" href="https://drive.google.com/drive/folders/1QpvNw16I4ZCaRg2ixqQ-UUVXrhSdBrUo?usp=drive_link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать</a></div>
     </article>
     <article class="dm-card">
-      <button class="dm-ph" type="button" data-cap="Вариант 03 · Стандартная внешность"><img draggable="false" decoding="async" data-src="img/v3-standard.webp" alt="Пример внешности: Стандартная внешность"></button>
+      <button class="dm-ph" type="button" data-cap="Вариант 03 · Стандартная внешность"><img draggable="false" decoding="async" data-src="img/v3-standard.png" alt="Пример внешности: Стандартная внешность"></button>
       <div class="dm-info"><div class="dm-n">Вариант 03</div><h3>Стандартная внешность</h3><p class="dm-d">Женская V без HD текстур и без тату.</p><p class="dm-b"><span>Бонус для фоторежима</span>Набор поз для жен. V<i> / / </i>Набор выражений лица для жен. и муж. V</p>
         <div class="dm-kv"><div><small>HD</small><b class="no">нет</b></div><div><small>Тату</small><b class="no">нет</b></div><div><small>Позы</small><b>жен</b></div><div><small>Лица</small><b>жен / муж</b></div></div>
         <a class="dm-go" href="https://drive.google.com/drive/folders/1HADrw7dSjw8qlqQpY7Tx1CDvonW6FfyS?usp=drive_link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать</a></div>
