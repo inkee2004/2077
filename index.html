@@ -21,7 +21,7 @@
   --disp:'Exo 2','Inter',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-html{font-size:clamp(9px,min(.8333vw,1.5625vh),22px)}
+html{font-size:min(.8333vw,max(1.5625vh,12px),30px)}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* ---------- фон ---------- */
@@ -124,23 +124,69 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 .dlnote .st{display:grid;grid-template-columns:.9rem 1.3rem 1fr;align-items:baseline;padding:.1rem 0}
 .dlnote .st i{font-style:normal;text-align:right;color:var(--faint);font-family:var(--mono);font-size:.64rem}
 .dlnote .st em{font-style:normal;text-align:center;color:var(--faint);font-family:var(--mono);font-size:.64rem}
+.dlnote{width:19.6rem}
+.perf{position:absolute;left:calc(50% + 14.4rem + 20.4rem);right:0;top:50%;transform:translateY(-50%);padding:.7rem .75rem .95rem .9rem;border:1px solid var(--line);border-radius:.55rem;background:linear-gradient(120deg,rgba(80,210,235,.13),rgba(150,110,255,.09) 55%,rgba(255,90,140,.12)),#0c0d13;box-shadow:0 .8rem 2rem rgba(0,0,0,.45),0 0 2.2rem rgba(120,150,255,.08);font-size:.63rem;line-height:1.72;color:#e4e7ee;z-index:60}
+.perf::before{content:"";position:absolute;left:0;top:.7rem;bottom:.7rem;width:2px;border-radius:2px;background:linear-gradient(#52d6ef,#a17bff 55%,#ff5f8f)}
+.perf b{display:block;margin-bottom:.3rem;font-family:var(--mono);font-weight:400;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#aab0c4}
+.pf{display:grid;grid-template-columns:auto auto;grid-template-rows:repeat(3,auto);grid-auto-flow:column;justify-content:space-between;column-gap:.6rem}
+.pc{display:grid;grid-template-columns:.55rem .85rem auto;align-items:baseline;padding:.1rem 0;white-space:nowrap}
+.pc i,.pc em{font-style:normal;font-family:var(--mono);font-size:.64rem;text-align:center}
+.pc i{text-align:right}
+.pc.c1 i,.pc.c1 em{color:#52d6ef}.pc.c2 i,.pc.c2 em{color:#ff6f9a}.pc.c3 i,.pc.c3 em{color:#7be3a0}
+.pc u{text-decoration:none;color:#7e8498;white-space:pre}
+.pc.c3 span{color:#a8f0c1}
 .gd{position:absolute;right:.9rem;bottom:0;transform:translateY(50%);padding:.3rem .8rem;background:#0c0d13;white-space:nowrap;font-size:.56rem;letter-spacing:.14em}
 
 /* ---------- адаптив ---------- */
-@media (max-width:1000px){
-  html{font-size:15px}
-  .page{padding:3.2rem 1rem 2rem;justify-content:flex-start}
+/* ноутбуки и окна уже 1440px: два столбца, страница прокручивается, текст крупнее */
+@media (max-width:1439px){
+  html{font-size:clamp(13.5px,1.05vw,17px)}
+  .board{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row dense}
+  .card{grid-column:span 1!important}
+  .card:nth-child(2),.card:nth-child(4),.card:nth-child(7){grid-column:span 2!important}
+  .page{padding:2.4rem 2rem 2.4rem}
+  .top{height:auto;grid-template-rows:7.4rem auto;row-gap:1.6rem}
+  .perf{grid-column:1 / -1;grid-row:2;position:relative;left:auto;right:auto;top:auto;transform:none;justify-self:center;width:min(100%,36rem)}
+  .dlnote{width:22rem}
+}
+@media (max-width:1199px){.card:nth-child(2) .list{--r:17!important}}
+/* планшеты и узкие окна: шапка в столбик */
+@media (max-width:999px){
+  html{font-size:14px}
+  .page{padding:2.4rem 1rem 2rem;justify-content:flex-start}
   .top{display:flex;flex-direction:column;height:auto;gap:1.2rem;align-items:stretch}
   .hd{align-self:center}
   .mid{height:auto;flex-wrap:wrap;gap:.7rem;justify-content:center}
   .snd,.dl{position:static}
   .dlnote{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:26rem;margin-bottom:.6rem}
-  .board{grid-template-columns:minmax(0,1fr)}
-  .card{grid-column:auto!important}
-  .list{grid-auto-flow:row;grid-template-rows:none;grid-auto-rows:var(--rh)}
+  .perf{width:100%;max-width:26rem;align-self:center;margin-top:.2rem}
   h1{font-size:2rem}
 }
-@media (max-width:640px){.search{width:min(24rem,70vw)}}
+/* телефоны: один столбец */
+@media (max-width:699px){
+  html{font-size:15px}
+  .board{grid-template-columns:minmax(0,1fr)}
+  .card,.card:nth-child(2),.card:nth-child(4),.card:nth-child(7){grid-column:auto!important}
+  .list{grid-auto-flow:row;grid-template-rows:none!important;grid-auto-rows:var(--rh)}
+  .card:nth-child(2) .list{--r:11!important}
+  .search{width:min(24rem,86vw)}
+}
+@media (max-width:479px){
+  .page{padding:2rem .7rem 1.6rem}
+  .pf{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:minmax(0,1fr)}
+  .pc{white-space:normal}
+  .tags{flex-wrap:wrap;justify-content:center}
+  .tag{flex:0 1 auto;padding:.32rem .6rem}
+  a.mod{height:auto;min-height:var(--rh);padding:.28rem .65rem}
+  a.mod .nm{white-space:normal;overflow:visible;line-height:1.3}
+  .list{grid-auto-rows:auto}
+  .ch{height:auto;min-height:2.3rem;padding:.4rem .6rem}
+  .ch h2{white-space:normal;overflow:visible;line-height:1.35;letter-spacing:.02em;overflow-wrap:anywhere}
+  .ch h2 i{white-space:normal}
+  h1{font-size:1.65rem;white-space:normal;text-align:center}
+}
+/* низкие горизонтальные экраны (телефон на боку) */
+@media (max-height:520px) and (min-width:700px){.page{padding-top:1.4rem}}
 @media (prefers-reduced-motion:reduce){
   .blob,.card,.leg,.wing{animation:none!important}
   a.mod,a.mod *{transition-duration:.01s!important}
@@ -151,18 +197,19 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 /* ---------- окно выбора сборки ---------- */
 .dm{position:fixed;inset:0;z-index:150;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(5,6,9,.78);backdrop-filter:blur(.7rem);-webkit-backdrop-filter:blur(.7rem);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility 0s linear .28s}
 .dm.on{opacity:1;visibility:visible;transition:opacity .28s ease}
-.dm-box{position:relative;display:flex;flex-direction:column;width:min(86rem,100%);height:min(63rem,calc(100vh - 3rem));padding:.2rem .6rem .7rem;border:1px solid var(--line);border-radius:.7rem;background:rgba(13,14,20,.94);box-shadow:0 2rem 5rem rgba(0,0,0,.6);transform:translateY(.8rem) scale(.985);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.dm-box{position:relative;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;display:flex;flex-direction:column;width:min(86rem,100%);height:min(63rem,calc(100vh - 3rem));padding:.2rem .6rem .7rem;border:1px solid var(--line);border-radius:.7rem;background:rgba(13,14,20,.94);box-shadow:0 2rem 5rem rgba(0,0,0,.6);transform:translateY(.8rem) scale(.985);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .dm.on .dm-box{transform:none}
 .dm-box::before,.dm-box::after{content:"";position:absolute;width:.8rem;height:.8rem;border:1px solid rgba(255,255,255,.75);opacity:.65;pointer-events:none}
-.dm-box::before{top:-1px;left:-1px;border-right:0;border-bottom:0;border-top-left-radius:.7rem}
-.dm-box::after{right:-1px;bottom:-1px;border-left:0;border-top:0;border-bottom-right-radius:.7rem}
+.dm-box::-webkit-scrollbar{display:none}
+.dm-box::before{top:0;left:0;border-right:0;border-bottom:0;border-top-left-radius:.7rem}
+.dm-box::after{right:0;bottom:0;border-left:0;border-top:0;border-bottom-right-radius:.7rem}
 .dm-head{flex:none;display:flex;align-items:center;justify-content:space-between;height:2.9rem;padding:0 .7rem;margin-bottom:.5rem;border-bottom:1px solid var(--line2)}
 .dm-head h2{margin:0;font-family:var(--mono);font-weight:500;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;color:#eceef3}
 .dm-head h2 i{font-style:normal;color:var(--faint);white-space:pre}
 .dm-x{width:1.9rem;height:1.9rem;display:grid;place-items:center;padding:0;color:var(--dim);background:rgba(255,255,255,.03);border:1px solid var(--line2);border-radius:50%;cursor:pointer;transition:color .25s,border-color .25s}
 .dm-x svg{width:.8rem;height:.8rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
 .dm-x:hover,.dm-x:focus-visible{color:#fff;border-color:var(--line);outline:none}
-.dm-grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+.dm-grid{flex:1;min-height:34rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
 .dm-card{min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:.7rem;padding:.5rem;border:1px solid var(--line2);border-radius:.55rem;background:rgba(255,255,255,.025)}
 .dm-ph{position:relative;min-height:0;padding:0;border:1px solid var(--line2);border-radius:.4rem;overflow:hidden;background:rgba(0,0,0,.35);cursor:zoom-in;outline:none;transition:border-color .3s ease,box-shadow .3s ease}
 .dm-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
@@ -191,12 +238,43 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 .lb.on{opacity:1;pointer-events:auto}
 .lb img{max-width:94vw;max-height:94vh;border:1px solid var(--line);border-radius:.5rem;box-shadow:0 1.4rem 4rem rgba(0,0,0,.6);transform:scale(.96);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .lb.on img{transform:none}
-@media (max-width:1000px){
-  .dm{align-items:flex-start;padding:.8rem}
-  .dm-box{height:calc(100vh - 1.6rem);overflow:auto}
-  .dm-grid{display:flex;flex-direction:column;flex:none}
-  .dm-card{grid-template-rows:auto auto}
-  .dm-ph{aspect-ratio:9/16;max-height:62vh;justify-self:center;width:100%}
+html.mlock,html.mlock body{overflow:hidden!important}
+.dm{overflow:hidden}
+@media (max-width:1199px){
+  .dm{padding:0;align-items:stretch}
+  .dm-box{width:100%;height:100vh;height:100dvh;border:0;border-radius:0;padding:0 .8rem 1rem;font-size:1.1em}
+  .dm-box::before,.dm-box::after{display:none}
+  .dm-head{position:sticky;top:0;z-index:5;height:3.4rem;margin:0 -.8rem .7rem;padding:0 1rem;background:rgba(13,14,20,.97);backdrop-filter:blur(.6rem);-webkit-backdrop-filter:blur(.6rem)}
+  .dm-head h2{font-size:.95rem}
+  .dm-x{width:2.4rem;height:2.4rem}
+  .dm-grid{display:flex;flex-direction:column;flex:none;min-height:0;gap:.9rem}
+  .dm-card{display:grid;grid-template-columns:minmax(0,34%) minmax(0,1fr);grid-template-rows:auto;column-gap:.9rem;row-gap:.55rem;padding:.7rem;align-items:start;grid-template-rows:auto auto auto 1fr}
+  .dm-info{display:contents}
+  .dm-ph{grid-column:1;grid-row:1 / span 4;aspect-ratio:9/16;width:100%;max-height:none;align-self:start}
+  .dm-n,.dm-info h3,.dm-d,.dm-b{grid-column:2}
+  .dm-n{font-size:.62rem;align-self:end}
+  .dm-info h3{font-size:.95rem;white-space:normal;line-height:1.3}
+  .dm-d{font-size:.84rem}
+  .dm-b{font-size:.8rem;padding:.45rem .65rem;align-self:start}
+  .dm-b span{font-size:.56rem}
+  .dm-kv{grid-column:1 / -1}
+  .dm-kv div{padding:.5rem .2rem}
+  .dm-kv small{font-size:.62rem}.dm-kv b{font-size:.84rem}
+  .dm-go{grid-column:1 / -1;padding:.8rem 1rem;font-size:.7rem}
+  .dm-ph::after{width:1.9rem;height:1.9rem}
+}
+@media (max-width:560px){
+  .dm-card{grid-template-columns:minmax(0,38%) minmax(0,1fr);column-gap:.7rem;padding:.55rem}
+  .dm-kv{gap:.3rem}
+  .dm-kv small{font-size:.56rem;letter-spacing:.04em}.dm-kv b{font-size:.76rem}
+  .dm-d{font-size:.8rem;line-height:1.4}.dm-b{font-size:.76rem}
+}
+@media (min-width:700px) and (max-width:1199px){
+  .dm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .dm-card{display:flex;flex-direction:column}
+  .dm-info{display:flex}
+  .dm-ph{aspect-ratio:9/16;width:100%}
+  .dm-info h3{white-space:normal}
 }
 </style>
 <link rel="stylesheet" href="assets/nick.css">
@@ -222,8 +300,16 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
       </label>
       <button class="snd" id="snd" type="button" aria-pressed="true" aria-label="Звук"><svg class="on" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8v4h3l4 3.4V4.6L6 8z"/><path d="M13 7.2a4 4 0 010 5.6M15.4 5a7.2 7.2 0 010 10"/></svg><svg class="off" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8v4h3l4 3.4V4.6L6 8z"/><path d="M13.5 8l4 4M17.5 8l-4 4"/></svg><span id="sndT">Звук · вкл</span></button>
       <button class="dl" id="dl" type="button" aria-haspopup="dialog"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать сборку</button>
-      <div class="dlnote"><b>Как установить</b><div class="st"><i>1</i><em>→</em><span>Перенести скачанные файлы в папку игры.</span></div><div class="st"><i>2</i><em>→</em><span>Прочитать руководство по настройке.</span></div><div class="st"><i>3</i><em>→</em><span>Приступить к прохождению.</span></div><a class="gd" href="guide.html">Руководство по настройке</a></div>
+      <div class="dlnote"><b>Как установить</b><div class="st"><i>1</i><em>→</em><span>Перенести скачанные файлы в папку игры.</span></div><div class="st"><i>2</i><em>→</em><span>Прочитать руководство по настройке.</span></div><div class="st"><i>3</i><em>→</em><span>Приступить к прохождению.</span></div><a class="gd" href="guide">Руководство по настройке</a></div>
     </div>
+    <div class="perf" aria-label="Тест производительности"><b>Тест производительности</b><div class="pf">
+      <div class="pc c1"><i>1</i><em>→</em><span>1660S 6GB<u> / / </u>1920x1080</span></div>
+      <div class="pc c1"><i>2</i><em>→</em><span>i5-10400F<u> / / </u>Win-11</span></div>
+      <div class="pc c1"><i>3</i><em>→</em><span>16 RAM<u> / / </u>SSD</span></div>
+      <div class="pc c2"><i>4</i><em>→</em><span>Почти макс. графика</span></div>
+      <div class="pc c2"><i>5</i><em>→</em><span>Нативное сглаживание</span></div>
+      <div class="pc c3"><i>6</i><em>→</em><span>AVG FPS: 35-50<u> / / </u>статтеры</span></div>
+    </div></div>
   </header>
   <section class="board" id="board" aria-label="Список модов по категориям"></section>
 </main>
@@ -421,8 +507,8 @@ window.NICKCFG={search:document.getElementById('search'),arrive:[['h|верну�
 <script>
 (function(){
   var dm=document.getElementById('dm'),dl=document.getElementById('dl'),lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),x=document.getElementById('dmX'),last=null;
-  function openM(){last=document.activeElement;dm.classList.add('on');dm.setAttribute('aria-hidden','false');setTimeout(function(){x.focus()},60)}
-  function closeM(){dm.classList.remove('on');dm.setAttribute('aria-hidden','true');if(last&&last.focus)last.focus()}
+  function openM(){last=document.activeElement;dm.classList.add('on');document.documentElement.classList.add('mlock');dm.setAttribute('aria-hidden','false');setTimeout(function(){x.focus()},60)}
+  function closeM(){dm.classList.remove('on');document.documentElement.classList.remove('mlock');dm.setAttribute('aria-hidden','true');if(last&&last.focus)last.focus()}
   function openL(src){lbi.src=src;lb.classList.add('on');lb.setAttribute('aria-hidden','false');playZoomIn()}
   function closeL(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');playZoomOut()}
   dl.addEventListener('click',openM);
@@ -440,6 +526,7 @@ window.NICKCFG={search:document.getElementById('search'),arrive:[['h|верну�
   },true);
 })();
 </script>
+<script>if(location.protocol==="file:"){var g=document.querySelector(".gd");if(g)g.setAttribute("href","guide.html")}</script>
 <script src="assets/nick.js"></script>
 </body>
 </html>

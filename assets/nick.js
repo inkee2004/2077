@@ -109,7 +109,7 @@ function parseLine(str){
 /* пол ника — верхняя грань любой рамки: карточек, поиска, кнопок, блока установки */
 function refreshPlats(){
   var out=[],kids=board?board.children:[];
-  document.querySelectorAll(NK.sel||'.card,.search,.snd,.dl,.dlnote').forEach(function(e){
+  document.querySelectorAll(NK.sel||'.card,.search,.snd,.dl,.dlnote,.perf').forEach(function(e){
     var r=e.getBoundingClientRect();
     if(r.width<10||r.top<6||r.top>innerHeight-12)return;
     var c=e.dataset.nk||(e.classList.contains('card')?Array.prototype.indexOf.call(kids,e):e.classList.contains('search')?'search':e.classList.contains('snd')?'snd':e.classList.contains('dl')?'dl':'note');
