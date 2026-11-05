@@ -21,7 +21,7 @@
   --disp:'Exo 2','Inter',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-html{font-size:min(.8333vw,max(1.5625vh,12px),30px)}
+html{font-size:clamp(9px,min(.8333vw,1.5625vh),22px)}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* ---------- фон ---------- */
@@ -116,46 +116,19 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
 .lb.on img{transform:none}
 .lb .cap{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;color:var(--dim);text-align:center}
 .lb .cap b{color:#eceef3;font-weight:500}
-@media (max-width:1439px){
-  html{font-size:clamp(13.5px,1.05vw,17px)}
-  .page{padding:2.4rem 2rem}
-  .gb{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
-  .gb .card.g,.gb .card.nt{grid-row:auto;grid-column:auto}
-  .card.g{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:1.1rem;align-items:stretch}
-  .card.g .ch{grid-column:1 / -1}
-  .card.g .shot{align-self:start;margin:.1rem 0 .5rem .1rem}
-  .card.g .desc{flex:none;padding:0 .4rem .3rem 0}
-  .rows{flex:none}.it{padding:.9rem 0;min-height:0}
-  .card.g .desc{align-self:start}
-  .note{height:auto;padding:.3rem .7rem .6rem}
-}
-@media (max-width:999px){
-  html{font-size:14px}
+@media (max-width:1000px){
+  html{font-size:15px}
   .page{padding:2.4rem 1rem 2rem;justify-content:flex-start}
   .top{display:flex;flex-direction:column;height:auto;gap:1.2rem;align-items:stretch}
   .hd{align-self:center}
-  h1{font-size:1.9rem;white-space:normal;text-align:center}
+  h1{font-size:1.6rem;white-space:normal;text-align:center}
   .tags{display:none}
   .acts{align-self:center}
+  .gb{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+  .gb .card.g,.gb .card.nt{grid-row:auto;grid-column:auto}
+  .desc{flex:none}.rows{flex:none}.it{grid-template-columns:minmax(0,1fr);padding:.5rem 0}
+  .note{grid-template-columns:minmax(0,1fr);height:auto;padding:.4rem .7rem .6rem}
 }
-@media (max-width:759px){
-  html{font-size:15px}
-  .card.g{display:flex}
-  .card.g .shot{align-self:stretch;margin:.1rem .1rem .6rem}
-  .card.g .desc{padding:0 .7rem .25rem}
-  .rows{flex:none}.it{grid-template-columns:minmax(0,1fr);row-gap:.15rem}
-  .note{grid-template-columns:minmax(0,1fr)}
-}
-@media (max-width:479px){
-  .page{padding:2rem .7rem 1.6rem}
-  h1{font-size:1.5rem}
-  .ch{height:auto;min-height:2.3rem;padding:.4rem .6rem}
-  .ch h2{white-space:normal;overflow:visible;line-height:1.35}
-  .kv span,.kv small{white-space:normal;overflow-wrap:anywhere}
-  .kv>div{padding:.35rem .25rem}
-  .note .kv{grid-template-columns:minmax(0,1fr)}
-}
-@media (max-height:520px) and (min-width:700px){.page{padding-top:1.4rem}}
 @media (prefers-reduced-motion:reduce){.blob,.card{animation:none!important}}
 </style>
 <link rel="stylesheet" href="assets/nick.css">
