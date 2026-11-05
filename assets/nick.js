@@ -91,13 +91,14 @@ function flashFace(m,ms){
   faceSet(m);faceShow(true);clearTimeout(fc.hold);
   fc.hold=setTimeout(function(){if(!bubble)faceShow(false)},ms);
 }
-setInterval(function(){if(fc.on){fc.i++;faceRender()}},300);
+setInterval(function(){if(fc.on&&!document.hidden){fc.i++;faceRender()}},300);
 
 var seqIdx=Math.floor(Math.random()*SEQS.length),roastIdx=Math.floor(Math.random()*ROAST.length);
 function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
 function rnd(a){return a[Math.floor(Math.random()*a.length)]}
 var GL=['#','%','@','&','▒','$','!','*'];
 setInterval(function(){
+  if(document.hidden)return;
   var n=document.querySelectorAll('.bt .cz');
   for(var i=0;i<n.length;i++){var e=n[i];e.textContent=Math.random()<.4?e.dataset.r:GL[(Math.random()*GL.length)|0]}
 },110);
@@ -168,8 +169,9 @@ var arrived=false;try{arrived=!!sessionStorage.getItem('nk-arrive');sessionStora
 if(arrived)setTimeout(emerge,700);else setTimeout(spawnNick,4700);
 function loop(t){
   var raw=Math.max(.001,(t-lastT)/1000),dt=Math.min(.033,raw);lastT=t;
+  if(!nk||nk.gone){loopOn=false;return}
   platT-=raw;if(platT<=0){platT=.4;refreshPlats()}
-  if(nk&&!nk.gone){nk.rdt=raw;step(dt)}
+  nk.rdt=raw;step(dt);
   requestAnimationFrame(loop);
 }
 function bounds(){return {maxX:innerWidth-nk.w-2,floor:innerHeight-nk.h-2}}

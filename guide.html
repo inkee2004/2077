@@ -40,7 +40,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-we
 .vig{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.45) 100%)}
 
 /* ---------- каркас ---------- */
-.page{min-height:100vh;max-width:120rem;margin:0 auto;padding:1.6rem 2.5rem;display:flex;flex-direction:column;justify-content:center;gap:1.9rem}
+.page{min-height:100vh;min-height:100dvh;max-width:120rem;margin:0 auto;padding:1.6rem 2.5rem;display:flex;flex-direction:column;justify-content:center;gap:1.9rem}
 
 /* ---------- верхняя полоса ---------- */
 .top{position:relative;z-index:30;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;align-items:center;height:7.4rem}
@@ -125,10 +125,14 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
   .card.g .ch{grid-column:1 / -1}
   .card.g .shot{align-self:start;margin:.1rem 0 .5rem .1rem}
   .card.g .desc{flex:none;padding:0 .4rem .3rem 0}
-  .rows{flex:none}.it{padding:.9rem 0;min-height:0}
-  .card.g .desc{align-self:start}
+  .gb{flex:1;grid-template-rows:none;grid-auto-rows:auto}
+  .rows{flex:1}.it{padding:.6rem 0;min-height:0}
+  .card.g .desc{align-self:stretch;display:flex;flex-direction:column}
+  .card.g .shot{align-self:center}
   .note{height:auto;padding:.3rem .7rem .6rem}
 }
+@media (min-width:700px) and (max-width:999px) and (orientation:portrait){html{font-size:clamp(14px,1.8vw,21px)}}
+@media (max-width:1199px){.note{grid-template-columns:minmax(0,1fr);row-gap:.7rem}}
 @media (max-width:999px){
   html{font-size:14px}
   .page{padding:2.4rem 1rem 2rem;justify-content:flex-start}
@@ -177,7 +181,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
   <section class="gb" aria-label="Руководство по настройке">
     <article class="card g" data-nk="g0">
       <div class="ch"><h2>Основные меню CET<i> / / </i><em class="s r">Рекомендация</em></h2><span class="ct">01</span></div>
-      <button class="shot" type="button" data-cap="Основные меню CET"><img draggable="false" src="img/1-cet.png" alt="Основные меню CET"><div class="ph0">Скриншот 01<small>img/1-cet.png</small></div></button>
+      <button class="shot" type="button" data-cap="Основные меню CET"><img draggable="false" decoding="async" src="img/1-cet.webp" alt="Основные меню CET"><div class="ph0">Скриншот 01<small>img/1-cet.webp</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Если пропал HUD</small><span>Hud Fixes</span></div><div><small>Погода и время</small><span>Weather Switcher</span></div><div><small>По желанию</small><span>Console</span></div></div>
         <div class="rows">
@@ -189,7 +193,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
     </article>
     <article class="card g" data-nk="g1">
       <div class="ch"><h2>Eye Adaptation<i> / / </i><em class="s y">Обязательно</em></h2><span class="ct">02</span></div>
-      <button class="shot" type="button" data-cap="Eye Adaptation Complete Overhaul"><img draggable="false" src="img/2-eye-adaptation.png" alt="Настройки Eye Adaptation"><div class="ph0">Скриншот 02<small>img/2-eye-adaptation.png</small></div></button>
+      <button class="shot" type="button" data-cap="Eye Adaptation Complete Overhaul"><img draggable="false" loading="lazy" decoding="async" src="img/2-eye-adaptation.webp" alt="Настройки Eye Adaptation"><div class="ph0">Скриншот 02<small>img/2-eye-adaptation.webp</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Автоэкспозиция</small><span>Kiroshi</span></div><div><small>Свечение</small><span>Оригинал</span></div><div><small>Смена погоды</small><span>Оригинал</span></div></div>
         <div class="rows">
@@ -201,7 +205,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
     </article>
     <article class="card g" data-nk="g2">
       <div class="ch"><h2>Immersive Night City Fixes<i> / / </i><em class="s g">По желанию</em></h2><span class="ct">03</span></div>
-      <button class="shot" type="button" data-cap="Immersive Night City Fixes"><img draggable="false" src="img/3-night-city-fixes.png" alt="Настройки Immersive Night City Fixes"><div class="ph0">Скриншот 03<small>img/3-night-city-fixes.png</small></div></button>
+      <button class="shot" type="button" data-cap="Immersive Night City Fixes"><img draggable="false" loading="lazy" decoding="async" src="img/3-night-city-fixes.webp" alt="Настройки Immersive Night City Fixes"><div class="ph0">Скриншот 03<small>img/3-night-city-fixes.webp</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Floating Debris</small><span>Включено</span></div><div><small>Влияние</small><span>Только визуал</span></div><div><small>Статус</small><span>По желанию</span></div></div>
         <div class="rows">
