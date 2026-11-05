@@ -21,7 +21,7 @@
   --disp:'Exo 2','Inter',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-html{font-size:clamp(9px,min(.8333vw,1.5625vh),22px)}
+html{font-size:min(.8333vw,max(1.5625vh,12px),30px)}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* ---------- фон ---------- */
@@ -127,20 +127,49 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 .gd{position:absolute;right:.9rem;bottom:0;transform:translateY(50%);padding:.3rem .8rem;background:#0c0d13;white-space:nowrap;font-size:.56rem;letter-spacing:.14em}
 
 /* ---------- адаптив ---------- */
-@media (max-width:1000px){
-  html{font-size:15px}
-  .page{padding:3.2rem 1rem 2rem;justify-content:flex-start}
+/* ноутбуки и окна уже 1440px: два столбца, страница прокручивается, текст крупнее */
+@media (max-width:1439px){
+  html{font-size:clamp(13.5px,1.05vw,17px)}
+  .board{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row dense}
+  .card{grid-column:span 1!important}
+  .card:nth-child(2),.card:nth-child(4),.card:nth-child(7){grid-column:span 2!important}
+  .page{padding:2.4rem 2rem 2.4rem}
+}
+@media (max-width:1199px){.card:nth-child(2) .list{--r:17!important}}
+/* планшеты и узкие окна: шапка в столбик */
+@media (max-width:999px){
+  html{font-size:14px}
+  .page{padding:2.4rem 1rem 2rem;justify-content:flex-start}
   .top{display:flex;flex-direction:column;height:auto;gap:1.2rem;align-items:stretch}
   .hd{align-self:center}
   .mid{height:auto;flex-wrap:wrap;gap:.7rem;justify-content:center}
   .snd,.dl{position:static}
   .dlnote{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:26rem;margin-bottom:.6rem}
-  .board{grid-template-columns:minmax(0,1fr)}
-  .card{grid-column:auto!important}
-  .list{grid-auto-flow:row;grid-template-rows:none;grid-auto-rows:var(--rh)}
   h1{font-size:2rem}
 }
-@media (max-width:640px){.search{width:min(24rem,70vw)}}
+/* телефоны: один столбец */
+@media (max-width:699px){
+  html{font-size:15px}
+  .board{grid-template-columns:minmax(0,1fr)}
+  .card,.card:nth-child(2),.card:nth-child(4),.card:nth-child(7){grid-column:auto!important}
+  .list{grid-auto-flow:row;grid-template-rows:none!important;grid-auto-rows:var(--rh)}
+  .card:nth-child(2) .list{--r:11!important}
+  .search{width:min(24rem,86vw)}
+}
+@media (max-width:479px){
+  .page{padding:2rem .7rem 1.6rem}
+  .tags{flex-wrap:wrap;justify-content:center}
+  .tag{flex:0 1 auto;padding:.32rem .6rem}
+  a.mod{height:auto;min-height:var(--rh);padding:.28rem .65rem}
+  a.mod .nm{white-space:normal;overflow:visible;line-height:1.3}
+  .list{grid-auto-rows:auto}
+  .ch{height:auto;min-height:2.3rem;padding:.4rem .6rem}
+  .ch h2{white-space:normal;overflow:visible;line-height:1.35;letter-spacing:.02em;overflow-wrap:anywhere}
+  .ch h2 i{white-space:normal}
+  h1{font-size:1.65rem;white-space:normal;text-align:center}
+}
+/* низкие горизонтальные экраны (телефон на боку) */
+@media (max-height:520px) and (min-width:700px){.page{padding-top:1.4rem}}
 @media (prefers-reduced-motion:reduce){
   .blob,.card,.leg,.wing{animation:none!important}
   a.mod,a.mod *{transition-duration:.01s!important}
@@ -151,7 +180,7 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 /* ---------- окно выбора сборки ---------- */
 .dm{position:fixed;inset:0;z-index:150;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(5,6,9,.78);backdrop-filter:blur(.7rem);-webkit-backdrop-filter:blur(.7rem);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility 0s linear .28s}
 .dm.on{opacity:1;visibility:visible;transition:opacity .28s ease}
-.dm-box{position:relative;display:flex;flex-direction:column;width:min(86rem,100%);height:min(63rem,calc(100vh - 3rem));padding:.2rem .6rem .7rem;border:1px solid var(--line);border-radius:.7rem;background:rgba(13,14,20,.94);box-shadow:0 2rem 5rem rgba(0,0,0,.6);transform:translateY(.8rem) scale(.985);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.dm-box{position:relative;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;width:min(86rem,100%);height:min(63rem,calc(100vh - 3rem));padding:.2rem .6rem .7rem;border:1px solid var(--line);border-radius:.7rem;background:rgba(13,14,20,.94);box-shadow:0 2rem 5rem rgba(0,0,0,.6);transform:translateY(.8rem) scale(.985);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .dm.on .dm-box{transform:none}
 .dm-box::before,.dm-box::after{content:"";position:absolute;width:.8rem;height:.8rem;border:1px solid rgba(255,255,255,.75);opacity:.65;pointer-events:none}
 .dm-box::before{top:-1px;left:-1px;border-right:0;border-bottom:0;border-top-left-radius:.7rem}
@@ -162,7 +191,7 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 .dm-x{width:1.9rem;height:1.9rem;display:grid;place-items:center;padding:0;color:var(--dim);background:rgba(255,255,255,.03);border:1px solid var(--line2);border-radius:50%;cursor:pointer;transition:color .25s,border-color .25s}
 .dm-x svg{width:.8rem;height:.8rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
 .dm-x:hover,.dm-x:focus-visible{color:#fff;border-color:var(--line);outline:none}
-.dm-grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+.dm-grid{flex:1;min-height:42rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
 .dm-card{min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:.7rem;padding:.5rem;border:1px solid var(--line2);border-radius:.55rem;background:rgba(255,255,255,.025)}
 .dm-ph{position:relative;min-height:0;padding:0;border:1px solid var(--line2);border-radius:.4rem;overflow:hidden;background:rgba(0,0,0,.35);cursor:zoom-in;outline:none;transition:border-color .3s ease,box-shadow .3s ease}
 .dm-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
@@ -174,6 +203,7 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 .dm-info h3{margin:0;font-family:var(--mono);font-weight:500;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:#eceef3;white-space:nowrap}
 .dm-d{margin:0;font-size:.74rem;line-height:1.5;color:var(--dim)}
 .dm-b{margin:0;padding:.35rem .6rem;border-left:2px solid rgba(236,238,245,.6);border-radius:.3rem;background:rgba(255,255,255,.05);font-size:.72rem;line-height:1.45;color:#e2e5ec}
+.dm-b i{font-style:normal;color:var(--faint);white-space:pre}
 .dm-b span{display:block;margin-bottom:.1rem;font-family:var(--mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;opacity:.7}
 .dm-kv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem}
 .dm-kv div{display:flex;flex-direction:column;align-items:center;gap:.15rem;padding:.38rem .2rem;border:1px solid var(--line2);border-radius:.35rem;background:rgba(255,255,255,.028);text-align:center}
@@ -183,6 +213,9 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 .dm-go{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.42rem .8rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:#eceef3;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;transition:background-color .25s,border-color .25s,color .25s}
 .dm-go svg{width:.8rem;height:.8rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .dm-go:hover,.dm-go:focus-visible{background:rgba(255,255,255,.1);border-color:rgba(236,238,245,.55);color:#fff;outline:none}
+
+.dm-ph,.dm-ph img,.lb,.lb img{-webkit-user-select:none;user-select:none;-webkit-user-drag:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+.dm-ph::selection,.dm-ph img::selection,.lb img::selection{background:transparent}
 .lb{position:fixed;inset:0;z-index:170;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(5,6,9,.92);backdrop-filter:blur(.6rem);-webkit-backdrop-filter:blur(.6rem);opacity:0;pointer-events:none;transition:opacity .3s ease;cursor:zoom-out}
 .lb.on{opacity:1;pointer-events:auto}
 .lb img{max-width:94vw;max-height:94vh;border:1px solid var(--line);border-radius:.5rem;box-shadow:0 1.4rem 4rem rgba(0,0,0,.6);transform:scale(.96);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
@@ -229,27 +262,27 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
     <div class="dm-head"><h2 id="dmT">Скачать сборку<i> / / </i>Выберите вариант</h2><button class="dm-x" id="dmX" type="button" aria-label="Закрыть"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
     <div class="dm-grid">
     <article class="dm-card">
-      <button class="dm-ph" type="button" data-cap="Вариант 01 · HD текстуры + тату"><img src="img/v1-hd-tattoo.png" alt="Пример внешности: HD текстуры + тату"></button>
-      <div class="dm-info"><div class="dm-n">Вариант 01</div><h3>HD текстуры + тату</h3><p class="dm-d">Женская V с HD текстурами и несъёмными татуировками.</p><p class="dm-b"><span>Бонус</span>Доп. позы и эмоции лиц в фоторежиме.</p>
-        <div class="dm-kv"><div><small>HD</small><b>да</b></div><div><small>Тату</small><b>да</b></div><div><small>Позы</small><b>да</b></div><div><small>Эмоции</small><b>да</b></div></div>
+      <button class="dm-ph" type="button" data-cap="Вариант 01 · HD текстуры + тату"><img draggable="false" src="img/v1-hd-tattoo.png" alt="Пример внешности: HD текстуры + тату"></button>
+      <div class="dm-info"><div class="dm-n">Вариант 01</div><h3>HD текстуры + тату</h3><p class="dm-d">Женская V с HD текстурами и несъёмными татуировками.</p><p class="dm-b"><span>Бонус для фоторежима</span>Набор поз для жен. V<i> / / </i>Набор выражений лица для жен. и муж. V</p>
+        <div class="dm-kv"><div><small>HD</small><b>да</b></div><div><small>Тату</small><b>да</b></div><div><small>Позы</small><b>жен</b></div><div><small>Лица</small><b>жен / муж</b></div></div>
         <a class="dm-go" href="https://drive.google.com/drive/folders/1aXZfU5qQ3I2QXvGDXHQK2iBuPsm9MoVy?usp=drive_link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать</a></div>
     </article>
     <article class="dm-card">
-      <button class="dm-ph" type="button" data-cap="Вариант 02 · HD текстуры без тату"><img src="img/v2-hd.png" alt="Пример внешности: HD текстуры без тату"></button>
-      <div class="dm-info"><div class="dm-n">Вариант 02</div><h3>HD текстуры без тату</h3><p class="dm-d">Женская V с HD текстурами, но без татуировок.</p><p class="dm-b"><span>Бонус</span>Доп. позы и эмоции лиц в фоторежиме.</p>
-        <div class="dm-kv"><div><small>HD</small><b>да</b></div><div><small>Тату</small><b class="no">нет</b></div><div><small>Позы</small><b>да</b></div><div><small>Эмоции</small><b>да</b></div></div>
+      <button class="dm-ph" type="button" data-cap="Вариант 02 · HD текстуры без тату"><img draggable="false" src="img/v2-hd.png" alt="Пример внешности: HD текстуры без тату"></button>
+      <div class="dm-info"><div class="dm-n">Вариант 02</div><h3>HD текстуры без тату</h3><p class="dm-d">Женская V с HD текстурами, но без татуировок.</p><p class="dm-b"><span>Бонус для фоторежима</span>Набор поз для жен. V<i> / / </i>Набор выражений лица для жен. и муж. V</p>
+        <div class="dm-kv"><div><small>HD</small><b>да</b></div><div><small>Тату</small><b class="no">нет</b></div><div><small>Позы</small><b>жен</b></div><div><small>Лица</small><b>жен / муж</b></div></div>
         <a class="dm-go" href="https://drive.google.com/drive/folders/1QpvNw16I4ZCaRg2ixqQ-UUVXrhSdBrUo?usp=drive_link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать</a></div>
     </article>
     <article class="dm-card">
-      <button class="dm-ph" type="button" data-cap="Вариант 03 · Стандартная внешность"><img src="img/v3-standard.png" alt="Пример внешности: Стандартная внешность"></button>
-      <div class="dm-info"><div class="dm-n">Вариант 03</div><h3>Стандартная внешность</h3><p class="dm-d">Без HD текстур и без татуировок — стандартная внешность.</p><p class="dm-b"><span>Бонус</span>Только доп. эмоции лиц в фоторежиме.</p>
-        <div class="dm-kv"><div><small>HD</small><b class="no">нет</b></div><div><small>Тату</small><b class="no">нет</b></div><div><small>Позы</small><b class="no">нет</b></div><div><small>Эмоции</small><b>да</b></div></div>
+      <button class="dm-ph" type="button" data-cap="Вариант 03 · Стандартная внешность"><img draggable="false" src="img/v3-standard.png" alt="Пример внешности: Стандартная внешность"></button>
+      <div class="dm-info"><div class="dm-n">Вариант 03</div><h3>Стандартная внешность</h3><p class="dm-d">Женская V без HD текстур и без татуировок.</p><p class="dm-b"><span>Бонус для фоторежима</span>Набор поз для жен. V<i> / / </i>Набор выражений лица для жен. и муж. V</p>
+        <div class="dm-kv"><div><small>HD</small><b class="no">нет</b></div><div><small>Тату</small><b class="no">нет</b></div><div><small>Позы</small><b>жен</b></div><div><small>Лица</small><b>жен / муж</b></div></div>
         <a class="dm-go" href="https://drive.google.com/drive/folders/1HADrw7dSjw8qlqQpY7Tx1CDvonW6FfyS?usp=drive_link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать</a></div>
     </article>
     </div>
   </div>
 </div>
-<div class="lb" id="lb" aria-hidden="true"><img id="lbi" alt=""></div>
+<div class="lb" id="lb" aria-hidden="true"><img id="lbi" alt="" draggable="false"></div>
 <script src="assets/audio.js"></script>
 <script>
 (function(){
@@ -426,6 +459,7 @@ window.NICKCFG={search:document.getElementById('search'),arrive:[['h|верну�
   dm.addEventListener('click',function(e){if(e.target===dm)closeM()});
   [].forEach.call(dm.querySelectorAll('.dm-ph'),function(b){
     b.addEventListener('mouseenter',playHoverImg);
+    b.addEventListener('mouseleave',function(){lastImg=0});
     b.addEventListener('click',function(){openL(b.querySelector('img').src)});
   });
   lb.addEventListener('click',closeL);

@@ -21,7 +21,7 @@
   --disp:'Exo 2','Inter',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-html{font-size:clamp(9px,min(.8333vw,1.5625vh),22px)}
+html{font-size:min(.8333vw,max(1.5625vh,12px),30px)}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* ---------- фон ---------- */
@@ -107,25 +107,55 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
 .s.g{color:#9ce8b3;text-shadow:0 0 .7rem rgba(80,225,140,.32)}
 .note{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:1.4rem;align-items:center;height:3.1rem;padding:0 .7rem;font-size:.78rem;line-height:1.5;color:var(--dim)}
 .note p{margin:0}
+
+.shot,.shot img,.lb,.lb img{-webkit-user-select:none;user-select:none;-webkit-user-drag:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+.shot::selection,.shot img::selection,.lb img::selection{background:transparent}
 .lb{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;padding:2rem;background:rgba(5,6,9,.9);backdrop-filter:blur(.6rem);-webkit-backdrop-filter:blur(.6rem);opacity:0;pointer-events:none;transition:opacity .3s ease;cursor:zoom-out}
 .lb.on{opacity:1;pointer-events:auto}
 .lb img{max-width:92vw;max-height:84vh;border:1px solid var(--line);border-radius:.5rem;box-shadow:0 1.4rem 4rem rgba(0,0,0,.6);transform:scale(.96);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .lb.on img{transform:none}
 .lb .cap{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;color:var(--dim);text-align:center}
 .lb .cap b{color:#eceef3;font-weight:500}
-@media (max-width:1000px){
-  html{font-size:15px}
+@media (max-width:1439px){
+  html{font-size:clamp(13.5px,1.05vw,17px)}
+  .page{padding:2.4rem 2rem}
+  .gb{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+  .gb .card.g,.gb .card.nt{grid-row:auto;grid-column:auto}
+  .card.g{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:1.1rem;align-items:stretch}
+  .card.g .ch{grid-column:1 / -1}
+  .card.g .shot{align-self:start;margin:.1rem 0 .5rem .1rem}
+  .card.g .desc{flex:none;padding:0 .4rem .3rem 0}
+  .rows{flex:none}.it{padding:.9rem 0;min-height:0}
+  .card.g .desc{align-self:start}
+  .note{height:auto;padding:.3rem .7rem .6rem}
+}
+@media (max-width:999px){
+  html{font-size:14px}
   .page{padding:2.4rem 1rem 2rem;justify-content:flex-start}
   .top{display:flex;flex-direction:column;height:auto;gap:1.2rem;align-items:stretch}
   .hd{align-self:center}
-  h1{font-size:1.6rem;white-space:normal;text-align:center}
+  h1{font-size:1.9rem;white-space:normal;text-align:center}
   .tags{display:none}
   .acts{align-self:center}
-  .gb{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
-  .gb .card.g,.gb .card.nt{grid-row:auto;grid-column:auto}
-  .desc{flex:none}.rows{flex:none}.it{grid-template-columns:minmax(0,1fr);padding:.5rem 0}
-  .note{grid-template-columns:minmax(0,1fr);height:auto;padding:.4rem .7rem .6rem}
 }
+@media (max-width:759px){
+  html{font-size:15px}
+  .card.g{display:flex}
+  .card.g .shot{align-self:stretch;margin:.1rem .1rem .6rem}
+  .card.g .desc{padding:0 .7rem .25rem}
+  .rows{flex:none}.it{grid-template-columns:minmax(0,1fr);row-gap:.15rem}
+  .note{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:479px){
+  .page{padding:2rem .7rem 1.6rem}
+  h1{font-size:1.5rem}
+  .ch{height:auto;min-height:2.3rem;padding:.4rem .6rem}
+  .ch h2{white-space:normal;overflow:visible;line-height:1.35}
+  .kv span,.kv small{white-space:normal;overflow-wrap:anywhere}
+  .kv>div{padding:.35rem .25rem}
+  .note .kv{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-height:520px) and (min-width:700px){.page{padding-top:1.4rem}}
 @media (prefers-reduced-motion:reduce){.blob,.card{animation:none!important}}
 </style>
 <link rel="stylesheet" href="assets/nick.css">
@@ -147,7 +177,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
   <section class="gb" aria-label="Руководство по настройке">
     <article class="card g" data-nk="g0">
       <div class="ch"><h2>Основные меню CET<i> / / </i><em class="s r">Рекомендация</em></h2><span class="ct">01</span></div>
-      <button class="shot" type="button" data-cap="Основные меню CET"><img src="img/1-cet.png" alt="Основные меню CET"><div class="ph0">Скриншот 01<small>img/1-cet.png</small></div></button>
+      <button class="shot" type="button" data-cap="Основные меню CET"><img draggable="false" src="img/1-cet.png" alt="Основные меню CET"><div class="ph0">Скриншот 01<small>img/1-cet.png</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Если пропал HUD</small><span>Hud Fixes</span></div><div><small>Погода и время</small><span>Weather Switcher</span></div><div><small>По желанию</small><span>Console</span></div></div>
         <div class="rows">
@@ -159,7 +189,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
     </article>
     <article class="card g" data-nk="g1">
       <div class="ch"><h2>Eye Adaptation<i> / / </i><em class="s y">Обязательно</em></h2><span class="ct">02</span></div>
-      <button class="shot" type="button" data-cap="Eye Adaptation Complete Overhaul"><img src="img/2-eye-adaptation.png" alt="Настройки Eye Adaptation"><div class="ph0">Скриншот 02<small>img/2-eye-adaptation.png</small></div></button>
+      <button class="shot" type="button" data-cap="Eye Adaptation Complete Overhaul"><img draggable="false" src="img/2-eye-adaptation.png" alt="Настройки Eye Adaptation"><div class="ph0">Скриншот 02<small>img/2-eye-adaptation.png</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Автоэкспозиция</small><span>Kiroshi</span></div><div><small>Свечение</small><span>Оригинал</span></div><div><small>Смена погоды</small><span>Оригинал</span></div></div>
         <div class="rows">
@@ -171,7 +201,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
     </article>
     <article class="card g" data-nk="g2">
       <div class="ch"><h2>Immersive Night City Fixes<i> / / </i><em class="s g">По желанию</em></h2><span class="ct">03</span></div>
-      <button class="shot" type="button" data-cap="Immersive Night City Fixes"><img src="img/3-night-city-fixes.png" alt="Настройки Immersive Night City Fixes"><div class="ph0">Скриншот 03<small>img/3-night-city-fixes.png</small></div></button>
+      <button class="shot" type="button" data-cap="Immersive Night City Fixes"><img draggable="false" src="img/3-night-city-fixes.png" alt="Настройки Immersive Night City Fixes"><div class="ph0">Скриншот 03<small>img/3-night-city-fixes.png</small></div></button>
       <div class="desc">
         <div class="kv"><div><small>Floating Debris</small><span>Включено</span></div><div><small>Влияние</small><span>Только визуал</span></div><div><small>Статус</small><span>По желанию</span></div></div>
         <div class="rows">
@@ -190,7 +220,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
     </article>
   </section>
 </main>
-<div class="lb" id="lb" aria-hidden="true"><img id="lbi" alt=""><div class="cap" id="lbc"></div></div>
+<div class="lb" id="lb" aria-hidden="true"><img id="lbi" alt="" draggable="false"><div class="cap" id="lbc"></div></div>
 <script src="assets/audio.js"></script>
 <script>
 (function(){
@@ -201,6 +231,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
     im.addEventListener('error',bad);
     if(im.complete&&im.naturalWidth===0)bad();
     s.addEventListener('mouseenter',function(){if(!s.classList.contains('empty'))playHoverImg()});
+    s.addEventListener('mouseleave',function(){lastImg=0});
     s.addEventListener('click',function(){if(!s.classList.contains('empty'))open(i)});
   });
   var back=document.getElementById('back');

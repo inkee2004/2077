@@ -132,5 +132,5 @@ function playCreak(){if(!can())return;var t=ctx.currentTime;voice('sawtooth',70,
 var lastImg=0;
 function playHoverImg(){if(!can())return;var t=ctx.currentTime;if(t-lastImg<.15)return;lastImg=t;voice('sine',520,700,t,.03,.14,true)}
 function playZoomIn(){if(!can())return;var t=ctx.currentTime;voice('sine',380,760,t,.04,.2,true)}
-function playZoomOut(){if(!can())return;var t=ctx.currentTime;voice('sine',700,340,t,.035,.2,true)}
+function playZoomOut(){if(!can())return;var t=ctx.currentTime;lastImg=t+1.2;voice('sine',700,340,t,.035,.2,true)}
 initAudio();
