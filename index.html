@@ -101,9 +101,6 @@ a.mod:hover .nm,a.mod:focus-visible .nm{transform:translateX(.3rem)}
 a.mod:hover .ar,a.mod:focus-visible .ar{opacity:.9;transform:none}
 .board.focus a.mod:not(.hot){opacity:.5}
 
-/* посимвольная подсветка поиска */
-.nm .c{transition:color .38s ease,text-shadow .38s ease;transition-delay:calc(var(--d,0)*26ms)}
-.nm .c.m{color:#fff;text-shadow:0 0 .6rem rgba(255,255,255,.6)}
 a.mod.sm{color:var(--text);background:rgba(255,255,255,.045)}
 a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 .board.q a.mod:not(.sm){opacity:.42}
@@ -120,22 +117,23 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 .dl{position:absolute;right:calc(50% - 12rem);top:calc(50% + 1.3rem + .55rem);display:flex;align-items:center;gap:.5rem;padding:.34rem .85rem;white-space:nowrap}
 .dl svg{width:.8rem;height:.8rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .dl:hover,.dl:focus-visible,.gd:hover,.gd:focus-visible,.vd:hover,.vd:focus-visible{color:#fff;border-color:var(--line);outline:none}
-.dlnote{position:absolute;left:calc(50% + 13.6rem);top:50%;width:22rem;transform:translateY(-50%);padding:.7rem .95rem .95rem;border:1px solid var(--line);border-radius:.55rem;background:#0c0d13;box-shadow:0 .8rem 2rem rgba(0,0,0,.45);font-size:.7rem;line-height:1.5;color:#dfe3ec;z-index:60}
-.dlnote b{display:block;margin-bottom:.3rem;font-family:var(--mono);font-weight:400;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
-.dlnote .st{display:grid;grid-template-columns:.9rem 1.3rem 1fr;align-items:baseline;padding:.1rem 0}
-.dlnote .st i{font-style:normal;text-align:right;color:var(--faint);font-family:var(--mono);font-size:.68rem}
-.dlnote .st em{font-style:normal;text-align:center;color:var(--faint);font-family:var(--mono);font-size:.68rem}
-.dlnote{width:19.3rem}
-.perf{position:absolute;left:calc(50% + 13.6rem + 19.9rem);right:0;top:50%;transform:translateY(-50%);padding:.7rem .6rem .95rem .95rem;border:1px solid var(--line);border-radius:.55rem;background:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 .15rem/100% 1.15rem,rgba(255,255,255,.025);background-color:#0c0d13;box-shadow:0 .8rem 2rem rgba(0,0,0,.45);font-size:.7rem;line-height:1.5;color:#dfe3ec;z-index:60}
-.perf b{display:block;margin-bottom:.3rem;font-family:var(--mono);font-weight:400;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
-.pf{display:grid;grid-template-columns:auto auto;grid-template-rows:repeat(3,auto);grid-auto-flow:column;justify-content:space-between;column-gap:.6rem}
-.pc{display:grid;grid-template-columns:.55rem .85rem auto;align-items:baseline;padding:.1rem 0;white-space:nowrap}
-.pc i,.pc em{font-style:normal;font-family:var(--mono);font-size:.68rem;text-align:center;color:var(--faint)}
+.dlnote{position:absolute;left:calc(50% + 12.7rem);top:50%;width:22rem;transform:translateY(-50%);padding:.7rem .8rem .95rem;border:1px solid var(--line);border-radius:.55rem;background:#0c0d13;box-shadow:0 .8rem 2rem rgba(0,0,0,.45);font-size:.74rem;line-height:1.5;color:#dfe3ec;z-index:60}
+.dlnote b{display:block;margin-bottom:.3rem;font-family:var(--mono);font-weight:400;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.dlnote .st{display:grid;grid-template-columns:.8rem 1.1rem 1fr;align-items:baseline;padding:.1rem 0}
+.dlnote .st i{font-style:normal;text-align:right;color:var(--faint);font-family:var(--mono);font-size:.74rem}
+.dlnote .st em{font-style:normal;text-align:center;color:var(--faint);font-family:var(--mono);font-size:.74rem}
+.dlnote{width:19.6rem}
+.perf{position:absolute;left:calc(50% + 12.7rem + 19.6rem + .5rem);right:0;top:50%;transform:translateY(-50%);padding:.7rem .5rem .95rem .8rem;border:1px solid var(--line);border-radius:.55rem;background:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 .15rem/100% 1.15rem,rgba(255,255,255,.025);background-color:#0c0d13;box-shadow:0 .8rem 2rem rgba(0,0,0,.45);font-size:.74rem;line-height:1.5;color:#dfe3ec;z-index:60}
+.perf b{display:block;margin-bottom:.3rem;font-family:var(--mono);font-weight:400;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.pf{display:grid;grid-template-columns:auto auto;grid-template-rows:repeat(3,auto);grid-auto-flow:column;justify-content:space-between;column-gap:.4rem}
+.pc{display:grid;grid-template-columns:.55rem .8rem auto;align-items:baseline;padding:.1rem 0;white-space:nowrap}
+.pc i,.pc em{font-style:normal;font-family:var(--mono);font-size:.74rem;text-align:center;color:var(--faint)}
 .pc i{text-align:right}
 .pc u{text-decoration:none;color:#7e8498;white-space:pre}
-.vd{position:absolute;right:.9rem;bottom:0;transform:translateY(50%);padding:.3rem .8rem;background:#0c0d13;white-space:nowrap;font-size:.62rem;letter-spacing:.14em}
-.gd{position:absolute;right:.9rem;bottom:0;transform:translateY(50%);padding:.3rem .8rem;background:#0c0d13;white-space:nowrap;font-size:.62rem;letter-spacing:.14em}
+.vd{position:absolute;right:.9rem;bottom:0;transform:translateY(50%);padding:.32rem .8rem;background:#0c0d13;white-space:nowrap;font-size:.68rem;letter-spacing:.12em}
+.gd{position:absolute;right:.9rem;bottom:0;transform:translateY(50%);padding:.32rem .8rem;background:#0c0d13;white-space:nowrap;font-size:.68rem;letter-spacing:.12em}
 
+@media (min-width:1440px) and (hover:hover) and (orientation:landscape){.dlnote .st span{white-space:nowrap}}
 /* ---------- адаптив ---------- */
 /* ноутбуки и окна уже 1440px: два столбца, страница прокручивается, текст крупнее */
 @media (max-width:1439px),(hover:none) and (pointer:coarse),(orientation:portrait) and (min-width:700px) and (hover:hover){
@@ -147,9 +145,9 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
   .page{padding:2.4rem 2rem 2.4rem}
   .top{height:auto;grid-template-rows:7.4rem auto;row-gap:1.6rem}
   .perf{grid-column:1 / -1;grid-row:2;position:relative;left:auto;right:auto;top:auto;transform:none;justify-self:center;width:min(100%,36rem)}
-  .dlnote{width:22rem}
+  .dlnote{width:23rem}
 }
-@media (max-width:1199px),(hover:none) and (pointer:coarse),(orientation:portrait) and (min-width:700px) and (hover:hover){.card:nth-child(2) .list{--r:17!important}}
+@media (max-width:1199px),(hover:none) and (pointer:coarse),(orientation:portrait) and (min-width:700px) and (hover:hover){.card:nth-child(2) .list{--r:18!important}}
 @media (max-width:1439px),(hover:none) and (pointer:coarse),(orientation:portrait) and (min-width:700px) and (hover:hover){.board{flex:1;align-content:stretch}}
 @media (min-width:700px) and (max-width:999px) and (orientation:portrait){html{font-size:clamp(14px,1.8vw,21px)}}
 /* планшеты и узкие окна: шапка в столбик */
@@ -163,8 +161,8 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
   .mid .search,.mid .dlnote{grid-column:1 / -1}
   .snd{justify-self:end}.dl{justify-self:start}
   .snd,.dl{position:static}
-  .dlnote{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:26rem;margin-bottom:.6rem}
-  .perf{width:100%;max-width:26rem;align-self:center;margin-top:.2rem;margin-bottom:.6rem}
+  .dlnote{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:28rem;margin-bottom:.6rem}
+  .perf{width:100%;max-width:28rem;align-self:center;margin-top:.2rem;margin-bottom:.6rem}
   h1{font-size:2rem}
 }
 /* телефоны: один столбец */
@@ -203,9 +201,8 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 /* ---------- окно скачивания ---------- */
 .dm{position:fixed;inset:0;z-index:150;display:flex;align-items:center;justify-content:center;padding:1rem;background:rgba(5,6,9,.78);backdrop-filter:blur(.7rem);-webkit-backdrop-filter:blur(.7rem);opacity:0;visibility:hidden;overflow:hidden;transition:opacity .28s ease,visibility 0s linear .28s}
 .dm.on{opacity:1;visibility:visible;transition:opacity .28s ease}
-.dm-box{position:relative;width:min(34rem,100%);max-height:100%;overflow:auto;scrollbar-width:none;padding:.2rem .7rem .8rem;border:1px solid var(--line);border-radius:.7rem;background:rgba(13,14,20,.94);box-shadow:0 2rem 5rem rgba(0,0,0,.6);transform:translateY(.8rem) scale(.985);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.dm-box{position:relative;width:min(35rem,100%);max-height:100%;overflow:auto;scrollbar-width:none;padding:.2rem .7rem .8rem;border:1px solid var(--line);border-radius:.7rem;background:rgba(13,14,20,.94);box-shadow:0 2rem 5rem rgba(0,0,0,.6);}
 .dm-box::-webkit-scrollbar{display:none}
-.dm.on .dm-box{transform:none}
 .dm-box::before,.dm-box::after{content:"";position:absolute;width:.8rem;height:.8rem;border:1px solid rgba(255,255,255,.75);opacity:.65;pointer-events:none}
 .dm-box::before{top:0;left:0;border-right:0;border-bottom:0;border-top-left-radius:.7rem}
 .dm-box::after{right:0;bottom:0;border-left:0;border-top:0;border-bottom-right-radius:.7rem}
@@ -233,8 +230,8 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 @keyframes mrg{0%{box-shadow:0 0 0 0 rgba(220,230,255,0)}35%{box-shadow:0 0 2rem .15rem rgba(220,230,255,.5);border-color:rgba(255,255,255,.8)}100%{box-shadow:0 0 0 0 rgba(220,230,255,0)}}
 .vid{position:fixed;inset:0;z-index:180;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(5,6,9,.92);backdrop-filter:blur(.6rem);-webkit-backdrop-filter:blur(.6rem);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease,visibility 0s .3s}
 .vid.on{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .3s ease}
-.vid-box{width:min(92vw,56rem,calc((100vh - 8rem)*16/9));border:1px solid var(--line);border-radius:.6rem;background:#0c0d13;box-shadow:0 1.4rem 4rem rgba(0,0,0,.6);overflow:hidden;transform:scale(.96);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-.vid.on .vid-box{transform:none}
+.vid-box{width:min(92vw,56rem,calc((100vh - 8rem)*16/9));border:1px solid var(--line);border-radius:.6rem;background:#0c0d13;box-shadow:0 1.4rem 4rem rgba(0,0,0,.6);overflow:hidden}
+
 .vid-h{display:flex;align-items:center;justify-content:space-between;height:2.4rem;padding:0 .6rem 0 .9rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line2)}
 .vid-x{width:1.6rem;height:1.6rem;display:grid;place-items:center;padding:0;font-size:1rem;line-height:1;color:var(--dim);background:rgba(255,255,255,.03);border:1px solid var(--line2);border-radius:50%;cursor:pointer}
 .vid-x:hover,.vid-x:focus-visible{color:#fff;border-color:var(--line);outline:none}
@@ -242,9 +239,43 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 html.mlock,html.mlock body{overflow:hidden!important}
 .dm{overflow:hidden}
 @media (max-width:480px){.dm-pts li{font-size:.82rem}}
+
+/* ---------- окно руководства ---------- */
+.gm .dm-box{width:min(82rem,100%)}
+.gm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;align-items:stretch}
+.gc{display:flex;flex-direction:column;min-width:0;padding:.2rem .5rem .6rem;border:1px solid var(--line2);border-radius:.55rem;background:rgba(255,255,255,.025)}
+.gc-h{display:flex;align-items:center;justify-content:space-between;gap:.6rem;height:2.3rem;padding:0 .4rem;margin-bottom:.45rem;border-bottom:1px solid var(--line2)}
+.gc-h h3{margin:0;min-width:0;font-family:var(--mono);font-weight:500;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:#eceef3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gc-h h3 i{font-style:normal;color:var(--faint);white-space:pre}
+.gc-h .s{font-style:normal;font-weight:500;font-family:var(--mono)}
+.s.r{color:#ff9a9a;text-shadow:0 0 .7rem rgba(255,80,80,.38)}
+.gshot{position:relative;flex:none;aspect-ratio:975/445;margin:.1rem .1rem .6rem;padding:0;border:1px solid var(--line2);border-radius:.4rem;overflow:hidden;background:rgba(0,0,0,.35);cursor:zoom-in;display:block;outline:none;transition:border-color .3s ease,box-shadow .3s ease}
+.gshot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+.gshot:hover,.gshot:focus-visible{border-color:var(--line);box-shadow:0 0 1.6rem rgba(220,228,255,.08)}
+.gshot::after{content:"";position:absolute;right:.5rem;bottom:.5rem;width:1.4rem;height:1.4rem;border:1px solid var(--line);border-radius:50%;background:rgba(10,11,16,.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23d9dde6' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='8.5' cy='8.5' r='5'/%3E%3Cpath d='M12.3 12.3L17 17M8.5 6.3v4.4M6.3 8.5h4.4'/%3E%3C/svg%3E") center/62% no-repeat}
+.gb-in{padding:0 .8rem .3rem;display:flex;flex-direction:column;gap:.8rem;font-size:.88rem;line-height:1.55;color:var(--dim)}
+.gkv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem}
+.gkv>div{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.15rem;min-height:2.6rem;padding:.3rem .3rem;border:1px solid var(--line2);border-radius:.4rem;background:rgba(255,255,255,.028);text-align:center}
+.gkv small{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.gkv span{font-family:var(--mono);font-size:.86rem;color:#eceef3;white-space:nowrap}
+.git{display:grid;grid-template-columns:9.4rem minmax(0,1fr);column-gap:1.2rem;align-items:center;padding:.85rem .2rem;border-top:1px solid var(--line2)}
+.git b{font-family:var(--mono);font-weight:500;font-size:.8rem;letter-spacing:.03em;color:#d3d7e0}
+.git p{margin:0}
+.git .sl{color:var(--faint);margin:0 .1em}
+.gc-n{margin:0;padding:.3rem 0 .1rem}
+.gc-n+.gkv{grid-template-columns:minmax(0,1fr)}
+.gc-n+.gkv>div{flex-direction:row;justify-content:space-between;gap:.8rem;padding:.3rem .9rem}
+.lb{position:fixed;inset:0;z-index:170;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;padding:1.5rem;background:rgba(5,6,9,.92);backdrop-filter:blur(.6rem);-webkit-backdrop-filter:blur(.6rem);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease,visibility 0s .3s;cursor:zoom-out}
+.lb.on{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .3s ease}
+.lb img{max-width:94vw;max-height:84vh;border:1px solid var(--line);border-radius:.5rem;box-shadow:0 1.4rem 4rem rgba(0,0,0,.6);-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+.lb .cap{font-family:var(--mono);font-size:.84rem;letter-spacing:.08em;color:var(--dim);text-align:center}
+.lb .cap b{color:#eceef3;font-weight:500}
+.gshot,.gshot img{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+@media (max-width:1100px),(orientation:portrait){.gm-grid{grid-template-columns:minmax(0,1fr)}.gm .dm-box{width:min(40rem,100%)}}
+@media (max-width:480px){.git{grid-template-columns:minmax(0,1fr);row-gap:.15rem}.gkv span,.gkv small{white-space:normal}}
 @media (hover:none) and (pointer:coarse){html{font-size:clamp(15px,min(3.1vw,5vh),30px)}}
 @media (orientation:portrait) and (min-width:700px) and (hover:hover){html{font-size:max(9px,min(calc(100dvh / 130),calc(100vw / 46)))}}
-@media (hover:none) and (pointer:coarse){.card,.tag,.search,.snd,.dl,.gd,.vd,.back,.perf,.dlnote,.dm,.dm-head,.vid,.nick-in,.bubble{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media (hover:none) and (pointer:coarse){.card,.tag,.search,.snd,.dl,.gd,.vd,.back,.perf,.dlnote,.dm,.dm-head,.lb,.vid,.nick-in,.bubble{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
 </style>
 <script>window.MOB=matchMedia('(hover:none) and (pointer:coarse)').matches</script>
 <script>MOB||document.write('<link rel="stylesheet" href="assets/nick.css">')</script>
@@ -270,7 +301,7 @@ html.mlock,html.mlock body{overflow:hidden!important}
       </label>
       <button class="snd" id="snd" type="button" aria-pressed="true" aria-label="Звук"><svg class="on" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8v4h3l4 3.4V4.6L6 8z"/><path d="M13 7.2a4 4 0 010 5.6M15.4 5a7.2 7.2 0 010 10"/></svg><svg class="off" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8v4h3l4 3.4V4.6L6 8z"/><path d="M13.5 8l4 4M17.5 8l-4 4"/></svg><span id="sndT">Звук · вкл</span></button>
       <button class="dl" id="dl" type="button" aria-haspopup="dialog"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать сборку</button>
-      <div class="dlnote"><b>Как установить</b><div class="st"><i>1</i><em>→</em><span>Перенести скачанные файлы в папку игры.</span></div><div class="st"><i>2</i><em>→</em><span>Прочитать руководство по настройке.</span></div><div class="st"><i>3</i><em>→</em><span>Приступить к прохождению.</span></div><a class="gd" href="guide">Руководство по настройке</a></div>
+      <div class="dlnote"><b>Как установить</b><div class="st"><i>1</i><em>→</em><span>Перенести скачанные файлы в папку игры.</span></div><div class="st"><i>2</i><em>→</em><span>Прочитать руководство по настройке.</span></div><div class="st"><i>3</i><em>→</em><span>Приступить к прохождению.</span></div><button class="gd" id="gd" type="button" aria-haspopup="dialog">Руководство по настройке</button></div>
     </div>
     <div class="perf" data-nk="perf" aria-label="Тест производительности"><b>Тест производительности</b><div class="pf">
       <div class="pc c1"><i>1</i><em>→</em><span>1660S 6GB<u> / / </u>1920x1080</span></div>
@@ -278,8 +309,8 @@ html.mlock,html.mlock body{overflow:hidden!important}
       <div class="pc c1"><i>3</i><em>→</em><span>16 RAM<u> / / </u>SSD</span></div>
       <div class="pc c2"><i>4</i><em>→</em><span>Почти макс. графика</span></div>
       <div class="pc c2"><i>5</i><em>→</em><span>Нативное сглаживание</span></div>
-      <div class="pc c3"><i>6</i><em>→</em><span>AVG FPS: 30-50<u> + </u>статеры</span></div>
-    </div><a class="vd" href="https://youtu.be/t_Gm3-CVTkE" target="_blank" rel="noopener">Посмотреть видео-тест</a></div>
+      <div class="pc c3"><i>6</i><em>→</em><span>AVG FPS: 40-50<u> / / </u>фризы</span></div>
+    </div><a class="vd" href="assets/forl2.mp4">Посмотреть видео-тест</a></div>
   </header>
   <section class="board" id="board" aria-label="Список модов по категориям"></section>
 </main>
@@ -288,16 +319,49 @@ html.mlock,html.mlock body{overflow:hidden!important}
   <div class="dm-box">
     <div class="dm-head"><h2 id="dmT">Скачать сборку</h2><button class="dm-x" id="dmX" type="button" aria-label="Закрыть"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
     <ul class="dm-pts">
-      <li>Сборка рассчитана под разные устройства, в ней нет текстур высокого качества, так как они индивидуальны для каждого.</li>
-      <li>Моды тестировались на совместимость в патче 2.5, а те что вызывали серьезные конфликты - не добавлялись в сборку.</li>
-      <li>Гарантировать стабильность я не могу, все зависит от вашего ПК, т.к ошибки и вылеты не всегда связаны с модами.</li>
+      <li>Сборка универсальна: HD-текстур нет, подойдет для всех ПК.</li>
+      <li>Собиралась для патча 2.5: конфликтных модов не обнаружено.</li>
+      <li>Ошибки, вылеты и прочие зависания на вашей ответственности.</li>
     </ul>
     <label class="dm-ok"><input type="checkbox" id="dmC"><span class="bx"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.6 3.6 7.4-8"/></svg></span><span class="tx">Спасибо, я все понял</span></label>
     <a class="dm-go" id="dmGo" href="https://drive.google.com/drive/folders/1HADrw7dSjw8qlqQpY7Tx1CDvonW6FfyS?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать</a>
   </div>
 </div>
-<div class="vid" id="vid" aria-hidden="true"><div class="vid-box"><div class="vid-h"><span>inkee2004.mp4</span><button class="vid-x" id="vidx" type="button" aria-label="Закрыть">×</button></div><video id="vidv" src="assets/rofl.mp4" preload="none" controls controlsList="nodownload" playsinline></video></div></div>
+<div class="dm gm" id="gm" role="dialog" aria-modal="true" aria-labelledby="gmT" aria-hidden="true">
+  <div class="dm-box">
+    <div class="dm-head"><h2 id="gmT">Руководство по настройке</h2><button class="dm-x" id="gmX" type="button" aria-label="Закрыть"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
+    <div class="gm-grid">
+      <article class="gc">
+        <div class="gc-h"><h3>Основные меню CET<i> / / </i><em class="s r">Рекомендация</em></h3><span class="ct">01</span></div>
+        <button class="gshot" type="button" data-cap="Основные меню CET"><img draggable="false" decoding="async" data-src="img/1-cet.png" alt="Основные меню CET"></button>
+        <div class="gb-in">
+          <div class="gkv"><div><small>Если пропал HUD</small><span>Hud Fixes</span></div><div><small>Погода и время</small><span>Weather Switcher</span></div><div><small>Опционально</small><span>Console</span></div></div>
+          <div>
+            <div class="git"><b>Hud Fixes</b><p>Если пропал интерфейс — нажмите Restore HUD now.</p></div>
+            <div class="git"><b>Weather Switcher</b><p>Контролируйте погодные условия и время суток.</p></div>
+            <div class="git"><b>Остальные окна</b><p>Скройте если мешают, консоль — опционально.</p></div>
+          </div>
+        </div>
+      </article>
+      <article class="gc">
+        <div class="gc-h"><h3>Eye Adaptation<i> / / </i><em class="s r">Обязательно</em></h3><span class="ct">02</span></div>
+        <button class="gshot" type="button" data-cap="Eye Adaptation Complete Overhaul"><img draggable="false" decoding="async" data-src="img/2-eye-adaptation.png" alt="Настройки Eye Adaptation"></button>
+        <div class="gb-in">
+          <div class="gkv"><div><small>Автоэкспозиция</small><span>Kiroshi</span></div><div><small>Свечение</small><span>Оригинал</span></div><div><small>Смена погоды</small><span>Оригинал</span></div></div>
+          <div>
+            <div class="git"><b>Что менять</b><p>Автоэкспозиция → Kiroshi, Свет <span class="sl">/ /</span> Погода → Оригинал.</p></div>
+            <div class="git"><b>Зачем</b><p>Поможет исправить засветы и переходы в погоде.</p></div>
+            <div class="git"><b>Где найти</b><p>Mod Settings → Eye Adaptation Complete Overhaul.</p></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+<div class="lb" id="lb" aria-hidden="true"><img id="lbi" alt="" draggable="false"><div class="cap" id="lbc"></div></div>
+<div class="vid" id="vid" aria-hidden="true"><div class="vid-box"><div class="vid-h"><span id="vidt">inkee2004.mp4</span><button class="vid-x" id="vidx" type="button" aria-label="Закрыть">×</button></div><video id="vidv" preload="none" controls controlsList="nodownload" playsinline></video></div></div>
 <script src="assets/audio.js"></script>
+<script>function lockPad(on){var r=document.documentElement;if(on){var w=innerWidth-r.clientWidth;r.style.paddingRight=w>0?w+'px':''}else r.style.paddingRight=''}</script>
 <script>
 (function(){
 'use strict';
@@ -312,15 +376,15 @@ var CATS=[
   ['ArchiveXL',4198],['Browser Extension',10038],['Codeware',7780],['Cyber Engine Tweaks',107],['Mod Settings',4885],
   ['Native Interactions Framework',21422],['Native Settings UI',3518],['RED4ext',2380],['redscript',1511],['TweakXL',4197]
  ]},
- {t:['Исправления','Стабильность'],span:3,rows:11,mods:[
+ {t:['Исправления','Стабильность'],span:3,rows:12,mods:[
   ['3D World Map Fixed',26500],['Accidental fast travel bug fix',36600],['Bug Fix - Recon Grenade Bouce Fix',14163],['Crafting Recipe Owned and Iconic Labels',11261],
   ['Decals Flickering Fix',16579],['Disappearing Enemy Health Bar Fix',19815],['Disappearing NPC and Vehicle Fix',19628],['Eddies Notification Fix',16420],
   ['Empty Quickhack Menu Fix',36114],['Enemies Dodging Fix',17923],['Enemies Melee Attacks Fixes',32747],['Fix Advert Animations',17726],
-  ['General Shadows Fixes',20405],['HUD Fixes',4011],['Hologram Adverts Flickering Fix',31664],['Immersion Patch - Cyberpunk Story Quest Fixes',29152],['Immersion Patch - Minor Activities Quest Fixes',27162],
-  ['Immersion Patch - NCART Train Motion Fixes',24914],['Immersion Patch - Quest Vehicle Motion Fixes',24772],['Immersive Night City Fixes',20588],['Immersive Night City Fixes - CORE',27040],
+  ['General Shadows Fixes',20405],['HUD Fixes',4011],['Hologram Adverts Flickering Fix',31664],["Immersion Patch - Holdin' On - Kerrys'",25792],['Immersion Patch - Cyberpunk Story Quest Fixes',29152],['Immersion Patch - Minor Activities Quest Fixes',27162],
+  ['Immersion Patch - NCART Train Motion Fixes',24914],['Immersion Patch - Path Of Glory',23875],['Immersion Patch - Quest Vehicle Motion Fixes',24772],['Immersive Night City Fixes',20588],['Immersive Night City Fixes - CORE',27040],
   ['Inplace Streamingsectors Nulled',14197],['Loud Noises Fix - Audio Pool Fix',34270],['Map Exit Lighting and HDR Fixes',23420],['Melee Attacks Fixes And Enhancements',16921],
   ['NPC Actions Fixes',16720],['Quickhack Damage Fix',9695],['Quickhack Fixes',18290],['Ragdoll Execution Fix',23206],
-  ['Semimaru Quest Restart Bug Fix',23031],['Static Takeout Cups Bugfix',11729],['Streaming Bug Workaround',22857],['Visual Effects Fixes',35461]
+  ['Semimaru Quest Restart Bug Fix',23031],['Static Takeout Cups Bugfix',11729],['Silver Pixel Cloud Drive-in Gates Game Bug Patch',23573],['Streaming Bug Workaround',22857],['Visual Effects Fixes',35461]
  ]},
  {t:['Прорисовка','Детализация'],span:1,rows:8,mods:[
   ['Always Best Quality',12700],['Draw Distance ReImagined',27210],['Faster Rainmap and Distant Shadows',8610],['Hide Distant 2D Cars',1282],
@@ -337,7 +401,7 @@ var CATS=[
   ['No Intro Videos',533],['Reset Attributes',9240],['Virtual Atelier',2987],['Virtual Atelier Delivery',21482]
  ]}
 ];
-var ARCHIVES=83;
+var ARCHIVES=86;
 
 /* ================= ИНДЕКСЫ ================= */
 var coll=new Intl.Collator('en',{sensitivity:'base',numeric:true});
@@ -408,38 +472,19 @@ function find(lower,qs){
   for(var i=0;i<qs.length;i++){if(!qs[i])continue;var k=lower.indexOf(qs[i]);if(k>=0)return {i:k,len:qs[i].length}}
   return null;
 }
-var matches=[],cleanT=0,srcQ=null;
-/* буквы-«спаны» создаются только у найденных модов — остальные остаются обычным текстом */
-function spans(r){
-  if(r.chars)return r.chars;
-  var f=document.createDocumentFragment(),a=[];
-  r.nm.textContent='';
-  for(var i=0;i<r.text.length;i++){var c=el('span','c',r.text.charAt(i));f.appendChild(c);a.push(c)}
-  r.nm.appendChild(f);return r.chars=a;
-}
+var matches=[],srcQ=null;
 function runSearch(raw){
-  var q=raw.trim().toLowerCase(),qm=mapRu(q),qs=qm!==q?[q,qm]:[q],n=0,built=false,i;
+  var q=raw.trim().toLowerCase(),qm=mapRu(q),qs=qm!==q?[q,qm]:[q],n=0,i;
   matches=[];
   board.classList.toggle('q',!!q);
-  for(i=0;i<rowList.length;i++){var r=rowList[i];r.m=q?find(r.lower,qs):null;if(r.m&&!r.chars){spans(r);built=true}}
-  if(built)void board.offsetWidth;
   for(i=0;i<rowList.length;i++){
-    var w=rowList[i],m=w.m,on=!!m;
+    var w=rowList[i],m=q?find(w.lower,qs):null,on=!!m;
     if(on!==w.on){w.on=on;w.a.classList.toggle('sm',on)}
-    if(w.chars)for(var k=0;k<w.chars.length;k++){
-      var c=w.chars[k],h=on&&k>=m.i&&k<m.i+m.len;
-      if(h!==!!c._on){c._on=h;c.style.setProperty('--d',h?(k-m.i):0);c.classList.toggle('m',h)}
-    }
     if(on){n++;matches.push({name:w.text,i:m.i,len:w.lower.length})}
   }
   qc.textContent=q?String(n):'';
   search.classList.toggle('none',!!q&&n===0);
-  clearTimeout(cleanT);
-
 }
-function buildAll(){for(var i=0;i<rowList.length;i++)spans(rowList[i]);void board.offsetWidth}
-inp.addEventListener('focus',function(){clearTimeout(cleanT);buildAll()});
-inp.addEventListener('blur',function(){if(!inp.value)cleanT=setTimeout(function(){for(var j=0;j<rowList.length;j++){var z=rowList[j];if(z.chars&&!z.m){z.nm.textContent=z.text;z.chars=null}}},400)});
 /* ввод склеивается: поиск считается один раз за кадр */
 var raf=0;
 function applySearch(raw){
@@ -465,26 +510,40 @@ inp.addEventListener('keydown',function(e){
 })();
 </script>
 <script>
-if(!MOB)window.NICKCFG={search:document.getElementById('search'),arrive:[['h|вернулись! список модов, бл{я}ть, я скучал.'],['n|ну что, настроил? «Reset Attributes» себе не забудь.'],['y|а я пока в руководстве остался. шучу. я тут.'],['n|глянул тест производительности: 30–50 FPS. сойдёт, главное — не «Not So Good Draw Distance».'],['h|видео-тест не смотрел? там всё честно. почти как я.']]};
+if(!MOB)window.NICKCFG={search:document.getElementById('search')};
+</script>
+<script>
 (function(){
-  var vd=document.querySelector('.vd');
-  if(vd)vd.addEventListener('click',function(){if(window.NICK)setTimeout(function(){NICK.say([['h|видео-тест? включай. я пока тут постою, как «Authentic Shift» — одна на всю рамку.'],['n|смотри-смотри. там цифры, но мои шутки смешнее.'],['y|статеры в кадре — это не баг, это стиль.']][Math.floor(Math.random()*3)])},500)});
-  var g=document.querySelector('.gd');if(!g||MOB)return;
-  g.addEventListener('click',function(e){
-    if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
-    e.preventDefault();
-    try{sessionStorage.setItem('nk-arrive','1')}catch(x){}
-    var go=function(){location.href=g.href};
-    if(window.NICK)NICK.leave(go);else go();
+  var gm=document.getElementById('gm'),gd=document.getElementById('gd'),x=document.getElementById('gmX'),lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),lbc=document.getElementById('lbc'),last=null,opened=0,imgs=[].slice.call(gm.querySelectorAll('img[data-src]'));
+  var SAY=[['h|руководство, бл{я}ть! читай внимательно, потом не жалуйся.'],['n|«Eye Adaptation» — обязательно. не пропускай. я предупредил.'],['y|скриншоты крупнее, если нажать. я подглядывал.']];
+  function loadI(){imgs.forEach(function(i){if(i.dataset.src){i.src=i.dataset.src;i.removeAttribute('data-src')}})}
+  function openG(){loadI();last=document.activeElement;lockPad(true);gm.classList.add('on');document.documentElement.classList.add('mlock');gm.setAttribute('aria-hidden','false');setTimeout(function(){x.focus({preventScroll:true})},60);
+    if(!MOB&&window.NICK)setTimeout(function(){NICK.say(SAY[opened%SAY.length]);opened++},700)}
+  function closeG(){gm.classList.remove('on');document.documentElement.classList.remove('mlock');lockPad(false);gm.setAttribute('aria-hidden','true');if(last&&last.focus)last.focus({preventScroll:true})}
+  function openL(b){lbi.src=b.querySelector('img').src;lbc.textContent=b.dataset.cap;lb.classList.add('on');lb.setAttribute('aria-hidden','false');playZoomIn()}
+  function closeL(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');playZoomOut()}
+  gd.addEventListener('click',openG);
+  x.addEventListener('click',closeG);
+  gm.addEventListener('click',function(e){if(e.target===gm)closeG()});
+  [].forEach.call(gm.querySelectorAll('.gshot'),function(b){
+    b.addEventListener('mouseenter',playHoverImg);
+    b.addEventListener('mouseleave',function(){lastImg=0});
+    b.addEventListener('click',function(){openL(b)});
   });
+  lb.addEventListener('click',closeL);
+  addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    if(lb.classList.contains('on')){closeL();e.stopPropagation()}else if(gm.classList.contains('on'))closeG();
+  },true);
+  addEventListener('load',function(){(window.requestIdleCallback||function(f){setTimeout(f,1500)})(loadI)});
 })();
 </script>
 <script>
 (function(){
   var dm=document.getElementById('dm'),dl=document.getElementById('dl'),x=document.getElementById('dmX'),ck=document.getElementById('dmC'),go=document.getElementById('dmGo'),last=null;
   function sync(){var on=ck.checked;go.setAttribute('aria-disabled',on?'false':'true');go.tabIndex=on?0:-1}
-  function openM(){last=document.activeElement;ck.checked=false;sync();dm.classList.add('on');document.documentElement.classList.add('mlock');dm.setAttribute('aria-hidden','false');setTimeout(function(){x.focus()},60)}
-  function closeM(){dm.classList.remove('on');document.documentElement.classList.remove('mlock');dm.setAttribute('aria-hidden','true');if(last&&last.focus)last.focus()}
+  function openM(){last=document.activeElement;ck.checked=false;sync();lockPad(true);dm.classList.add('on');document.documentElement.classList.add('mlock');dm.setAttribute('aria-hidden','false');setTimeout(function(){x.focus({preventScroll:true})},60)}
+  function closeM(){dm.classList.remove('on');document.documentElement.classList.remove('mlock');lockPad(false);dm.setAttribute('aria-hidden','true');if(last&&last.focus)last.focus()}
   dl.addEventListener('click',openM);
   x.addEventListener('click',closeM);
   dm.addEventListener('click',function(e){if(e.target===dm)closeM()});
@@ -493,21 +552,29 @@ if(!MOB)window.NICKCFG={search:document.getElementById('search'),arrive:[['h|в�
   addEventListener('keydown',function(e){if(e.key==='Escape'&&dm.classList.contains('on'))closeM()},true);
 })();
 </script>
-<script>if(location.protocol==="file:"){var g=document.querySelector(".gd");if(g)g.setAttribute("href","guide.html")}</script>
 <script>
 (function(){
-  if(MOB){var x0=document.getElementById('vid');if(x0&&x0.parentNode)x0.parentNode.removeChild(x0);return}
-  var v=document.getElementById('vid'),vv=document.getElementById('vidv'),inp=document.getElementById('q'),sr=document.getElementById('search'),busy=false,H=document.documentElement;
-  function open(){v.classList.add('on');v.setAttribute('aria-hidden','false');H.classList.add('mlock');try{vv.currentTime=0}catch(e){}var p=vv.play();if(p&&p.catch)p.catch(function(){})}
+  var v=document.getElementById('vid'),vv=document.getElementById('vidv'),vt=document.getElementById('vidt'),inp=document.getElementById('q'),sr=document.getElementById('search'),vd=document.querySelector('.vd'),busy=false,mode='',H=document.documentElement;
+  var SRC={egg:['assets/rofl.mp4','inkee2004.mp4'],test:['assets/forl2.mp4','video-test.mp4']};
+  function open(k){
+    mode=k;var c=SRC[k];vt.textContent=c[1];
+    if(vv.getAttribute('src')!==c[0])vv.setAttribute('src',c[0]);
+    v.classList.add('on');v.setAttribute('aria-hidden','false');H.classList.add('mlock');lockPad(true);
+    try{vv.currentTime=0}catch(e){}var p=vv.play();if(p&&p.catch)p.catch(function(){})
+  }
   function close(){
     if(!v.classList.contains('on'))return;
-    vv.pause();v.classList.remove('on');v.setAttribute('aria-hidden','true');H.classList.remove('mlock');
-    setTimeout(function(){busy=false;if(window.NICK&&NICK.back)NICK.back([['h|я вернулся из запроса. надеюсь, ты улыбнулся.'],['n|это было сильно. а теперь — моды.'],['s|ну, «inkee2004» теперь знает, где я живу.']])},350);
+    var k=mode;if(k==='egg'){inp.value='';inp.dispatchEvent(new Event('input'))}vv.pause();v.classList.remove('on');v.setAttribute('aria-hidden','true');H.classList.remove('mlock');lockPad(false);
+    setTimeout(function(){busy=false;if(MOB||!window.NICK)return;
+      if(k==='egg'&&NICK.back)NICK.back([['h|я вернулся из запроса. надеюсь, ты улыбнулся.'],['n|это было сильно. а теперь — моды.'],['s|ну, «inkee2004» теперь знает, где я живу.']]);
+      else if(k==='test')NICK.say([['h|ну как, посмотрел? 40–50 FPS и фризы — зато честно.'],['n|в кадре цифры, а мои шутки смешнее. признайся.'],['y|фризы в кадре — это не баг, это стиль.']][Math.floor(Math.random()*3)])
+    },350);
   }
-  inp.addEventListener('input',function(){
+  if(vd)vd.addEventListener('click',function(e){if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;e.preventDefault();open('test')});
+  if(!MOB)inp.addEventListener('input',function(){
     if(busy||inp.value.trim().replace(/^@/,'').toLowerCase()!=='inkee2004')return;
     busy=true;inp.blur();
-    if(window.NICK&&NICK.absorb)NICK.absorb(sr,open);else open();
+    if(window.NICK&&NICK.absorb)NICK.absorb(sr,function(){open('egg')});else open('egg');
   });
   document.getElementById('vidx').addEventListener('click',close);
   v.addEventListener('click',function(e){if(e.target===v)close()});
