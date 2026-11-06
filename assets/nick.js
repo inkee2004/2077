@@ -15,7 +15,8 @@ var SEQS=[
 var SPAWN=[
  ['s|бл{я}ть, ну и тесно в этом поиске!'],
  ['n|фу, тут пылища. кэш не мыт с 2077-го.'],
- ['h|выпрыгнул. пахну баггами. «Dirt Begone» мне не поможет.']
+ ['h|выпрыгнул. пахну баггами. «Dirt Begone» мне не поможет.'],
+ ['y|я тут пока вылез. кстати, в поиск можно вписать «inkee2004». просто так.']
 ];
 var LAZY=[
  ['z|уф… ноги отваливаются.','z|мне б «Fast Travel from anywhere to everywhere» — до холодильника.'],
@@ -44,10 +45,11 @@ var QUIPS={
  4:['w|«Reset Attributes» — мне б сбросить характер. «Опрятность: 0, лень: 99».','h|«No Intro Videos» — наконец без заставок. а я бы свою оставил.','y|«Virtual Atelier» — магазин одежды, а я хожу в одном и том же. и без носков.','s|«Immersive First Person 2.0» — от первого лица… лучше б ты не видел, как я живу.','n|«No Camera Auto Centering» — камера не дёргается. зато нервы дёргаются.'],
  5:['n|«Authentic Shift» — передачи как в жизни. у меня одна передача — «лень».','z|одна машина на всю рамку, и та не моя.'],
  6:['y|«Cute and Sexy Pose Pack» — позы красивые. я знаю только одну: «лёжа».','l|«Photomode Facial Expression Mega Pack» — мне такой! у меня мимика из пяти смайликов, и те глючат.','y|«VTK FemV — Kala’s Tattoos» — у меня тоже есть татуха. «Не мыть».','n|«VTK Vanilla HD Body» — тело в HD. а у меня в 240p и с артефактами.'],
- search:['n|«Найти мод»… а «найти носок» где?','y|ищи-ищи, я за тобой присмотрю.'],
+ search:['n|«Найти мод»… а «найти носок» где?','y|ищи-ищи, я за тобой присмотрю.','h|в поиск можно вписать не только моды. например, меня. то, что на табличке.','s|попробуй вписать мой ник. только не пугайся: я умею влетать в строку.'],
  snd:['w|звук… «Loud Noises Fix - Audio Pool Fix» тут бы не помешал.','h|слышишь, как я топаю? это пиксели хрустят.'],
- dl:['h|«Скачать сборку» — 90 архивов! пока качается, я посижу.','w|90 архивов… иди поешь, неряха. я тоже пожрал бы.'],
- note:['n|шаг два — «прочитать руководство». все его пропускают, как я душ.','h|шаг три — «приступить к прохождению». наконец-то.'],
+ dl:['h|«Скачать сборку» — 90 архивов! пока качается, я посижу.','w|90 архивов… иди поешь, неряха. я тоже пожрал бы.','n|там три варианта: с тату, без тату и стандарт. я бы взял стандарт — как мой гардероб.','y|выбирай вариант и жми «Скачать». фото можно увеличить, я подглядывал.'],
+ perf:['n|«1660S 6GB» и «почти макс. графика» — смелый ты человек. я бы уже плакал.','y|30–50 FPS и статеры — кинематографично. как мои сны про «Fast Travel» до холодильника.','h|«Посмотреть видео-тест» — там всё честно, без нарезок. почти как я без душа.','w|«i5-10400F», 16 RAM, SSD — не топ, но и не «Not So Good Draw Distance».','s|нативное сглаживание… у меня тоже всё нативное: и лень, и бардак.'],
+ note:['n|шаг два — «прочитать руководство». все его пропускают, как я душ.','h|шаг три — «приступить к прохождению». наконец-то.','y|рядом блок с тестом. сначала читай руководство, потом смотри цифры.'],
  floor:['y|внизу пусто. зато никто не видит мой бардак.','w|«Inplace Streamingsectors Nulled» — а мне бы «Inplace Мозги Nulled».','n|я на дне страницы. как мой рейтинг.']
 };
 /* лицо: кадры подбираются по настроению, меняются сами и «говорят» вместе с текстом */
@@ -142,14 +144,72 @@ function ensureNick(){
   e.addEventListener('pointercancel',onNickUp);
   return nk;
 }
-function paint(){nk.el.style.transform='translate3d('+nk.x+'px,'+(nk.y-nk.lift-nk.bob)+'px,0) rotate('+nk.a+'deg)'}
+function paint(){var tr='translate3d('+nk.x+'px,'+(nk.y-nk.lift-nk.bob)+'px,0) rotate('+nk.a+'deg)';nk.el.style.transform=tr;if(emoBox)emoBox.style.transform=tr}
 /* плавный возврат к обычному состоянию: лапки и крылья гаснут, ник мягко оседает */
 function resetAuto(){
   if(!nk)return;
   nk.el.classList.remove('legs-on','still','fast','wings-on','perch','struggle');
   nk.mode='phys';nk.rest=0;nk.bob=0;nk.t=0;nk.ball=false;
 }
-function killBubble(){if(bubble){bubble.dead=true;if(bubble.el.parentNode)bubble.el.parentNode.removeChild(bubble.el);bubble=null;faceShow(false)}}
+/* эмодзи-реакции: появляются вокруг рамки ника (не в диалоге), у каждого свой глитч */
+var EMO={
+ n:['😐','🙄','🤨','🫠','💭','🧐'],
+ h:['😍','❤️','🌟','🍻','🥰','✨','💫','😊'],
+ l:['🤪','😜','🌀','🎉','🫪','🪩','✨'],
+ a:['🤬','😡','💢','🔥','👿','🗯️'],
+ z:['😴','💤','🥱','🫥','🌙'],
+ s:['😱','😳','🫨','‼️','👻','🙀'],
+ y:['😏','😎','🔎','👀','🤭','😈','🕶️'],
+ f:['🎉','🥳','🌟','🎊','🍻'],
+ d:['😵‍💫','💫','🫨','🥴','🌀'],
+ w:['🤷','🫪','🍻','🥴','😮‍💨','🫤'],
+ p:['😰','😨','🫣','💦','😬','🆘']
+};
+var EMK=[[/носк/i,'🧦'],[/душ|гигиен|мыт/i,'🚿'],[/кофе/i,'☕'],[/холодил|поесть|пожрал|еда/i,'🍔'],[/поиск|найти|ищи|inkee2004/i,'🔎'],[/видео|кадр|fps/i,'🎞️'],[/monika|смотрит|подгляд/i,'👀'],[/телепорт|fast travel|портал/i,'🌀'],[/мусор/i,'🗑️'],[/тату|татуха/i,'🐉'],[/звук|слышиш|топаю|noise/i,'🔊'],[/ночь|сон|сны|спать/i,'🌙'],[/машин|shift|передач/i,'🚗'],[/оружи|quickhack|хак/i,'💻'],[/свет|свеч|glow|relux/i,'💡'],[/погод|rain|дожд/i,'🌧️'],[/руководств|читай/i,'📖'],[/скачать|архив/i,'📦'],[/настро/i,'⚙️'],[/лень|ленив/i,'🛋️'],[/глаза|kiroshi|eye/i,'👁️'],[/лицо|мимик|поз/i,'🎭']];
+var EMS=[{l:'-1.2rem',t:'-1.9rem'},{r:'-1rem',t:'-2rem'},{l:'38%',t:'-2.4rem'},{l:'-2.1rem',t:'.1rem'},{r:'-2.1rem',t:'.1rem'},{l:'62%',t:'-2.1rem'}];
+var emoOK={},emoBox=null,emoT=null;
+function emoSup(c){
+  if(c in emoOK)return emoOK[c];
+  var ok=true;
+  try{
+    var cv=document.createElement('canvas');cv.width=cv.height=40;var x=cv.getContext('2d');x.font='28px sans-serif';x.textBaseline='top';
+    function sig(t){x.clearRect(0,0,40,40);x.fillText(t,2,2);return cv.toDataURL()}
+    var s=sig(c),bad=sig(String.fromCodePoint(0x10FFFF));ok=s!==bad&&s!==sig('');
+  }catch(e){ok=true}
+  return emoOK[c]=ok;
+}
+function emoClear(fast){
+  clearTimeout(emoT);
+  if(!emoBox)return;
+  var b=emoBox;emoBox=null;
+  b.classList.add('out');setTimeout(function(){if(b.parentNode)b.parentNode.removeChild(b)},fast?60:380);
+}
+function emoShow(mood,text,ttl){
+  emoClear(true);
+  if(!nk||nk.gone||!nk.el)return;
+  var set=(EMO[mood]||EMO.n).filter(emoSup),pick=[],t=text||'';
+  for(var i=0;i<EMK.length&&pick.length<1;i++)if(EMK[i][0].test(t)&&emoSup(EMK[i][1]))pick.push(EMK[i][1]);
+  var cnt=(mood==='a'||mood==='h'||mood==='s'||mood==='l')?3:2;
+  var guard=0;while(pick.length<cnt&&set.length&&guard++<20){var c=rnd(set);if(pick.indexOf(c)<0)pick.push(c)}
+  var slots=EMS.slice().sort(function(){return Math.random()-.5}),box=el('div','emo');
+  box.style.width=nk.el.offsetWidth+'px';box.style.height=nk.el.offsetHeight+'px';
+  box.style.transform=nk.el.style.transform;
+  document.body.appendChild(box);emoBox=box;
+  var br=bubble&&bubble.el?bubble.el.getBoundingClientRect():null,used=0;
+  function hit(a){return br&&a.right>br.left-6&&a.left<br.right+6&&a.bottom>br.top-6&&a.top<br.bottom+6}
+  pick.forEach(function(c,i){
+    var e=el('i',null,c);box.appendChild(e);
+    for(var k=0;k<slots.length;k++){
+      var s=slots[(used+k)%slots.length];
+      e.style.left=s.l||'auto';e.style.right=s.r||'auto';e.style.top=s.t;
+      if(!hit(e.getBoundingClientRect())){used=(used+k+1);e.style.setProperty('--d',(i*.13+Math.random()*.1).toFixed(2)+'s');e.style.setProperty('--g',(2.2+Math.random()*2.4).toFixed(2)+'s');e.style.setProperty('--r',(Math.random()*24-12).toFixed(0)+'deg');return}
+    }
+    box.removeChild(e);
+  });
+  if(!box.children.length){emoClear(true)}
+  if(ttl)emoT=setTimeout(function(){emoClear()},ttl);
+}
+function killBubble(){emoClear();if(bubble){bubble.dead=true;if(bubble.el.parentNode)bubble.el.parentNode.removeChild(bubble.el);bubble=null;faceShow(false)}}
 function spawnNick(arr){
   ensureNick();var u=unit();
   killBubble();resetAuto();nk.lift=0;nk.gone=false;nk.el.style.display='';
@@ -352,7 +412,7 @@ function onNickDown(e){
   nk.drag=true;nk.el.classList.add('drag');nk.pid=e.pointerId;
   try{nk.el.setPointerCapture(e.pointerId)}catch(x){}
   nk.ox=e.clientX-nk.x;nk.oy=e.clientY-nk.y;nk.lt=performance.now();nk.vx=0;nk.vy=0;playGrab();
-  flashFace('s',1000);
+  flashFace('s',1000);emoShow(rnd(['s','d','p']),'',1300);
 }
 function onNickMove(e){
   if(!nk.drag||e.pointerId!==nk.pid)return;
@@ -457,7 +517,7 @@ function showBubble(lines,opts){
     }
     var raw=lines[li++],mood='n',mm=/^([a-z])\|/.exec(raw);
     if(mm){mood=mm[1];raw=raw.slice(2)}
-    faceSet(mood);faceShow(true);
+    faceSet(mood);faceShow(true);emoShow(mood,raw);
     var line=parseLine(raw),k=0;bt.style.opacity=1;bt.textContent='';
     (function typeCh(){
       if(me.dead)return;
@@ -465,7 +525,7 @@ function showBubble(lines,opts){
         var o=line[k++],n;
         if(o.z){n=el('span','cz',o.c);n.dataset.r=o.c}else n=document.createTextNode(o.c);
         bt.appendChild(n);if(k%3===0)playChirp();if(k%2===0){fc.i++;faceRender()}setTimeout(typeCh,30);
-      }else setTimeout(function(){bt.style.opacity=0;setTimeout(next,230)},800+line.length*34);
+      }else setTimeout(function(){bt.style.opacity=0;emoClear();setTimeout(next,230)},800+line.length*34);
     })();
   })();
 }
@@ -482,7 +542,7 @@ function posBubble(){
 }
 addEventListener('resize',function(){refreshPlats();if(nk&&!nk.gone&&!nk.drag&&nk.mode==='phys'){var B=bounds();nk.x=clamp(nk.x,2,Math.max(2,B.maxX));nk.y=clamp(nk.y,2,Math.max(2,B.floor));paint()}});
 /* появление на новой странице: выходит из портала */
-function emerge(){
+function emerge(L){
   ensureNick();busy=true;killBubble();resetAuto();nk.gone=false;nk.el.style.display='';nk.lift=0;
   nk.w=nk.el.offsetWidth;nk.h=nk.el.offsetHeight;
   var Q={x:innerWidth*(.28+Math.random()*.44),y:innerHeight*(.22+Math.random()*.2)},pb=makePortal(Q.x,Q.y);
@@ -497,7 +557,7 @@ function emerge(){
   },350);
   setTimeout(function(){
     closePortal(pb);nk.frozen=false;nk.el.style.pointerEvents='auto';nk.vy=-140*unit();busy=false;nk.rest=0;
-    showBubble(NK.arrive?rnd(NK.arrive):rnd(SPAWN),{});
+    showBubble(L?rnd(L):NK.arrive?rnd(NK.arrive):rnd(SPAWN),{});
   },1250);
 }
 /* уход со страницы: затягивает в портал, потом вызывается переход */
@@ -519,5 +579,23 @@ function leave(cb){
     requestAnimationFrame(fr);
   })(performance.now());
 }
-window.NICK={leave:leave,say:function(l){if(nk&&!nk.gone&&!bubble&&!busy)showBubble(l,{})}};
+/* слияние с поисковым запросом: ник влетает в строку поиска и растворяется в тексте */
+function absorb(el,cb){
+  if(!nk||nk.gone||busy||nk.frozen||nk.el.style.display==='none'){cb();return}
+  busy=true;killBubble();resetAuto();nk.frozen=true;nk.drag=false;nk.el.style.pointerEvents='none';
+  var r=el.getBoundingClientRect(),tx=r.left+Math.min(r.width*.42,160*unit())-nk.w/2,ty=r.top+r.height/2-nk.h/2,sx=nk.x,sy=nk.y,T0=performance.now()+80,snd=false,done=false;
+  function fin(){if(done)return;done=true;nk.gone=true;nk.el.style.display='none';busy=false;el.classList.add('merge');setTimeout(function(){el.classList.remove('merge')},900);cb()}
+  setTimeout(fin,1400);
+  (function fr(now){
+    var t=now-T0;
+    if(t<0){requestAnimationFrame(fr);return}
+    if(!snd){snd=true;playSuck(false)}
+    var q=clamp(t/650,0,1),e=q*q*(3-2*q);
+    nk.x=sx+(tx-sx)*e;nk.y=sy+(ty-sy)*e-Math.sin(q*Math.PI)*40;nk.a=q*300;
+    nk.inner.style.transition='none';nk.inner.style.transform='scale('+(1-.9*e).toFixed(3)+')';nk.inner.style.opacity=(1-Math.max(0,q-.6)/.4).toFixed(2);paint();
+    if(q>=1){setTimeout(fin,60);return}
+    requestAnimationFrame(fr);
+  })(performance.now());
+}
+window.NICK={leave:leave,absorb:absorb,back:emerge,say:function(l){if(nk&&!nk.gone&&!bubble&&!busy)showBubble(l,{})}};
 })();
