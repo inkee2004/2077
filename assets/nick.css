@@ -56,13 +56,3 @@
 .bubble .bh i{width:.32rem;height:.32rem;border:1px solid var(--dim);display:inline-block}
 .bubble .bh span{margin-left:auto}
 .bubble .bt{padding:.6rem .7rem .7rem;min-height:4.1rem;font-family:var(--mono);font-size:.86rem;line-height:1.5;color:#e9ecf2;transition:opacity .2s ease}
-
-
-/* эмодзи вокруг рамки ника + глитч */
-.emo{position:fixed;left:0;top:0;pointer-events:none;z-index:90;transition:opacity .35s ease}
-.emo.out{opacity:0}
-.emo i{position:absolute;font-style:normal;font-size:1.35rem;line-height:1;white-space:nowrap;--r:0deg;animation:eIn .55s steps(1) var(--d,0s) both,eFl var(--g,3s) ease-in-out calc(var(--d,0s) + .55s) infinite alternate,eGl 3.1s steps(1) calc(var(--d,0s) + 1s) infinite;filter:drop-shadow(0 0 .35rem rgba(180,200,255,.35))}
-@keyframes eIn{0%{opacity:0;transform:scale(.2) rotate(var(--r))}12%{opacity:1;transform:translate(-5px,1px) scale(1.5) skewX(24deg);filter:drop-shadow(-4px 0 #ff2d6f) drop-shadow(4px 0 #2de2ff)}28%{transform:translate(5px,-2px) scale(.8) skewX(-20deg);clip-path:inset(0 0 55% 0)}44%{transform:translate(-3px,1px) scale(1.2);clip-path:inset(40% 0 0 0);filter:drop-shadow(3px 0 #ff2d6f) drop-shadow(-3px 0 #2de2ff)}60%{opacity:.4;transform:scale(1);clip-path:none}76%{opacity:1;transform:translate(2px,0) skewX(8deg)}100%{opacity:1;transform:rotate(var(--r))}}
-@keyframes eFl{from{translate:0 0;rotate:0deg}to{translate:0 -.35rem;rotate:calc(var(--r)*.5)}}
-@keyframes eGl{0%,88%,100%{clip-path:none;transform:rotate(var(--r))}90%{transform:translate(-4px,1px) skewX(16deg) rotate(var(--r));clip-path:inset(0 0 60% 0);filter:drop-shadow(-4px 0 #ff2d6f) drop-shadow(4px 0 #2de2ff)}92%{transform:translate(4px,-1px) skewX(-14deg) rotate(var(--r));clip-path:inset(50% 0 0 0);filter:drop-shadow(4px 0 #ff2d6f) drop-shadow(-4px 0 #2de2ff)}94%{transform:translate(-2px,0) rotate(var(--r));clip-path:none;opacity:.35}96%{opacity:1;transform:rotate(var(--r))}}
-@media (prefers-reduced-motion:reduce){.emo i{animation:eIn .3s steps(1) both}}

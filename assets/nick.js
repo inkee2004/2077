@@ -29,9 +29,9 @@ var FLY=[
  ['f|киберпсих в небе, держись! «Always Best Quality» — на высоте.']
 ];
 var ROAST=[
- ['n|сижу, смотрю как ты ищешь.','y|«Cute and Sexy Pose Pack for FemV» — для фотосессии, да? конечно.','y|«Fast Travel Hologram Lucy» — романтик, бл{я}ть.','l|ну ты и извращенец, чумба.'],
+ ['n|сижу, смотрю как ты ищешь.','y|«Fast Travel Hologram Lucy» — романтик, бл{я}ть.','l|ну ты и извращенец, чумба.'],
  ['n|ты чё, опять в моды полез?','s|постер «Just Monika» в гостиной — еб{а}нуться, она же смотрит!','y|Моника, Люси… у тебя не сборка, а гарем.','w|молчу. я неряха, не стукач.'],
- ['n|«Reset Attributes» — сбросил бы себе характер.','a|а «Mod Settings» опять не открывается, сук{а}? это ты, не я.','l|«Photomode Facial Expression Mega Pack» мне! лицо глючит, видишь?']
+ ['n|«Reset Attributes» — сбросил бы себе характер.','a|а «Mod Settings» опять не открывается, сук{а}? это ты, не я.']
 ];
 var DOWN=[['z|всё, надоело. вниз.'],['n|хватит. тут бардак, мне пора.'],['w|пойду «Reset Attributes» — характер сбрасывать.']];
 var JUMP=[['h|опа! на ту рамку!'],['h|прыг, бл{я}ть. совсем как «Fast Travel from anywhere»!'],['l|гравитация — для лохов.']];
@@ -41,13 +41,11 @@ var QUIPS={
  0:['n|«RED4ext», «redscript», «TweakXL»… фреймворков больше, чем у меня чистых носков.','w|без «Cyber Engine Tweaks» ни х{е}рена не запустится. как я без кофе.','s|«Mod Settings» и «Native Settings UI» — настройки есть, порядка нет.','w|«Browser Extension» — браузер в игре. а у меня в браузере сто вкладок с модами.'],
  1:['a|«Decals Flickering Fix» — мерцание починили. а моё лицо не чинят, сук{а}.','y|«Disappearing NPC and Vehicle Fix» — пусть бы мои носки так же исчезали.','s|«Accidental fast travel bug fix» — случайный телепорт? у меня каждый день: «забыл, куда шёл».','l|«Ragdoll Execution Fix» — наконец трупы падают как надо. я падаю ещё лучше.','n|«Empty Quickhack Menu Fix» — пустое меню починили. голову мне кто-нибудь починит?','z|«Static Takeout Cups Bugfix» — стаканчик залип. у меня дома такие стоят с весны.','a|«Eddies Notification Fix» — эдди видно, а толку? я всё равно на мели.'],
  2:['n|«Hide Distant 2D Cars» — плоские машины! как мои шутки.','y|«Not So Good Draw Distance» — название честное, как моя гигиена.','l|«Always Best Quality» — а у меня «Always Worst Quality».','s|«Draw Distance ReImagined» — вижу далеко, а убраться под носом лень.'],
- 3:['y|«Just Monika Living Room Poster»… Just Monika. бл{я}ть, она на меня смотрит.','l|«Fast Travel Hologram Lucy» — Люси провожает в телепорт. меня бы так в душ провожали.','n|«Dirt Begone» убирает грязь с экрана. мне б такой в комнату.','z|«Blur Begone», «Glow Begone» — всё чёткое, а я мутный.','y|«Preem Water 2.0» — вода красивая. мыться я всё равно не пойду.','w|«Weather Switcher» — погоду переключил, а настроение никак.','h|«Japantown Apartment View Enhanced» — вид шикарный, а в квартире срач, как у меня.'],
+ 3:['y|«Just Monika Living Room Poster»… Just Monika. бл{я}ть, она на меня смотрит.','l|«Fast Travel Hologram Lucy» — Люси провожает в телепорт. меня бы так в душ провожали.','n|«Dirt Begone» убирает грязь с экрана. мне б такой в комнату.','z|«Blur Begone», «Glow Begone» — всё чёткое, а я мутный.','y|«Preem Water 2.0» — вода красивая. мыться я всё равно не пойду.','w|«Weather Switcher» — погоду переключил, а настроение никак.','h|«Japantown Apartment View Enhanced» — вид шикарный, а в квартире срач, как у меня.','n|«Authentic Shift» — передачи как в жизни. у меня одна передача — «лень».'],
  4:['w|«Reset Attributes» — мне б сбросить характер. «Опрятность: 0, лень: 99».','h|«No Intro Videos» — наконец без заставок. а я бы свою оставил.','y|«Virtual Atelier» — магазин одежды, а я хожу в одном и том же. и без носков.','s|«Immersive First Person 2.0» — от первого лица… лучше б ты не видел, как я живу.','n|«No Camera Auto Centering» — камера не дёргается. зато нервы дёргаются.'],
- 5:['n|«Authentic Shift» — передачи как в жизни. у меня одна передача — «лень».','z|одна машина на всю рамку, и та не моя.'],
- 6:['y|«Cute and Sexy Pose Pack» — позы красивые. я знаю только одну: «лёжа».','l|«Photomode Facial Expression Mega Pack» — мне такой! у меня мимика из пяти смайликов, и те глючат.','y|«VTK FemV — Kala’s Tattoos» — у меня тоже есть татуха. «Не мыть».','n|«VTK Vanilla HD Body» — тело в HD. а у меня в 240p и с артефактами.'],
  search:['n|«Найти мод»… а «найти носок» где?','y|ищи-ищи, я за тобой присмотрю.','h|в поиск можно вписать не только моды. например, меня. то, что на табличке.','s|попробуй вписать мой ник. только не пугайся: я умею влетать в строку.'],
  snd:['w|звук… «Loud Noises Fix - Audio Pool Fix» тут бы не помешал.','h|слышишь, как я топаю? это пиксели хрустят.'],
- dl:['h|«Скачать сборку» — 90 архивов! пока качается, я посижу.','w|90 архивов… иди поешь, неряха. я тоже пожрал бы.','n|там три варианта: с тату, без тату и стандарт. я бы взял стандарт — как мой гардероб.','y|выбирай вариант и жми «Скачать». фото можно увеличить, я подглядывал.'],
+ dl:['h|«Скачать сборку» — 83 архива! пока качается, я посижу.','w|83 архива… иди поешь, неряха. я тоже пожрал бы.','n|сначала прочитай три пункта, потом ставь галочку. я бы пропустил, но я не пример.','y|галочка «Спасибо, я все понял» — и кнопка оживает. магия, бл{я}ть.'],
  perf:['n|«1660S 6GB» и «почти макс. графика» — смелый ты человек. я бы уже плакал.','y|30–50 FPS и статеры — кинематографично. как мои сны про «Fast Travel» до холодильника.','h|«Посмотреть видео-тест» — там всё честно, без нарезок. почти как я без душа.','w|«i5-10400F», 16 RAM, SSD — не топ, но и не «Not So Good Draw Distance».','s|нативное сглаживание… у меня тоже всё нативное: и лень, и бардак.'],
  note:['n|шаг два — «прочитать руководство». все его пропускают, как я душ.','h|шаг три — «приступить к прохождению». наконец-то.','y|рядом блок с тестом. сначала читай руководство, потом смотри цифры.'],
  floor:['y|внизу пусто. зато никто не видит мой бардак.','w|«Inplace Streamingsectors Nulled» — а мне бы «Inplace Мозги Nulled».','n|я на дне страницы. как мой рейтинг.']
@@ -144,72 +142,14 @@ function ensureNick(){
   e.addEventListener('pointercancel',onNickUp);
   return nk;
 }
-function paint(){var tr='translate3d('+nk.x+'px,'+(nk.y-nk.lift-nk.bob)+'px,0) rotate('+nk.a+'deg)';nk.el.style.transform=tr;if(emoBox)emoBox.style.transform=tr}
+function paint(){var tr='translate3d('+nk.x+'px,'+(nk.y-nk.lift-nk.bob)+'px,0) rotate('+nk.a+'deg)';nk.el.style.transform=tr}
 /* плавный возврат к обычному состоянию: лапки и крылья гаснут, ник мягко оседает */
 function resetAuto(){
   if(!nk)return;
   nk.el.classList.remove('legs-on','still','fast','wings-on','perch','struggle');
   nk.mode='phys';nk.rest=0;nk.bob=0;nk.t=0;nk.ball=false;
 }
-/* эмодзи-реакции: появляются вокруг рамки ника (не в диалоге), у каждого свой глитч */
-var EMO={
- n:['😐','🙄','🤨','🫠','💭','🧐'],
- h:['😍','❤️','🌟','🍻','🥰','✨','💫','😊'],
- l:['🤪','😜','🌀','🎉','🫪','🪩','✨'],
- a:['🤬','😡','💢','🔥','👿','🗯️'],
- z:['😴','💤','🥱','🫥','🌙'],
- s:['😱','😳','🫨','‼️','👻','🙀'],
- y:['😏','😎','🔎','👀','🤭','😈','🕶️'],
- f:['🎉','🥳','🌟','🎊','🍻'],
- d:['😵‍💫','💫','🫨','🥴','🌀'],
- w:['🤷','🫪','🍻','🥴','😮‍💨','🫤'],
- p:['😰','😨','🫣','💦','😬','🆘']
-};
-var EMK=[[/носк/i,'🧦'],[/душ|гигиен|мыт/i,'🚿'],[/кофе/i,'☕'],[/холодил|поесть|пожрал|еда/i,'🍔'],[/поиск|найти|ищи|inkee2004/i,'🔎'],[/видео|кадр|fps/i,'🎞️'],[/monika|смотрит|подгляд/i,'👀'],[/телепорт|fast travel|портал/i,'🌀'],[/мусор/i,'🗑️'],[/тату|татуха/i,'🐉'],[/звук|слышиш|топаю|noise/i,'🔊'],[/ночь|сон|сны|спать/i,'🌙'],[/машин|shift|передач/i,'🚗'],[/оружи|quickhack|хак/i,'💻'],[/свет|свеч|glow|relux/i,'💡'],[/погод|rain|дожд/i,'🌧️'],[/руководств|читай/i,'📖'],[/скачать|архив/i,'📦'],[/настро/i,'⚙️'],[/лень|ленив/i,'🛋️'],[/глаза|kiroshi|eye/i,'👁️'],[/лицо|мимик|поз/i,'🎭']];
-var EMS=[{l:'-1.2rem',t:'-1.9rem'},{r:'-1rem',t:'-2rem'},{l:'38%',t:'-2.4rem'},{l:'-2.1rem',t:'.1rem'},{r:'-2.1rem',t:'.1rem'},{l:'62%',t:'-2.1rem'}];
-var emoOK={},emoBox=null,emoT=null;
-function emoSup(c){
-  if(c in emoOK)return emoOK[c];
-  var ok=true;
-  try{
-    var cv=document.createElement('canvas');cv.width=cv.height=40;var x=cv.getContext('2d');x.font='28px sans-serif';x.textBaseline='top';
-    function sig(t){x.clearRect(0,0,40,40);x.fillText(t,2,2);return cv.toDataURL()}
-    var s=sig(c),bad=sig(String.fromCodePoint(0x10FFFF));ok=s!==bad&&s!==sig('');
-  }catch(e){ok=true}
-  return emoOK[c]=ok;
-}
-function emoClear(fast){
-  clearTimeout(emoT);
-  if(!emoBox)return;
-  var b=emoBox;emoBox=null;
-  b.classList.add('out');setTimeout(function(){if(b.parentNode)b.parentNode.removeChild(b)},fast?60:380);
-}
-function emoShow(mood,text,ttl){
-  emoClear(true);
-  if(!nk||nk.gone||!nk.el)return;
-  var set=(EMO[mood]||EMO.n).filter(emoSup),pick=[],t=text||'';
-  for(var i=0;i<EMK.length&&pick.length<1;i++)if(EMK[i][0].test(t)&&emoSup(EMK[i][1]))pick.push(EMK[i][1]);
-  var cnt=(mood==='a'||mood==='h'||mood==='s'||mood==='l')?3:2;
-  var guard=0;while(pick.length<cnt&&set.length&&guard++<20){var c=rnd(set);if(pick.indexOf(c)<0)pick.push(c)}
-  var slots=EMS.slice().sort(function(){return Math.random()-.5}),box=el('div','emo');
-  box.style.width=nk.el.offsetWidth+'px';box.style.height=nk.el.offsetHeight+'px';
-  box.style.transform=nk.el.style.transform;
-  document.body.appendChild(box);emoBox=box;
-  var br=bubble&&bubble.el?bubble.el.getBoundingClientRect():null,used=0;
-  function hit(a){return br&&a.right>br.left-6&&a.left<br.right+6&&a.bottom>br.top-6&&a.top<br.bottom+6}
-  pick.forEach(function(c,i){
-    var e=el('i',null,c);box.appendChild(e);
-    for(var k=0;k<slots.length;k++){
-      var s=slots[(used+k)%slots.length];
-      e.style.left=s.l||'auto';e.style.right=s.r||'auto';e.style.top=s.t;
-      if(!hit(e.getBoundingClientRect())){used=(used+k+1);e.style.setProperty('--d',(i*.13+Math.random()*.1).toFixed(2)+'s');e.style.setProperty('--g',(2.2+Math.random()*2.4).toFixed(2)+'s');e.style.setProperty('--r',(Math.random()*24-12).toFixed(0)+'deg');return}
-    }
-    box.removeChild(e);
-  });
-  if(!box.children.length){emoClear(true)}
-  if(ttl)emoT=setTimeout(function(){emoClear()},ttl);
-}
-function killBubble(){emoClear();if(bubble){bubble.dead=true;if(bubble.el.parentNode)bubble.el.parentNode.removeChild(bubble.el);bubble=null;faceShow(false)}}
+function killBubble(){if(bubble){bubble.dead=true;if(bubble.el.parentNode)bubble.el.parentNode.removeChild(bubble.el);bubble=null;faceShow(false)}}
 function spawnNick(arr){
   ensureNick();var u=unit();
   killBubble();resetAuto();nk.lift=0;nk.gone=false;nk.el.style.display='';
@@ -230,7 +170,7 @@ if(arrived)setTimeout(emerge,700);else setTimeout(spawnNick,4700);
 function loop(t){
   var raw=Math.max(.001,(t-lastT)/1000),dt=Math.min(.033,raw);lastT=t;
   if(!nk||nk.gone){loopOn=false;return}
-  platT-=raw;if(platT<=0){platT=.4;refreshPlats()}
+  platT-=raw;if(platT<=0){platT=1;refreshPlats()}
   nk.rdt=raw;step(dt);
   requestAnimationFrame(loop);
 }
@@ -412,7 +352,7 @@ function onNickDown(e){
   nk.drag=true;nk.el.classList.add('drag');nk.pid=e.pointerId;
   try{nk.el.setPointerCapture(e.pointerId)}catch(x){}
   nk.ox=e.clientX-nk.x;nk.oy=e.clientY-nk.y;nk.lt=performance.now();nk.vx=0;nk.vy=0;playGrab();
-  flashFace('s',1000);emoShow(rnd(['s','d','p']),'',1300);
+  flashFace('s',1000);
 }
 function onNickMove(e){
   if(!nk.drag||e.pointerId!==nk.pid)return;
@@ -517,7 +457,7 @@ function showBubble(lines,opts){
     }
     var raw=lines[li++],mood='n',mm=/^([a-z])\|/.exec(raw);
     if(mm){mood=mm[1];raw=raw.slice(2)}
-    faceSet(mood);faceShow(true);emoShow(mood,raw);
+    faceSet(mood);faceShow(true);
     var line=parseLine(raw),k=0;bt.style.opacity=1;bt.textContent='';
     (function typeCh(){
       if(me.dead)return;
@@ -525,7 +465,7 @@ function showBubble(lines,opts){
         var o=line[k++],n;
         if(o.z){n=el('span','cz',o.c);n.dataset.r=o.c}else n=document.createTextNode(o.c);
         bt.appendChild(n);if(k%3===0)playChirp();if(k%2===0){fc.i++;faceRender()}setTimeout(typeCh,30);
-      }else setTimeout(function(){bt.style.opacity=0;emoClear();setTimeout(next,230)},800+line.length*34);
+      }else setTimeout(function(){bt.style.opacity=0;setTimeout(next,230)},800+line.length*34);
     })();
   })();
 }
@@ -540,6 +480,7 @@ function posBubble(){
   }
   bubble.el.style.transform='translate3d('+x+'px,'+y+'px,0)';
 }
+addEventListener('scroll',function(){platT=0},{passive:true});
 addEventListener('resize',function(){refreshPlats();if(nk&&!nk.gone&&!nk.drag&&nk.mode==='phys'){var B=bounds();nk.x=clamp(nk.x,2,Math.max(2,B.maxX));nk.y=clamp(nk.y,2,Math.max(2,B.floor));paint()}});
 /* появление на новой странице: выходит из портала */
 function emerge(L){

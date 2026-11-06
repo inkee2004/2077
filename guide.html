@@ -6,7 +6,8 @@
 <title>Руководство по настройке — Cyberpunk 2077</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
 <style>
 :root{
   --bg:#07080c;
@@ -25,7 +26,7 @@ html{font-size:min(.8333vw,max(1.5625vh,12px),30px)}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* ---------- фон ---------- */
-.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#0d0f16 0%,#07080c 60%)}
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;contain:layout paint;background:radial-gradient(120% 90% at 50% 0%,#0d0f16 0%,#07080c 60%)}
 .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform}
 .b1{width:46vw;height:46vw;left:-12vw;top:-18vw;background:radial-gradient(circle,rgba(150,165,205,.20),transparent 68%);animation:d1 38s ease-in-out infinite alternate}
 .b2{width:40vw;height:40vw;right:-10vw;top:12vh;background:radial-gradient(circle,rgba(190,170,210,.13),transparent 68%);animation:d2 46s ease-in-out infinite alternate}
@@ -65,7 +66,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
 .ch h2 i{font-style:normal;color:var(--faint);white-space:pre}
 .ct{flex:none;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--dim);border:1px solid var(--line2);border-radius:999px;padding:.12rem .55rem}
 
-.acts{grid-column:4;justify-self:end;display:flex;align-items:center;gap:.6rem}
+.acts{grid-column:4;justify-self:end;display:flex;align-items:center;gap:.6rem;transform:translateY(-1.15rem)}
 .snd,.back{display:flex;align-items:center;gap:.5rem;padding:.34rem .85rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);background:rgba(255,255,255,.03);border:1px solid var(--line2);border-radius:999px;text-decoration:none;white-space:nowrap;cursor:pointer;transition:color .25s,border-color .25s;backdrop-filter:blur(.5rem);-webkit-backdrop-filter:blur(.5rem)}
 .snd svg,.back svg{flex:none;width:.85rem;height:.85rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .snd .off{display:none}
@@ -141,7 +142,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
   .hd{align-self:center}
   h1{font-size:1.9rem;white-space:normal;text-align:center}
   .tags{display:none}
-  .acts{align-self:center}
+  .acts{align-self:center;transform:none}
 }
 @media (max-width:759px),(hover:none) and (pointer:coarse){
   html{font-size:15px}
@@ -150,6 +151,8 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
   .card.g .desc{padding:0 .7rem .25rem}
   .rows{flex:none}.it{grid-template-columns:minmax(0,1fr);row-gap:.15rem}
   .note{grid-template-columns:minmax(0,1fr)}
+  .note .kv{grid-template-columns:minmax(0,1fr)}
+  .note .kv span{white-space:normal;text-align:center}
 }
 @media (max-width:479px){
   .page{padding:2rem .7rem 1.6rem}
@@ -163,8 +166,10 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
 @media (max-height:520px) and (min-width:700px){.page{padding-top:1.4rem}}
 @media (prefers-reduced-motion:reduce){.blob,.card{animation:none!important}}
 @media (hover:none) and (pointer:coarse){html{font-size:clamp(15px,min(3.1vw,5vh),30px)}}
+@media (hover:none) and (pointer:coarse){.card,.tag,.search,.snd,.dl,.gd,.vd,.back,.perf,.dlnote,.dm,.dm-head,.lb,.vid,.nick-in,.bubble{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
 </style>
-<link rel="stylesheet" href="assets/nick.css">
+<script>window.MOB=matchMedia('(hover:none) and (pointer:coarse)').matches</script>
+<script>MOB||document.write('<link rel="stylesheet" href="assets/nick.css">')</script>
 </head>
 <body>
 <div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
@@ -241,7 +246,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
     s.addEventListener('click',function(){if(!s.classList.contains('empty'))open(i)});
   });
   var back=document.getElementById('back');
-  back.addEventListener('click',function(e){
+  if(!MOB)back.addEventListener('click',function(e){
     if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
     e.preventDefault();
     try{sessionStorage.setItem('nk-arrive','1')}catch(x){}
@@ -268,7 +273,7 @@ h1{margin:0;text-align:center;font-family:var(--disp);font-weight:600;font-size:
 })();
 </script>
 <script>
-window.NICKCFG={sel:'.card,.snd,.back',
+if(!MOB)window.NICKCFG={sel:'.card,.snd,.back',
  arrive:[['s|о, а я уже тут. «Руководство по настройке» — читай, не тупи.','y|и скриншоты разгляди, а то «Console» ему подавай.'],['h|я с тобой! «Eye Adaptation» настроим — глаза не сломаем.']],
  quips:{
   g0:['n|«Cyber Engine Tweaks» — окошки поверх меню. выглядят как мой рабочий стол.','s|«Hud Fixes»: интерфейс пропал — нажми кнопку, не плачь.','w|«Weather Switcher» в главном меню не работает. я проверял. дважды.','y|«Console» — для тех, кто любит чит-коды. я люблю.'],
@@ -279,6 +284,6 @@ window.NICKCFG={sel:'.card,.snd,.back',
  }};
 </script>
 <script>if(location.protocol==="file:"){var b=document.getElementById("back");if(b)b.setAttribute("href","index.html")}</script>
-<script src="assets/nick.js"></script>
+<script>MOB||document.write('<script src="assets/nick.js"><\/script>')</script>
 </body>
 </html>

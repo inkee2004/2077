@@ -6,7 +6,8 @@
 <title>Список модов — Cyberpunk 2077</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 <style>
 :root{
   --bg:#07080c;
@@ -25,7 +26,7 @@ html{font-size:min(.8333vw,max(1.5625vh,12px),30px)}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* ---------- фон ---------- */
-.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#0d0f16 0%,#07080c 60%)}
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;contain:layout paint;background:radial-gradient(120% 90% at 50% 0%,#0d0f16 0%,#07080c 60%)}
 .blob{position:absolute;border-radius:50%;opacity:.55;will-change:transform}
 .b1{width:46vw;height:46vw;left:-12vw;top:-18vw;background:radial-gradient(circle,rgba(150,165,205,.20),transparent 68%);animation:d1 38s ease-in-out infinite alternate}
 .b2{width:40vw;height:40vw;right:-10vw;top:12vh;background:radial-gradient(circle,rgba(190,170,210,.13),transparent 68%);animation:d2 46s ease-in-out infinite alternate}
@@ -101,8 +102,8 @@ a.mod:hover .ar,a.mod:focus-visible .ar{opacity:.9;transform:none}
 .board.focus a.mod:not(.hot){opacity:.5}
 
 /* посимвольная подсветка поиска */
-.nm .c{background:linear-gradient(currentColor,currentColor) 0 100%/0% 1px no-repeat;transition:color .38s ease,text-shadow .38s ease,background-size .38s ease;transition-delay:calc(var(--d,0)*26ms)}
-.nm .c.m{color:#fff;text-shadow:0 0 .6rem rgba(255,255,255,.6);background-size:100% 1px}
+.nm .c{transition:color .38s ease,text-shadow .38s ease;transition-delay:calc(var(--d,0)*26ms)}
+.nm .c.m{color:#fff;text-shadow:0 0 .6rem rgba(255,255,255,.6)}
 a.mod.sm{color:var(--text);background:rgba(255,255,255,.045)}
 a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 .board.q a.mod:not(.sm){opacity:.42}
@@ -141,7 +142,8 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
   html{font-size:clamp(13.5px,1.05vw,17px)}
   .board{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row dense}
   .card{grid-column:span 1!important}
-  .card:nth-child(2),.card:nth-child(4),.card:nth-child(7){grid-column:span 2!important}
+  .card:nth-child(2),.card:nth-child(4),.card:nth-child(5){grid-column:span 2!important}
+  .card:nth-child(5) .list{--r:4!important}
   .page{padding:2.4rem 2rem 2.4rem}
   .top{height:auto;grid-template-rows:7.4rem auto;row-gap:1.6rem}
   .perf{grid-column:1 / -1;grid-row:2;position:relative;left:auto;right:auto;top:auto;transform:none;justify-self:center;width:min(100%,36rem)}
@@ -155,7 +157,8 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
   html{font-size:14px}
   .page{padding:2.4rem 1rem 2rem;justify-content:flex-start}
   .top{display:flex;flex-direction:column;height:auto;gap:1.2rem;align-items:stretch}
-  .hd{align-self:center}
+  .hd{align-self:stretch;width:auto;justify-self:stretch;justify-items:center;text-align:center}
+  .tags{width:100%;min-width:0;justify-content:center;flex-wrap:wrap}
   .mid{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:.7rem;justify-items:center}
   .mid .search,.mid .dlnote{grid-column:1 / -1}
   .snd{justify-self:end}.dl{justify-self:start}
@@ -168,7 +171,8 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 @media (max-width:699px),(hover:none) and (pointer:coarse){
   html{font-size:15px}
   .board{grid-template-columns:minmax(0,1fr)}
-  .card,.card:nth-child(2),.card:nth-child(4),.card:nth-child(7){grid-column:auto!important}
+  .card,.card:nth-child(2),.card:nth-child(4),.card:nth-child(5){grid-column:auto!important}
+  .card:nth-child(5) .list{--r:8!important}
   .list{grid-auto-flow:row;grid-template-rows:none!important;grid-auto-rows:var(--rh)}
   .card:nth-child(2) .list{--r:11!important}
   .search{width:min(24rem,86vw)}
@@ -196,50 +200,35 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 
 
 
-/* ---------- окно выбора сборки ---------- */
-.dm{position:fixed;inset:0;z-index:150;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(5,6,9,.78);backdrop-filter:blur(.7rem);-webkit-backdrop-filter:blur(.7rem);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility 0s linear .28s}
+/* ---------- окно скачивания ---------- */
+.dm{position:fixed;inset:0;z-index:150;display:flex;align-items:center;justify-content:center;padding:1rem;background:rgba(5,6,9,.78);backdrop-filter:blur(.7rem);-webkit-backdrop-filter:blur(.7rem);opacity:0;visibility:hidden;overflow:hidden;transition:opacity .28s ease,visibility 0s linear .28s}
 .dm.on{opacity:1;visibility:visible;transition:opacity .28s ease}
-.dm-box{position:relative;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;display:flex;flex-direction:column;width:min(86rem,100%);height:min(63rem,calc(100vh - 3rem));padding:.2rem .6rem .7rem;border:1px solid var(--line);border-radius:.7rem;background:rgba(13,14,20,.94);box-shadow:0 2rem 5rem rgba(0,0,0,.6);transform:translateY(.8rem) scale(.985);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.dm-box{position:relative;width:min(34rem,100%);max-height:100%;overflow:auto;scrollbar-width:none;padding:.2rem .7rem .8rem;border:1px solid var(--line);border-radius:.7rem;background:rgba(13,14,20,.94);box-shadow:0 2rem 5rem rgba(0,0,0,.6);transform:translateY(.8rem) scale(.985);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.dm-box::-webkit-scrollbar{display:none}
 .dm.on .dm-box{transform:none}
 .dm-box::before,.dm-box::after{content:"";position:absolute;width:.8rem;height:.8rem;border:1px solid rgba(255,255,255,.75);opacity:.65;pointer-events:none}
-.dm-box::-webkit-scrollbar{display:none}
 .dm-box::before{top:0;left:0;border-right:0;border-bottom:0;border-top-left-radius:.7rem}
 .dm-box::after{right:0;bottom:0;border-left:0;border-top:0;border-bottom-right-radius:.7rem}
-.dm-head{flex:none;display:flex;align-items:center;justify-content:space-between;height:2.9rem;padding:0 .7rem;margin-bottom:.5rem;border-bottom:1px solid var(--line2)}
+.dm-head{display:flex;align-items:center;justify-content:space-between;height:2.9rem;padding:0 .2rem 0 .3rem;margin-bottom:.7rem;border-bottom:1px solid var(--line2)}
 .dm-head h2{margin:0;font-family:var(--mono);font-weight:500;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;color:#eceef3}
-.dm-head h2 i{font-style:normal;color:var(--faint);white-space:pre}
 .dm-x{width:1.9rem;height:1.9rem;display:grid;place-items:center;padding:0;color:var(--dim);background:rgba(255,255,255,.03);border:1px solid var(--line2);border-radius:50%;cursor:pointer;transition:color .25s,border-color .25s}
 .dm-x svg{width:.8rem;height:.8rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
 .dm-x:hover,.dm-x:focus-visible{color:#fff;border-color:var(--line);outline:none}
-.dm-grid{flex:1;min-height:34rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
-.dm-card{min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:.7rem;padding:.5rem;border:1px solid var(--line2);border-radius:.55rem;background:rgba(255,255,255,.025)}
-.dm-ph{position:relative;min-height:0;padding:0;border:1px solid var(--line2);border-radius:.4rem;overflow:hidden;background:rgba(0,0,0,.35);cursor:zoom-in;outline:none;transition:border-color .3s ease,box-shadow .3s ease}
-.dm-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.dm-ph:hover,.dm-ph:focus-visible{border-color:var(--line);box-shadow:0 0 1.6rem rgba(220,228,255,.08)}
-.dm-ph:hover img{transform:scale(1.02)}
-.dm-ph::after{content:"";position:absolute;right:.55rem;bottom:.55rem;width:1.5rem;height:1.5rem;border:1px solid var(--line);border-radius:50%;background:rgba(10,11,16,.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23d9dde6' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='8.5' cy='8.5' r='5'/%3E%3Cpath d='M12.3 12.3L17 17M8.5 6.3v4.4M6.3 8.5h4.4'/%3E%3C/svg%3E") center/62% no-repeat;opacity:.8;pointer-events:none}
-.dm-info{display:flex;flex-direction:column;gap:.45rem;padding:0 .2rem .1rem}
-.dm-n{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
-.dm-info h3{margin:0;font-family:var(--mono);font-weight:500;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:#eceef3;white-space:nowrap}
-.dm-d{margin:0;font-size:.8rem;line-height:1.5;color:var(--dim)}
-.dm-b{margin:0;padding:.35rem .6rem;border-left:2px solid rgba(236,238,245,.6);border-radius:.3rem;background:rgba(255,255,255,.05);font-size:.78rem;line-height:1.45;color:#e2e5ec}
-.dm-b i{font-style:normal;color:var(--faint);white-space:pre}
-.dm-b span{display:block;margin-bottom:.1rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;opacity:.7}
-.dm-kv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem}
-.dm-kv div{display:flex;flex-direction:column;align-items:center;gap:.15rem;padding:.38rem .2rem;border:1px solid var(--line2);border-radius:.35rem;background:rgba(255,255,255,.028);text-align:center}
-.dm-kv small{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
-.dm-kv b{font-family:var(--mono);font-weight:500;font-size:.8rem;letter-spacing:.04em;color:#fff;text-transform:uppercase}
-.dm-kv b.no{color:var(--faint)}
-.dm-go{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.42rem .8rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#eceef3;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;transition:background-color .25s,border-color .25s,color .25s}
-.dm-go svg{width:.8rem;height:.8rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.dm-pts{display:grid;gap:.55rem;margin:0 0 .9rem;padding:0;list-style:none}
+.dm-pts li{padding:.6rem .8rem;border:1px solid var(--line2);border-left:2px solid rgba(236,238,245,.6);border-radius:.4rem;background:rgba(255,255,255,.035);font-size:.84rem;line-height:1.5;color:#e2e5ec}
+.dm-ok{display:flex;align-items:center;gap:.7rem;width:max-content;max-width:100%;margin:0 auto .8rem;font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);cursor:pointer;-webkit-user-select:none;user-select:none;transition:color .25s}
+.dm-ok input{position:absolute;opacity:0;width:0;height:0}
+.dm-ok .bx{flex:none;width:1.15rem;height:1.15rem;display:grid;place-items:center;border:1px solid var(--line);border-radius:.3rem;background:rgba(255,255,255,.04);transition:border-color .25s,background-color .25s}
+.dm-ok .bx svg{width:.8rem;height:.8rem;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:0;transform:scale(.6);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1)}
+.dm-ok input:checked~.bx{border-color:rgba(236,238,245,.7);background:rgba(255,255,255,.14)}
+.dm-ok input:checked~.bx svg{opacity:1;transform:none}
+.dm-ok input:checked~.tx,.dm-ok:hover{color:#fff}
+.dm-ok input:focus-visible~.bx{box-shadow:0 0 0 2px rgba(220,228,255,.35)}
+.dm-go{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1rem;font-family:var(--mono);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:#eceef3;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;transition:background-color .25s,border-color .25s,color .25s,opacity .25s}
+.dm-go svg{width:.9rem;height:.9rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .dm-go:hover,.dm-go:focus-visible{background:rgba(255,255,255,.1);border-color:rgba(236,238,245,.55);color:#fff;outline:none}
+.dm-go[aria-disabled="true"]{opacity:.38;pointer-events:none;cursor:not-allowed}
 
-.dm-ph,.dm-ph img,.lb,.lb img{-webkit-user-select:none;user-select:none;-webkit-user-drag:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
-.dm-ph::selection,.dm-ph img::selection,.lb img::selection{background:transparent}
-.lb{position:fixed;inset:0;z-index:170;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(5,6,9,.92);backdrop-filter:blur(.6rem);-webkit-backdrop-filter:blur(.6rem);opacity:0;pointer-events:none;transition:opacity .3s ease;cursor:zoom-out}
-.lb.on{opacity:1;pointer-events:auto}
-.lb img{max-width:94vw;max-height:94vh;border:1px solid var(--line);border-radius:.5rem;box-shadow:0 1.4rem 4rem rgba(0,0,0,.6);transform:scale(.96);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-.lb.on img{transform:none}
 .search.merge{animation:mrg .9s ease-out}
 @keyframes mrg{0%{box-shadow:0 0 0 0 rgba(220,230,255,0)}35%{box-shadow:0 0 2rem .15rem rgba(220,230,255,.5);border-color:rgba(255,255,255,.8)}100%{box-shadow:0 0 0 0 rgba(220,230,255,0)}}
 .vid{position:fixed;inset:0;z-index:180;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(5,6,9,.92);backdrop-filter:blur(.6rem);-webkit-backdrop-filter:blur(.6rem);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease,visibility 0s .3s}
@@ -252,47 +241,13 @@ a.mod.sm::before{transform:translateY(-50%) scaleY(.5);opacity:.6}
 .vid video{display:block;width:100%;aspect-ratio:16/9;background:#000}
 html.mlock,html.mlock body{overflow:hidden!important}
 .dm{overflow:hidden}
-@media (max-width:1199px),(hover:none) and (pointer:coarse){
-  .dm{padding:0;align-items:stretch}
-  .dm-box{width:100%;height:100vh;height:100dvh;border:0;border-radius:0;padding:0 .8rem 1rem;font-size:1.1em}
-  .dm-box::before,.dm-box::after{display:none}
-  .dm-head{position:sticky;top:0;z-index:5;height:3.4rem;margin:0 -.8rem .7rem;padding:0 1rem;background:rgba(13,14,20,.97);backdrop-filter:blur(.6rem);-webkit-backdrop-filter:blur(.6rem)}
-  .dm-head h2{font-size:.95rem}
-  .dm-x{width:2.4rem;height:2.4rem}
-  .dm-grid{display:flex;flex-direction:column;flex:none;min-height:0;gap:.9rem}
-  .dm-card{display:grid;grid-template-columns:minmax(0,34%) minmax(0,1fr);grid-template-rows:auto;column-gap:.9rem;row-gap:.55rem;padding:.7rem;align-items:start;grid-template-rows:auto auto auto 1fr}
-  .dm-info{display:contents}
-  .dm-ph{grid-column:1;grid-row:1 / span 4;aspect-ratio:9/16;width:100%;max-height:none;align-self:start}
-  .dm-n,.dm-info h3,.dm-d,.dm-b{grid-column:2}
-  .dm-n{font-size:.62rem;align-self:end}
-  .dm-info h3{font-size:.95rem;white-space:normal;line-height:1.3}
-  .dm-d{font-size:.84rem}
-  .dm-b{font-size:.8rem;padding:.45rem .65rem;align-self:start}
-  .dm-b span{font-size:.56rem}
-  .dm-kv{grid-column:1 / -1}
-  .dm-kv div{padding:.5rem .2rem}
-  .dm-kv small{font-size:.62rem}.dm-kv b{font-size:.84rem}
-  .dm-go{grid-column:1 / -1;padding:.8rem 1rem;font-size:.7rem}
-  .dm-ph::after{width:1.9rem;height:1.9rem}
-}
-@media (max-width:560px){
-  .dm-card{grid-template-columns:minmax(0,38%) minmax(0,1fr);column-gap:.7rem;padding:.55rem}
-  .dm-kv{gap:.3rem}
-  .dm-kv small{font-size:.56rem;letter-spacing:.04em}.dm-kv b{font-size:.76rem}
-  .dm-d{font-size:.8rem;line-height:1.4}.dm-b{font-size:.76rem}
-}
-@media (min-width:700px) and (max-width:1199px) and (hover:hover){
-  .dm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
-  .dm-card{display:flex;flex-direction:column}
-  .dm-info{display:flex}
-  .dm-ph{aspect-ratio:9/16;width:100%}
-  .dm-info h3{white-space:normal}
-  .dm-kv{gap:.25rem}.dm-kv div{padding:.5rem .1rem}.dm-kv b{font-size:.72rem;letter-spacing:0;white-space:nowrap}.dm-kv small{font-size:.6rem}
-}
+@media (max-width:480px){.dm-pts li{font-size:.82rem}}
 @media (hover:none) and (pointer:coarse){html{font-size:clamp(15px,min(3.1vw,5vh),30px)}}
 @media (orientation:portrait) and (min-width:700px) and (hover:hover){html{font-size:max(9px,min(calc(100dvh / 130),calc(100vw / 46)))}}
+@media (hover:none) and (pointer:coarse){.card,.tag,.search,.snd,.dl,.gd,.vd,.back,.perf,.dlnote,.dm,.dm-head,.vid,.nick-in,.bubble{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
 </style>
-<link rel="stylesheet" href="assets/nick.css">
+<script>window.MOB=matchMedia('(hover:none) and (pointer:coarse)').matches</script>
+<script>MOB||document.write('<link rel="stylesheet" href="assets/nick.css">')</script>
 </head>
 <body>
 <div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
@@ -331,31 +286,17 @@ html.mlock,html.mlock body{overflow:hidden!important}
 
 <div class="dm" id="dm" role="dialog" aria-modal="true" aria-labelledby="dmT" aria-hidden="true">
   <div class="dm-box">
-    <div class="dm-head"><h2 id="dmT">Скачать сборку<i> / / </i>Выберите вариант</h2><button class="dm-x" id="dmX" type="button" aria-label="Закрыть"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
-    <div class="dm-grid">
-    <article class="dm-card">
-      <button class="dm-ph" type="button" data-cap="Вариант 01 · HD текстуры + тату"><img draggable="false" decoding="async" data-src="img/v1-hd-tattoo.png" alt="Пример внешности: HD текстуры + тату"></button>
-      <div class="dm-info"><div class="dm-n">Вариант 01</div><h3>HD текстуры + тату</h3><p class="dm-d">Женская V с HD текстурами и несъёмными тату.</p><p class="dm-b"><span>Бонус для фоторежима</span>Набор поз для жен. V<i> / / </i>Набор лиц для жен. и муж. V</p>
-        <div class="dm-kv"><div><small>HD</small><b>да</b></div><div><small>Тату</small><b>да</b></div><div><small>Позы</small><b>жен</b></div><div><small>Лица</small><b>жен / муж</b></div></div>
-        <a class="dm-go" href="https://drive.google.com/drive/folders/1aXZfU5qQ3I2QXvGDXHQK2iBuPsm9MoVy?usp=drive_link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать</a></div>
-    </article>
-    <article class="dm-card">
-      <button class="dm-ph" type="button" data-cap="Вариант 02 · HD текстуры без тату"><img draggable="false" decoding="async" data-src="img/v2-hd.png" alt="Пример внешности: HD текстуры без тату"></button>
-      <div class="dm-info"><div class="dm-n">Вариант 02</div><h3>HD текстуры без тату</h3><p class="dm-d">Женская V с HD текстурами, но без тату.</p><p class="dm-b"><span>Бонус для фоторежима</span>Набор поз для жен. V<i> / / </i>Набор лиц для жен. и муж. V</p>
-        <div class="dm-kv"><div><small>HD</small><b>да</b></div><div><small>Тату</small><b class="no">нет</b></div><div><small>Позы</small><b>жен</b></div><div><small>Лица</small><b>жен / муж</b></div></div>
-        <a class="dm-go" href="https://drive.google.com/drive/folders/1QpvNw16I4ZCaRg2ixqQ-UUVXrhSdBrUo?usp=drive_link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать</a></div>
-    </article>
-    <article class="dm-card">
-      <button class="dm-ph" type="button" data-cap="Вариант 03 · Стандартная внешность"><img draggable="false" decoding="async" data-src="img/v3-standard.png" alt="Пример внешности: Стандартная внешность"></button>
-      <div class="dm-info"><div class="dm-n">Вариант 03</div><h3>Стандартная внешность</h3><p class="dm-d">Женская V без HD текстур и без тату.</p><p class="dm-b"><span>Бонус для фоторежима</span>Набор поз для жен. V<i> / / </i>Набор лиц для жен. и муж. V</p>
-        <div class="dm-kv"><div><small>HD</small><b class="no">нет</b></div><div><small>Тату</small><b class="no">нет</b></div><div><small>Позы</small><b>жен</b></div><div><small>Лица</small><b>жен / муж</b></div></div>
-        <a class="dm-go" href="https://drive.google.com/drive/folders/1HADrw7dSjw8qlqQpY7Tx1CDvonW6FfyS?usp=drive_link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать</a></div>
-    </article>
-    </div>
+    <div class="dm-head"><h2 id="dmT">Скачать сборку</h2><button class="dm-x" id="dmX" type="button" aria-label="Закрыть"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
+    <ul class="dm-pts">
+      <li>Сборка рассчитана под разные устройства, в ней нет текстур высокого качества, так как они индивидуальны для каждого.</li>
+      <li>Моды тестировались на совместимость в патче 2.5, а те что вызывали серьезные конфликты - не добавлялись в сборку.</li>
+      <li>Гарантировать стабильность я не могу, все зависит от вашего ПК, т.к ошибки и вылеты не всегда связаны с модами.</li>
+    </ul>
+    <label class="dm-ok"><input type="checkbox" id="dmC"><span class="bx"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.6 3.6 7.4-8"/></svg></span><span class="tx">Спасибо, я все понял</span></label>
+    <a class="dm-go" id="dmGo" href="https://drive.google.com/drive/folders/1HADrw7dSjw8qlqQpY7Tx1CDvonW6FfyS?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.2 8.6L10 12.4l3.8-3.8M4 16h12"/></svg>Скачать</a>
   </div>
 </div>
 <div class="vid" id="vid" aria-hidden="true"><div class="vid-box"><div class="vid-h"><span>inkee2004.mp4</span><button class="vid-x" id="vidx" type="button" aria-label="Закрыть">×</button></div><video id="vidv" src="assets/rofl.mp4" preload="none" controls controlsList="nodownload" playsinline></video></div></div>
-<div class="lb" id="lb" aria-hidden="true"><img id="lbi" alt="" draggable="false"></div>
 <script src="assets/audio.js"></script>
 <script>
 (function(){
@@ -385,8 +326,8 @@ var CATS=[
   ['Always Best Quality',12700],['Draw Distance ReImagined',27210],['Faster Rainmap and Distant Shadows',8610],['Hide Distant 2D Cars',1282],
   ['Improved Distant Shadows and Reflections',20623],['Improved Environment LODs',4923],['Improved Vehicle Lights Draw Distance',5082],['Not So Good Draw Distance',11240]
  ]},
- {t:['Атмосфера','Освещение','Текстуры'],span:2,rows:10,mods:[
-  ['Apartments Enhanced (4 в 1 доп. архивы)',19521],['Blur Begone',8105],['Dirt Begone',8131],['Enhanced Weather V6',3901],['Eye Adaptation Complete Overhaul',2375],
+ {t:['Атмосфера','Освещение','Текстуры'],span:2,rows:11,mods:[
+  ['Apartments Enhanced (4 в 1 доп. архивы)',19521],['Authentic Shift',6823],['Blur Begone',8105],['Dirt Begone',8131],['Enhanced Weather V6',3901],['Eye Adaptation Complete Overhaul',2375],
   ['Fast Travel Hologram Lucy',23209],['Glow Begone',14932],['Japantown Apartment View Enhanced',19491],['Just Monika Living Room Poster',9436],['Nova LUT 4.0',11622],
   ['Preem Map',18269],['Preem Rain',11467],['Preem Scanner',9215],['Preem Scopes',10021],['Preem Water 2.0',8275],
   ['ReImagined',25845],['ReLUX',20808],['ReLUX Plus (Riders on the Storm)',22129],['The Nullifier',23091],['Weather Switcher',18027]
@@ -394,13 +335,9 @@ var CATS=[
  {t:['Качество жизни','Комфорт'],span:1,rows:8,mods:[
   ['All Vanilla Clothes Atelier Store',5544],['Fast Travel from anywhere to everywhere',9241],['Immersive First Person 2.0',2675],['No Camera Auto Centering',2169],
   ['No Intro Videos',533],['Reset Attributes',9240],['Virtual Atelier',2987],['Virtual Atelier Delivery',21482]
- ]},
- {t:['Транспорт','Управление'],span:1,rows:1,mods:[['Authentic Shift',6823]]},
- {t:['Фоторежим','Внешность жен. V'],span:3,rows:2,mods:[
-  ['Cute and Sexy Pose Pack for FemV',6871],['Photomode Facial Expression Mega Pack',7912],['VTK FemV - Kala\'s Tattoos',7638],['VTK Vanilla HD Body for FemV (4 в 1 доп. архивы)',7054]
  ]}
 ];
-var ARCHIVES=90;
+var ARCHIVES=83;
 
 /* ================= ИНДЕКСЫ ================= */
 var coll=new Intl.Collator('en',{sensitivity:'base',numeric:true});
@@ -414,7 +351,7 @@ CATS.forEach(function(c){
 /* ================= ОТРИСОВКА ================= */
 var board=document.getElementById('board');
 function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
-var rows={};
+var rows={},rowList=[];
 CATS.forEach(function(c){
   var card=el('article','card');card.style.gridColumn='span '+c.span;
   var ch=el('div','ch'),h=el('h2');
@@ -427,11 +364,10 @@ CATS.forEach(function(c){
     var a=el('a','mod');
     a.href='https://www.nexusmods.com/cyberpunk2077/mods/'+d.id;a.target='_blank';a.rel='noopener noreferrer';
     a.dataset.n=d.name;a.dataset.i=i;
-    var nm=el('span','nm'),chars=[];
-    d.name.split('').forEach(function(ch){var s=el('span','c',ch);nm.appendChild(s);chars.push(s)});
+    var nm=el('span','nm',d.name);
     a.appendChild(nm);
     var ar=el('span','ar','↗');ar.setAttribute('aria-hidden','true');a.appendChild(ar);
-    list.appendChild(a);rows[d.name]={a:a,nm:nm,chars:chars,lower:d.name.toLowerCase()};
+    list.appendChild(a);var rw={a:a,nm:nm,chars:null,text:d.name,lower:d.name.toLowerCase(),m:null};rows[d.name]=rw;rowList.push(rw);
   });
   card.appendChild(list);board.appendChild(card);
 });
@@ -472,22 +408,43 @@ function find(lower,qs){
   for(var i=0;i<qs.length;i++){if(!qs[i])continue;var k=lower.indexOf(qs[i]);if(k>=0)return {i:k,len:qs[i].length}}
   return null;
 }
-var matches=[];
-function applySearch(raw){
-  var q=raw.trim().toLowerCase(),qm=mapRu(q),qs=qm!==q?[q,qm]:[q],n=0;
+var matches=[],cleanT=0,srcQ=null;
+/* буквы-«спаны» создаются только у найденных модов — остальные остаются обычным текстом */
+function spans(r){
+  if(r.chars)return r.chars;
+  var f=document.createDocumentFragment(),a=[];
+  r.nm.textContent='';
+  for(var i=0;i<r.text.length;i++){var c=el('span','c',r.text.charAt(i));f.appendChild(c);a.push(c)}
+  r.nm.appendChild(f);return r.chars=a;
+}
+function runSearch(raw){
+  var q=raw.trim().toLowerCase(),qm=mapRu(q),qs=qm!==q?[q,qm]:[q],n=0,built=false,i;
   matches=[];
   board.classList.toggle('q',!!q);
-  Object.keys(rows).forEach(function(name){
-    var r=rows[name],m=q?find(r.lower,qs):null;
-    r.a.classList.toggle('sm',!!m);
-    r.chars.forEach(function(c,i){
-      var on=!!m&&i>=m.i&&i<m.i+m.len;
-      if(on!==!!c._on){c._on=on;c.style.setProperty('--d',on?(i-m.i):0);c.classList.toggle('m',on)}
-    });
-    if(m){n++;matches.push({name:name,i:m.i,len:r.lower.length})}
-  });
+  for(i=0;i<rowList.length;i++){var r=rowList[i];r.m=q?find(r.lower,qs):null;if(r.m&&!r.chars){spans(r);built=true}}
+  if(built)void board.offsetWidth;
+  for(i=0;i<rowList.length;i++){
+    var w=rowList[i],m=w.m,on=!!m;
+    if(on!==w.on){w.on=on;w.a.classList.toggle('sm',on)}
+    if(w.chars)for(var k=0;k<w.chars.length;k++){
+      var c=w.chars[k],h=on&&k>=m.i&&k<m.i+m.len;
+      if(h!==!!c._on){c._on=h;c.style.setProperty('--d',h?(k-m.i):0);c.classList.toggle('m',h)}
+    }
+    if(on){n++;matches.push({name:w.text,i:m.i,len:w.lower.length})}
+  }
   qc.textContent=q?String(n):'';
   search.classList.toggle('none',!!q&&n===0);
+  clearTimeout(cleanT);
+
+}
+function buildAll(){for(var i=0;i<rowList.length;i++)spans(rowList[i]);void board.offsetWidth}
+inp.addEventListener('focus',function(){clearTimeout(cleanT);buildAll()});
+inp.addEventListener('blur',function(){if(!inp.value)cleanT=setTimeout(function(){for(var j=0;j<rowList.length;j++){var z=rowList[j];if(z.chars&&!z.m){z.nm.textContent=z.text;z.chars=null}}},400)});
+/* ввод склеивается: поиск считается один раз за кадр */
+var raf=0;
+function applySearch(raw){
+  srcQ=raw;if(raf)return;
+  raf=requestAnimationFrame(function(){raf=0;runSearch(srcQ)});
 }
 var prev='';
 function setGhost(val){
@@ -508,11 +465,11 @@ inp.addEventListener('keydown',function(e){
 })();
 </script>
 <script>
-window.NICKCFG={search:document.getElementById('search'),arrive:[['h|вернулись! список модов, бл{я}ть, я скучал.'],['n|ну что, настроил? «Reset Attributes» себе не забудь.'],['y|а я пока в руководстве остался. шучу. я тут.'],['n|глянул тест производительности: 30–50 FPS. сойдёт, главное — не «Not So Good Draw Distance».'],['h|видео-тест не смотрел? там всё честно. почти как я.']]};
+if(!MOB)window.NICKCFG={search:document.getElementById('search'),arrive:[['h|вернулись! список модов, бл{я}ть, я скучал.'],['n|ну что, настроил? «Reset Attributes» себе не забудь.'],['y|а я пока в руководстве остался. шучу. я тут.'],['n|глянул тест производительности: 30–50 FPS. сойдёт, главное — не «Not So Good Draw Distance».'],['h|видео-тест не смотрел? там всё честно. почти как я.']]};
 (function(){
   var vd=document.querySelector('.vd');
   if(vd)vd.addEventListener('click',function(){if(window.NICK)setTimeout(function(){NICK.say([['h|видео-тест? включай. я пока тут постою, как «Authentic Shift» — одна на всю рамку.'],['n|смотри-смотри. там цифры, но мои шутки смешнее.'],['y|статеры в кадре — это не баг, это стиль.']][Math.floor(Math.random()*3)])},500)});
-  var g=document.querySelector('.gd');if(!g)return;
+  var g=document.querySelector('.gd');if(!g||MOB)return;
   g.addEventListener('click',function(e){
     if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
     e.preventDefault();
@@ -524,31 +481,22 @@ window.NICKCFG={search:document.getElementById('search'),arrive:[['h|верну�
 </script>
 <script>
 (function(){
-  var dm=document.getElementById('dm'),dl=document.getElementById('dl'),lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),x=document.getElementById('dmX'),last=null;
-  var mi=[].slice.call(dm.querySelectorAll('img[data-src]'));function loadMi(){mi.forEach(function(i){if(i.dataset.src){i.src=i.dataset.src;i.removeAttribute('data-src')}})}
-  addEventListener('load',function(){(window.requestIdleCallback||function(f){setTimeout(f,1200)})(loadMi)});
-  function openM(){loadMi();last=document.activeElement;dm.classList.add('on');document.documentElement.classList.add('mlock');dm.setAttribute('aria-hidden','false');setTimeout(function(){x.focus()},60)}
+  var dm=document.getElementById('dm'),dl=document.getElementById('dl'),x=document.getElementById('dmX'),ck=document.getElementById('dmC'),go=document.getElementById('dmGo'),last=null;
+  function sync(){var on=ck.checked;go.setAttribute('aria-disabled',on?'false':'true');go.tabIndex=on?0:-1}
+  function openM(){last=document.activeElement;ck.checked=false;sync();dm.classList.add('on');document.documentElement.classList.add('mlock');dm.setAttribute('aria-hidden','false');setTimeout(function(){x.focus()},60)}
   function closeM(){dm.classList.remove('on');document.documentElement.classList.remove('mlock');dm.setAttribute('aria-hidden','true');if(last&&last.focus)last.focus()}
-  function openL(src){lbi.src=src;lb.classList.add('on');lb.setAttribute('aria-hidden','false');playZoomIn()}
-  function closeL(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');playZoomOut()}
   dl.addEventListener('click',openM);
   x.addEventListener('click',closeM);
   dm.addEventListener('click',function(e){if(e.target===dm)closeM()});
-  [].forEach.call(dm.querySelectorAll('.dm-ph'),function(b){
-    b.addEventListener('mouseenter',playHoverImg);
-    b.addEventListener('mouseleave',function(){lastImg=0});
-    b.addEventListener('click',function(){openL(b.querySelector('img').src)});
-  });
-  lb.addEventListener('click',closeL);
-  addEventListener('keydown',function(e){
-    if(e.key!=='Escape')return;
-    if(lb.classList.contains('on')){closeL();e.stopPropagation()}else if(dm.classList.contains('on'))closeM();
-  },true);
+  ck.addEventListener('change',function(){sync();playPop()});
+  go.addEventListener('click',function(e){if(!ck.checked){e.preventDefault();return}playClick()});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&dm.classList.contains('on'))closeM()},true);
 })();
 </script>
 <script>if(location.protocol==="file:"){var g=document.querySelector(".gd");if(g)g.setAttribute("href","guide.html")}</script>
 <script>
 (function(){
+  if(MOB){var x0=document.getElementById('vid');if(x0&&x0.parentNode)x0.parentNode.removeChild(x0);return}
   var v=document.getElementById('vid'),vv=document.getElementById('vidv'),inp=document.getElementById('q'),sr=document.getElementById('search'),busy=false,H=document.documentElement;
   function open(){v.classList.add('on');v.setAttribute('aria-hidden','false');H.classList.add('mlock');try{vv.currentTime=0}catch(e){}var p=vv.play();if(p&&p.catch)p.catch(function(){})}
   function close(){
@@ -567,6 +515,6 @@ window.NICKCFG={search:document.getElementById('search'),arrive:[['h|верну�
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
 })();
 </script>
-<script src="assets/nick.js"></script>
+<script>MOB||document.write('<script src="assets/nick.js"><\/script>')</script>
 </body>
 </html>
